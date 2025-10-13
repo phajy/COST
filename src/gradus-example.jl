@@ -12,6 +12,8 @@ a_values = range(-1, 1, length=200)
 
 # Initialize an array to store the horizon radii
 horizon_radii = zeros(length(a_values))
+# Initialize an array to store the ISCO radii
+isco_radii = zeros(length(a_values))
 
 # Calculate the horizon radius for each value of a
 for (i, a) in enumerate(a_values)
@@ -23,10 +25,15 @@ for (i, a) in enumerate(a_values)
     
     # Extract the radius at that index
     horizon_radii[i] = rs[closest_idx]
+
+    # Calculate the ISCO radius
+    isco_radii[i] = Gradus.isco(m)
 end
 
 # Plot the horizon radius as a function of a
 fig = Figure()
 ax = Axis(fig[1, 1], xlabel="Spin parameter (a)", ylabel="Horizon radius at θ=π/2")
-lines!(ax, a_values, horizon_radii)
+lines!(ax, a_values, horizon_radii, color=:blue, label="Horizon radius")
+lines!(ax, a_values, isco_radii, color=:red, label="ISCO radius")
+axislegend(ax)  # Add a legend using the labels
 fig
