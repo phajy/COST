@@ -1,0 +1,18 @@
+using Gradus, Plots
+
+m = KerrMetric(M=1.5, a=1.0)
+# observer position
+x = SVector(0.0, 10000.0, π/2, 0.0)
+
+# set up impact parameter space
+α = collect(range(-5.4808, 9.6466, 2))
+β = fill(0, size(α))
+
+# build initial velocity and position vectors
+vs = map_impact_parameters(m, x, α, β)
+xs = fill(x, size(vs))
+
+sols = tracegeodesics(m, xs, vs, 20000.0)
+
+plot_paths(sols, legend = true, n_points = 2048, label = "Photon Trajectory")
+plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
