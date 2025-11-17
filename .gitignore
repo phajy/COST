@@ -27,4 +27,4 @@ Manifest*.toml
 LocalPreferences.toml
 JuliaLocalPreferences.toml
 .vscode/settings.json
-Project.toml
+# Project.toml
