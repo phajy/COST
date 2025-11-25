@@ -1,8 +1,13 @@
 # Catalogue of SpaceTimes (COST)
 
-This is a placeholder for the documentation of the Catalogue of SpaceTimes (COST) Julia package. More information will be added soon.
+This is the documentation for the Catalogue of SpaceTimes (COST) Julia package. It is a work in progress.
 
-# COST.jl Documentation
+## Individual SpaceTimes
+
+- [Schwarzschild Metric](schwarzschild.md)
+- [Kerr Metric](kerr.md)
+
+## COST.jl function documentation
 
 ```@meta
 CurrentModule = COST
@@ -11,4 +16,3 @@ CurrentModule = COST
 ```@docs
 example_func
 ```
-
