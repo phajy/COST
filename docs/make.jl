@@ -1,5 +1,9 @@
-using Documenter, COST
+using Documenter
+using COST
 
-push!(LOAD_PATH,"../src/")
+makedocs(
+    sitename = "COST Documentation",
+    modules = [COST],
+    format = Documenter.HTML()
+)
 
-makedocs(sitename="COST")
