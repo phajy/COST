@@ -28,6 +28,7 @@ jobs:
         shell: julia --color=yes --project=docs {0}
         run: |
           using Pkg
+          Pkg.Registry.add("General")
           Pkg.Registry.add(RegistrySpec(url="https://github.com/astro-group-bristol/AstroRegistry"))
           Pkg.develop(PackageSpec(path=pwd()))
           Pkg.instantiate()
