@@ -12,3 +12,7 @@ makedocs(
     format = Documenter.HTML(prettyurls = false)
 )
 
+deploydocs(
+    repo = "github.com/phajy/COST.git",
+    devbranch = "main"
+)
