@@ -4,6 +4,11 @@ using COST
 makedocs(
     sitename = "COST Documentation",
     modules = [COST],
-    format = Documenter.HTML()
+    pages = [
+        "Home" => "index.md",
+        "Kerr" => "kerr.md",
+        "Schwarzschild" => "schwarzschild.md"
+    ],
+    format = Documenter.HTML(prettyurls = false)
 )
 
