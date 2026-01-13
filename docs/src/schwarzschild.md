@@ -5,7 +5,7 @@ The Schwarzschild metric describes the geometry of spacetime outside a non-rotat
 ## Metric definition
 
 The metric is given by:
-$$ds^{2} = -(1-\frac{2m}{r})dt^{2} + (1-\frac{2m}{r})^{-1}dr^{2} + r^{2}d\Omega^{2}$$
+$$ds^{2} = -\left(1-\frac{2m}{r}\right) dt^{2} + \left(1-\frac{2m}{r}\right)^{-1}dr^{2} + r^{2}d\Omega^{2}$$
 
 ## Special radii
 
@@ -25,9 +25,8 @@ for r in [6.0, 7.0]
     # trace the circular orbit
     path = tracegeodesics(m, @SVector([0.0, r, π/2, 0.0]), v, (0.0, 300.0), μ = 1.0)
     plot_paths!(p, path, extent = 10, legend = false)
+    plot_horizon!(m, lw = 2.0, color = :black)
 end
-
-savefig(p, "docs/src/figures/schwarzschild_circular_orbits.svg")
 ```
 
-![Schwarzschild circular orbits](figures/schwarzschild_circular_orbits.svg)
+![Schwarzschild circular orbits](figures/schwarzschild_circular_orbits.png)

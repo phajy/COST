@@ -13,6 +13,3 @@ This is the documentation for the Catalogue of SpaceTimes (COST) Julia package. 
 CurrentModule = COST
 ```
 
-```@docs
-example_func
-```

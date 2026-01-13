@@ -3,7 +3,6 @@ using COST
 
 makedocs(
     sitename = "COST Documentation",
-    modules = [COST],
     pages = [
         "Home" => "index.md",
         "Kerr" => "kerr.md",
