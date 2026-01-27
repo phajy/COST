@@ -8,7 +8,7 @@ using Makie, CairoMakie
 ############################################################
 
 # Create a range of a values from -1 to 1 with 100 steps
-a_values = range(-1, 1, length=200)
+a_values = range(-1.0, 0.999, length=200)
 
 # Initialize an array to store the horizon radii
 horizon_radii = zeros(length(a_values))
@@ -19,7 +19,8 @@ photon_radii = zeros(length(a_values))
 
 # Calculate the horizon radius for each value of a
 for (i, a) in enumerate(a_values)
-    m = KerrMetric(M = 1.0, a = a)
+    # m = KerrMetric(M = 1.0, a = a)
+    m = JohannsenPsaltisMetric(M = 1.0, a = a, ϵ3 = 0.0)
     rs, θs = event_horizon(m, resolution = 200)
     
     # Find the index closest to the equatorial plane (θ = π/2)
@@ -29,6 +30,7 @@ for (i, a) in enumerate(a_values)
     horizon_radii[i] = rs[closest_idx]
 
     # Calculate the ISCO radius
+    println("Metric: ", m)
     isco_radii[i] = Gradus.isco(m)
 
      #Calculate the photon orbit radius
