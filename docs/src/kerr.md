@@ -7,7 +7,19 @@ The Kerr metric describes the geometry of spacetime outside a rotating black hol
 The Kerr metric is given by:
 
 
-$$ds^2 = -\left(1 - \frac{r_{s}r}{\Sigma}\right)dt^2 - \frac{2 r_{s}ra \sin^{2}\theta}{\Sigma}dtd\phi + \frac{\Sigma}{\Delta}dr^{2} + \Sigma d\theta^{2} + \left(r^2 + a^2 + \frac{r_{s}ra^{2} \sin^2\theta}{\Sigma}\right)\sin^2\theta d\phi^2$$
+$$ds^2 = -\left(1 - \frac{r_{s}r}{\Sigma}\right)dt^2 - \frac{2 r_{s}ar \sin^{2}\theta}{\Sigma}dtd\phi + \frac{\Sigma}{\Delta}dr^{2} + \Sigma d\theta^{2} + \left(r^2 + a^2 + \frac{r_{s}a^{2}r \sin^2\theta}{\Sigma}\right)\sin^2\theta d\phi^2$$
+
+or in matrix form:
+
+
+$$g_{\mu\nu} =
+\begin{pmatrix}
+-\left(1 - \dfrac{r_s r}{\Sigma}\right) & 0 & 0 & -\dfrac{r_s a r \sin^2\theta}{\Sigma} \\
+0 & \dfrac{\Sigma}{\Delta} & 0 & 0 \\
+0 & 0 & \Sigma & 0 \\
+-\dfrac{r_s a r \sin^2\theta}{\Sigma} & 0 & 0 & \left(r^2 + a^2 + \dfrac{r_s a^2 r \sin^2\theta}{\Sigma}\right) \sin^2\theta
+\end{pmatrix}$$
+
 
 where  
 
@@ -15,11 +27,11 @@ $$\Sigma = r^{2} + a^{2} \cos^{2}\theta, \quad
 \Delta = r^{2} - r_{s} r + a^{2}, \quad
 r_{s} = 2 M$$
 
-- ($t$) : time coordinate  
+- ($t$) : time coordinate
 - ($r$) : radial coordinate  
 - ($\theta$) : polar angle  
 - ($\phi$) : azimuthal angle  
-- ($a$) : spin parameter $(0 \le a \le 1)$  
+- ($a$) : spin parameter $(0 \le a \le M)$  
 
 When $(a = 0)$, this reduces to the Schwarzschild metric.
 
