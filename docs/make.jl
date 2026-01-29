@@ -5,8 +5,8 @@ makedocs(
     sitename = "COST Documentation",
     pages = [
         "Home" => "index.md",
-        "Kerr" => "kerr.md",
         "Schwarzschild" => "schwarzschild.md",
+        "Kerr" => "kerr.md",
         "Johannsen-Psaltis" => "Johannsen-Psaltis.md"
         ],
     format = Documenter.HTML(prettyurls = false)
