@@ -5,12 +5,23 @@ The Schwarzschild metric describes the geometry of spacetime outside a non-rotat
 ## Metric definition
 
 The metric is given by:
-$$ds^{2} = -\left(1-\frac{2m}{r}\right) dt^{2} + \left(1-\frac{2m}{r}\right)^{-1}dr^{2} + r^{2}d\Omega^{2}$$
+$$ds^{2} = -\left(1-\dfrac{r_s}{r}\right) dt^{2} + \left(1-\dfrac{r_s}{r}\right)^{-1}dr^{2} + r^{2}d\theta^{2} + r^{2}sin^{2}(\theta)d\phi^{2}$$
+
+or in matrix form:
+
+$$g_{\mu\nu} =
+\begin{pmatrix}
+-\left(1-\dfrac{r_s}{r}\right) & 0 & 0 & 0 \\
+0 & \left(1-\dfrac{r_s}{r}\right)^{-1} & 0 & 0 \\
+0 & 0 & r^2 & 0 \\
+0 & 0 & 0 & r^2\sin^2\theta
+\end{pmatrix}$$
 
 where  
 
-$$d\Omega = sin(\theta)d\theta d\phi$$
+$$r_{s} = 2M$$
   
+- ($t$) : time coordinate
 - ($r$) : radial coordinate  
 - ($\theta$) : polar angle  
 - ($\phi$) : azimuthal angle  
