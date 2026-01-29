@@ -6,8 +6,9 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "Kerr" => "kerr.md",
-        "Schwarzschild" => "schwarzschild.md"
-    ],
+        "Schwarzschild" => "schwarzschild.md",
+        "Johannsen-Psaltis" => "Johannsen-Psaltis.md"
+        ],
     format = Documenter.HTML(prettyurls = false)
 )
 
@@ -15,3 +16,4 @@ deploydocs(
     repo = "github.com/phajy/COST.git",
     devbranch = "main"
 )
+    
