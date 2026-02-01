@@ -117,3 +117,6 @@ plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
 
 In this case the blue line depicts the prograde orbit and the orange line depicts the retrograde orbit.
 
+## Line Profiles 
+
+![Kerr key radii](figures/kerr_line_profile.png)
