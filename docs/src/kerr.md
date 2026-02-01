@@ -48,7 +48,7 @@ using Makie, CairoMakie
 
 # Plot of horizon radius as a function of spin parameter a #
 
-# Create a range of a values from -1 to 1 with 100 steps
+# Create a range of a values from -1 to 1 with 200 steps
 a_values = range(-1, 1, length=200)
 
 # Initialize an array to store the horizon radii

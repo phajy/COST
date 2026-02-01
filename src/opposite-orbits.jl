@@ -1,6 +1,6 @@
 using Gradus, Plots
 
-m = KerrMetric(M=1.5, a=1.0)
+m = JohannsenPsaltisMetric(M=1.5, a=1.0, ϵ3=2.0)
 # observer position
 x = SVector(0.0, 10000.0, π/2, 0.0)
 
