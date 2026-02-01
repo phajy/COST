@@ -71,6 +71,30 @@ plot_horizon!(m, label = "Event Horizon")
 
 ![Schwarzchild_ISCO_spiral](figures/ISCO_spiral.png)
 
+As these black holes do not spin, the photon orbit and the ISCO will have a constant radius.
+
+```julia
+using Gradus, Plots
+
+m = KerrMetric(M=1.5, a=0.0)
+# observer position
+x = SVector(0.0, 10000.0, π/2, 0.0)
+
+# set up impact parameter space
+α = collect(range(-7.794, 7.794, 2))
+β = fill(0, size(α))
+
+# build initial velocity and position vectors
+vs = map_impact_parameters(m, x, α, β)
+xs = fill(x, size(vs))
+
+sols = tracegeodesics(m, xs, vs, 20000.0)
+
+fig5 = plot_paths(sols, legend = true, n_points = 2048, label = "Photon Trajectory")
+plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
+```
+![Overlapping Orbits](figures/overlapping_orbits.png)
+
 
 ## Particle orbits
 
