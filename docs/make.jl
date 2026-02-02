@@ -7,7 +7,8 @@ makedocs(
         "Home" => "index.md",
         "Schwarzschild" => "schwarzschild.md",
         "Kerr" => "kerr.md",
-        "Johannsen-Psaltis" => "Johannsen-Psaltis.md"
+        "Johannsen-Psaltis" => "Johannsen-Psaltis.md",
+        "Kerr-Newman" => "Kerr-Newman.md"
         ],
     format = Documenter.HTML(prettyurls = false)
 )
