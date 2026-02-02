@@ -6,6 +6,8 @@ This is the documentation for the Catalogue of SpaceTimes (COST) Julia package. 
 
 - [Schwarzschild Metric](schwarzschild.md)
 - [Kerr Metric](kerr.md)
+- [Johannsen-Psaltis Metric](Johannsen-Psaltis.md)
+- [Kerr-Newman Metric](Kerr-Newman.md)
 
 ## COST.jl function documentation
 

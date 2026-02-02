@@ -1,4 +1,4 @@
-## Johannsen–Psaltis metric
+# Johannsen–Psaltis metric
 
 The Johannsen–Psaltis metric is a Kerr-like parametric deviation designed to test the no-hair
 theorem in the strong-field regime close to a black hole.
