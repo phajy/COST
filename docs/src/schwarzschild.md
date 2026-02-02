@@ -1,6 +1,6 @@
 # Schwarzschild metric
 
-The Schwarzschild metric describes the geometry of spacetime outside a non-rotating, spherical black hole with no magnetic field.
+The Schwarzschild metric describes the geometry of spacetime outside a non-rotating, spherical black hole with no magnetic field. Its only parameter is mass M.
 
 ## Metric definition
 

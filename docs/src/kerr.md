@@ -1,6 +1,6 @@
 # Kerr metric
 
-The Kerr metric describes the geometry of spacetime outside a rotating black hole with no magnetic field.
+The Kerr metric describes the geometry of spacetime outside a rotating black hole with no magnetic field. It has two parameters: mass M and spin a.
 
 ## Metric definition
 
