@@ -25,7 +25,7 @@ $$g_{\mu\nu} =
 
 And in polar coordinates: 
 
-$$ds^2 = -dt^2 + dr^2 + r^2d\theta^2 + r^2sin^2{\theta}d\phi^2 $$
+$$ds^2 = -dt^2 + dr^2 + r^2d\theta^2 + r^2sin^2{\theta}d\phi^2$$
 
 
 $$g_{\mu\nu} =
