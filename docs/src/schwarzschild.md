@@ -100,6 +100,9 @@ plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
 
 Outside the Innermost Stable Circular Orbit (ISCO) particles can follow circular orbits.
 
+<details>
+<summary>Click to expand code</summary>
+
 ```julia
 using Gradus, Plots
 
@@ -115,5 +118,7 @@ for r in [6.0, 7.0]
     plot_horizon!(m, lw = 2.0, color = :black)
 end
 ```
+
+</details>
 
 ![Schwarzschild circular orbits](figures/schwarzschild_circular_orbits.png)
