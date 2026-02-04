@@ -12,9 +12,9 @@ $$ds^2 =
 
 - \dfrac{2 r_s a r \sin^2\theta}{\Sigma} (1+h)\, dt\, d\phi + \dfrac{\Sigma (1+h)}{\Delta + a^2 h \sin^2\theta}\, dr^2
 
-+ \Sigma\, d\theta^2 \\
++ \Sigma\, d\theta^2 \\[3mm]
 
-+ \left(r^2 + a^2 + \dfrac{r_s a^2 r \sin^2\theta}{\Sigma} \\
++ \left(r^2 + a^2 + \dfrac{r_s a^2 r \sin^2\theta}{\Sigma}
 
 
 + \dfrac{a^2 (\Sigma + r_s r) \sin^2\theta}{\Sigma} h \right) \sin^2\theta\, d\phi^2$$

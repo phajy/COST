@@ -26,6 +26,24 @@ $$r_{s} = 2M$$
 - ($\theta$) : polar angle  
 - ($\phi$) : azimuthal angle  
 
+## Christoffel symbols
+
+
+$$\begin{aligned}
+\Gamma^{r}_{tt} & = \frac{r_s (r - r_s)}{2 r^3}, & 
+\Gamma^{t}_{tr} & = \frac{r_s}{2r(r - r_s)}, & 
+\Gamma^{r}_{rr} & = -\frac{r_s}{2r(r - r_s)}, \\[2mm]
+\Gamma^{\theta}_{r\theta} & = \frac{1}{r}, & 
+\Gamma^{\phi}_{r\phi} & = \frac{1}{r}, & 
+\Gamma^{r}_{\theta\theta} & = -(r - r_s), \\[2mm]
+\Gamma^{\phi}_{\theta\phi} & = \cot\theta, & 
+\Gamma^{r}_{\phi\phi} & = -(r - r_s)\sin^2\theta, & 
+\Gamma^{\theta}_{\phi\phi} & = -\sin\theta \cos\theta
+\end{aligned}$$
+
+
+
+
 ## Special radii
 
 Around a Schwarzchild black hole is an area called the plunging region. In this region, all matter will spiral into the event horizon.

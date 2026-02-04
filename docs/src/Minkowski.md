@@ -40,4 +40,8 @@ $$g_{\mu\nu} =
 \end{pmatrix}$$
 
 
+## Christoffel symbols
+
+$$\Gamma^{r}_{\phi\phi} = -r, \qquad
+\Gamma^{\phi}_{r\phi} = \frac{1}{r}$$
 
