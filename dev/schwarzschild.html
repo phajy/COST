@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Schwarzschild · COST Documentation</title><meta name="title" content="Schwarzschild · COST Documentation"/><meta property="og:title" content="Schwarzschild · COST Documentation"/><meta property="twitter:title" content="Schwarzschild · COST Documentation"/><meta name="description" content="Documentation for COST Documentation."/><meta property="og:description" content="Documentation for COST Documentation."/><meta property="twitter:description" content="Documentation for COST Documentation."/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="index.html">COST Documentation</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="index.html">Home</a></li><li><a class="tocitem" href="Minkowski.html">Minkowski</a></li><li class="is-active"><a class="tocitem" href="schwarzschild.html">Schwarzschild</a><ul class="internal"><li><a class="tocitem" href="#Metric-definition"><span>Metric definition</span></a></li><li><a class="tocitem" href="#Christoffel-symbols"><span>Christoffel symbols</span></a></li><li><a class="tocitem" href="#Special-radii"><span>Special radii</span></a></li><li><a class="tocitem" href="#Particle-orbits"><span>Particle orbits</span></a></li></ul></li><li><a class="tocitem" href="kerr.html">Kerr</a></li><li><a class="tocitem" href="Johannsen-Psaltis.html">Johannsen-Psaltis</a></li><li><a class="tocitem" href="Kerr-Newman.html">Kerr-Newman</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href="schwarzschild.html">Schwarzschild</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="schwarzschild.html">Schwarzschild</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/phajy/COST" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/phajy/COST/blob/main/docs/src/schwarzschild.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Schwarzschild-metric"><a class="docs-heading-anchor" href="#Schwarzschild-metric">Schwarzschild metric</a><a id="Schwarzschild-metric-1"></a><a class="docs-heading-anchor-permalink" href="#Schwarzschild-metric" title="Permalink"></a></h1><p>The Schwarzschild metric describes the geometry of spacetime outside a non-rotating, spherical black hole with no magnetic field. Its only parameter is mass M.</p><h2 id="Metric-definition"><a class="docs-heading-anchor" href="#Metric-definition">Metric definition</a><a id="Metric-definition-1"></a><a class="docs-heading-anchor-permalink" href="#Metric-definition" title="Permalink"></a></h2><p>The metric is given by: <span>$ds^{2} = -\left(1-\dfrac{r_s}{r}\right) dt^{2} + \left(1-\dfrac{r_s}{r}\right)^{-1}dr^{2} + r^{2}d\theta^{2} + r^{2}sin^{2}(\theta)d\phi^{2}$</span></p><p>or in matrix form:</p><p class="math-container">\[g_{\mu\nu} =
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Schwarzschild · COST Documentation</title><meta name="title" content="Schwarzschild · COST Documentation"/><meta property="og:title" content="Schwarzschild · COST Documentation"/><meta property="twitter:title" content="Schwarzschild · COST Documentation"/><meta name="description" content="Documentation for COST Documentation."/><meta property="og:description" content="Documentation for COST Documentation."/><meta property="twitter:description" content="Documentation for COST Documentation."/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="index.html">COST Documentation</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="index.html">Home</a></li><li><a class="tocitem" href="Minkowski.html">Minkowski</a></li><li class="is-active"><a class="tocitem" href="schwarzschild.html">Schwarzschild</a><ul class="internal"><li><a class="tocitem" href="#Metric-definition"><span>Metric definition</span></a></li><li><a class="tocitem" href="#Christoffel-symbols"><span>Christoffel symbols</span></a></li><li><a class="tocitem" href="#Special-radii"><span>Special radii</span></a></li><li><a class="tocitem" href="#Particle-orbits"><span>Particle orbits</span></a></li></ul></li><li><a class="tocitem" href="kerr.html">Kerr</a></li><li><a class="tocitem" href="Kerr-Newman.html">Kerr-Newman</a></li><li><a class="tocitem" href="Johannsen-Psaltis.html">Johannsen-Psaltis</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href="schwarzschild.html">Schwarzschild</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="schwarzschild.html">Schwarzschild</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/phajy/COST" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/phajy/COST/blob/main/docs/src/schwarzschild.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Schwarzschild-metric"><a class="docs-heading-anchor" href="#Schwarzschild-metric">Schwarzschild metric</a><a id="Schwarzschild-metric-1"></a><a class="docs-heading-anchor-permalink" href="#Schwarzschild-metric" title="Permalink"></a></h1><p>The Schwarzschild metric describes the geometry of spacetime outside a non-rotating, spherical black hole with no magnetic field. Its only parameter is mass M.</p><h2 id="Metric-definition"><a class="docs-heading-anchor" href="#Metric-definition">Metric definition</a><a id="Metric-definition-1"></a><a class="docs-heading-anchor-permalink" href="#Metric-definition" title="Permalink"></a></h2><p>The metric is given by: <span>$ds^{2} = -\left(1-\dfrac{r_s}{r}\right) dt^{2} + \left(1-\dfrac{r_s}{r}\right)^{-1}dr^{2} + r^{2}d\theta^{2} + r^{2}sin^{2}(\theta)d\phi^{2}$</span></p><p>or in matrix form:</p><p class="math-container">\[g_{\mu\nu} =
 \begin{pmatrix}
 -\left(1-\dfrac{r_s}{r}\right) &amp; 0 &amp; 0 &amp; 0 \\
 0 &amp; \left(1-\dfrac{r_s}{r}\right)^{-1} &amp; 0 &amp; 0 \\
@@ -15,7 +15,8 @@
 \Gamma^{\phi}_{\theta\phi} &amp; = \cot\theta, &amp; 
 \Gamma^{r}_{\phi\phi} &amp; = -(r - r_s)\sin^2\theta, &amp; 
 \Gamma^{\theta}_{\phi\phi} &amp; = -\sin\theta \cos\theta
-\end{aligned}\]</p><h2 id="Special-radii"><a class="docs-heading-anchor" href="#Special-radii">Special radii</a><a id="Special-radii-1"></a><a class="docs-heading-anchor-permalink" href="#Special-radii" title="Permalink"></a></h2><p>Around a Schwarzchild black hole is an area called the plunging region. In this region, all matter will spiral into the event horizon.</p><pre><code class="language-julia hljs">
+\end{aligned}\]</p><h2 id="Special-radii"><a class="docs-heading-anchor" href="#Special-radii">Special radii</a><a id="Special-radii-1"></a><a class="docs-heading-anchor-permalink" href="#Special-radii" title="Permalink"></a></h2><p>The ISCO of a Schwarzschild black hole is at <span>$6r_s or 6M$</span>. Matter inside this radius will spiral into the event horizon as shown here:</p><details>
+<summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">
 using Gradus
 
 # define Schwarzschild spacetime
@@ -50,7 +51,8 @@ using Plots
 
 # plot solution trajectory
 fig3 = plot_paths(sol, label = &quot;Particle Trajectory&quot;, color = :red)
-plot_horizon!(m, label = &quot;Event Horizon&quot;)</code></pre><p><img src="figures/ISCO_spiral.png" alt="Schwarzchild_ISCO_spiral"/></p><p>As these black holes do not spin, the photon orbit and the ISCO will have a constant radius.</p><pre><code class="language-julia hljs">using Gradus, Plots
+plot_horizon!(m, label = &quot;Event Horizon&quot;)</code></pre></details><p><img src="figures/ISCO_spiral.png" alt="Schwarzchild_ISCO_spiral"/></p><p>As these black holes do not spin, the photon orbit and the ISCO will have a constant radius.</p><details>
+<summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
 
 m = KerrMetric(M=1.5, a=0.0)
 # observer position
@@ -67,7 +69,92 @@ xs = fill(x, size(vs))
 sols = tracegeodesics(m, xs, vs, 20000.0)
 
 fig5 = plot_paths(sols, legend = true, n_points = 2048, label = &quot;Photon Trajectory&quot;)
-plot_horizon!(m, lw = 2.0, color = :black, label = &quot;Event Horizon&quot;)</code></pre><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p><h2 id="Particle-orbits"><a class="docs-heading-anchor" href="#Particle-orbits">Particle orbits</a><a id="Particle-orbits-1"></a><a class="docs-heading-anchor-permalink" href="#Particle-orbits" title="Permalink"></a></h2><p>Outside the Innermost Stable Circular Orbit (ISCO) particles can follow circular orbits.</p><details>
+plot_horizon!(m, lw = 2.0, color = :black, label = &quot;Event Horizon&quot;)</code></pre></details><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p><p>The plot below shows two orbits. One is at <span>$7M$</span> and one is pertubated slightly so appears at <span>$6.99M$</span>. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO <span>$(6M)$</span>), will not cause it to spiral into the black hole.</p><details>
+<summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
+
+#Stable and Perturbed Stable orbits
+
+# Schwarzschild black hole
+m = KerrMetric(M=1.0, a=0.0)   #Kerr with a=0 is the same as a Schwarzschild
+λ_max = 2000
+
+# Radii
+r_stable = 7.0
+r_stable2 = 6.99
+
+# Initial velocities
+v_stable   = CircularOrbits.fourvelocity(m, r_stable)  #gives the 4-velocity for a circular orbit at r_stable
+v_stable2  = v_stable    # Perturbation: same velocity as stable orbit, but at a slightly smaller radius
+
+# Initial positions
+x_stable   = @SVector [0.0, r_stable, π/2, 0.0]
+x_stable2  = @SVector [0.0, r_stable2, π/2, 0.0]
+
+# Trace geodesics
+sol_stable   = tracegeodesics(m, x_stable, v_stable, λ_max, μ=1.0)
+sol_stable2  = tracegeodesics(m, x_stable2, v_stable2, λ_max, μ=1.0)
+
+
+# Plot
+p = plot(aspect_ratio=1)
+
+plot_paths!(p, sol_stable,   label=&quot;Stable (r=7M)&quot;, color=:blue)
+plot_paths!(p, sol_stable2,  label=&quot;Stable (r=6.99M)&quot;, color=:green)
+plot_horizon!(m, lw=2, color=:black, label=&quot;Event Horizon&quot;)
+
+xlabel!(&quot;x&quot;)
+ylabel!(&quot;y&quot;)
+title!(&quot;Stable orbit and perturbation&quot;)
+
+
+xlims!(-10, 10)
+ylims!(-10, 10)  # Set limits to better visualize the orbits and horizon
+
+plot!(p, legend=:outertopright)  # Adjust legend position to avoid overlap with trajectories</code></pre></details><p><img src="figures/Stable_orbits.png" alt="Stable Orbits"/></p><p>Whereas this figure shows two orbits again. Only this time one is on the ISCO and the other has a pertubation such that it is very slightly inside. Now, the one on the ISCO is only just stable and remains circular, but the pertubated one is in the plunging region so it spirals into the event horizon.</p><details>
+<summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
+
+#ISCO and unstable
+
+
+# Schwarzschild black hole
+m = KerrMetric(M=1.0, a=0.0)
+λ_max = 2000
+
+# Radii
+r_ISCO   = 6.0
+r_unstable = 5.99
+
+# Circular geodesic velocities
+v_ISCO     = CircularOrbits.fourvelocity(m, r_ISCO)
+v_unstable = v_ISCO
+
+# Initial positions
+x_ISCO     = @SVector [0.0, r_ISCO, π/2, 0.0]
+x_unstable = @SVector [0.0, r_unstable, π/2, 0.0]
+
+# Trace geodesics
+sol_ISCO     = tracegeodesics(m, x_ISCO, v_ISCO, λ_max, μ=1.0)
+sol_unstable = tracegeodesics(m, x_unstable, v_unstable, λ_max, μ=1.0)
+
+# Plotting
+p = plot(aspect_ratio=1)
+
+plot_paths!(p, sol_ISCO,     label=&quot;ISCO (r=6M)&quot;, color=:red)
+plot_paths!(p, sol_unstable, label=&quot;Unstable (r=5.99M)&quot;, color=:orange)
+plot_horizon!(m, lw=2, color=:black, label=&quot;Event Horizon&quot;)
+
+xlims!(-10, 10)
+ylims!(-10, 10)
+
+xlims!(-10, 10)
+ylims!(-10, 10)
+
+plot!(p, legend=:outertopright)
+
+
+xlabel!(&quot;x&quot;)
+ylabel!(&quot;y&quot;)
+title!(&quot;Unstable orbit and perturbation&quot;)</code></pre></details><p><img src="figures/Unstable_orbits.png" alt="Unstable Orbits"/></p><h2 id="Particle-orbits"><a class="docs-heading-anchor" href="#Particle-orbits">Particle orbits</a><a id="Particle-orbits-1"></a><a class="docs-heading-anchor-permalink" href="#Particle-orbits" title="Permalink"></a></h2><p>Outside the Innermost Stable Circular Orbit (ISCO) particles can follow circular orbits.</p><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
 
 m = KerrMetric(M=1.0, a=0.0)
@@ -80,4 +167,4 @@ for r in [6.0, 7.0]
     path = tracegeodesics(m, @SVector([0.0, r, π/2, 0.0]), v, (0.0, 300.0), μ = 1.0)
     plot_paths!(p, path, extent = 10, legend = false)
     plot_horizon!(m, lw = 2.0, color = :black)
-end</code></pre></details><p><img src="figures/schwarzschild_circular_orbits.png" alt="Schwarzschild circular orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Monday 9 February 2026 11:07">Monday 9 February 2026</span>. Using Julia version 1.12.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+end</code></pre></details><p><img src="figures/schwarzschild_circular_orbits.png" alt="Schwarzschild circular orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Monday 9 February 2026 15:23">Monday 9 February 2026</span>. Using Julia version 1.12.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
