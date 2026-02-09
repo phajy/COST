@@ -53,6 +53,11 @@ h = \epsilon_3 \dfrac{(r_s/2)^3 r}{\Sigma^2}$$
 
 ## Line Profile
 
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
 ```julia
 using Gradus
 using StaticArrays
@@ -74,6 +79,9 @@ fig4 = plot(
     legend = false,
     lw = 2
 )
+```
+```@raw html
+</details>
 ```
 
 ![Johannsen-Psaltis Line Profile](figures/johannsen_line_prof.png)
