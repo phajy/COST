@@ -27,12 +27,11 @@ sol_stable2  = tracegeodesics(m, x_stable2, v_stable2, λ_max, μ=1.0)
 p = plot(aspect_ratio=1)
 
 plot_paths!(p, sol_stable,   label="Stable (r=7M)", color=:blue)
-plot_paths!(p, sol_stable2,  label="Stable (r=6.99M)", color=:green)
+plot_paths!(p, sol_stable2,  label="Stable Perturbation (r=6.99M)", color=:green)
 plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 
 xlabel!("x")
 ylabel!("y")
-title!("Stable orbit and perturbation")
 
 
 xlims!(-10, 10)

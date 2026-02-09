@@ -82,7 +82,18 @@ $$\begin{aligned}
 
 ## Special radii
 
-The act of rotating introduces the phenomena known as frame dragging. Frame dragging is where spacetime itself is dragged inthe direction of the bodies rotation. This means that key radii around a spinning black hole will vary depending on the angular momentum.
+### Frame Dragging
+
+In the case of a spinning black hole, rotation leads to the dragging of spacetime
+in the direction of the spin, an effect known as frame dragging. It is because
+of frame dragging that different radii are observed for these orbits. A clear
+example is provided by the two distinct photon orbit radii in the Kerr spacetime. Photons may orbit in the same direction as the black hole’s rotation
+(prograde) or in the opposite direction (retrograde). Frame dragging effectively
+boosts prograde motion, allowing the prograde orbit to lie closer to the event
+horizon, while the retrograde orbit occurs at a larger radius as it opposes the
+frame dragging. The effect that frame dragging has on the photon orbit and
+the ISCO will increase with the angular momentum of the black hole.
+
 
 ```@raw html
 <details>
@@ -141,9 +152,19 @@ fig
 ![Kerr key radii](figures/kerr_special_radii.png)
 
 
-A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde).
 
-In the case of the photon orbit:
+
+
+
+
+
+
+
+
+### Prograde and Retrograde Orbits
+
+
+A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde).
 
 ```@raw html
 <details>
@@ -153,22 +174,41 @@ In the case of the photon orbit:
 ```julia Photon_Orbits
 using Gradus, Plots
 
-m = KerrMetric(M=1.5, a=1.0)
-# observer position
-x = SVector(0.0, 10000.0, π/2, 0.0)
+#Prograde and retrograde photon orbits
 
-# set up impact parameter space
-α = collect(range(-5.4808, 9.6466, 2))
-β = fill(0, size(α))
 
-# build initial velocity and position vectors
-vs = map_impact_parameters(m, x, α, β)
-xs = fill(x, size(vs))
+# Kerr black hole
+m = KerrMetric(M=1.0, a=0.8)
+λ_max = 2000
 
-sols = tracegeodesics(m, xs, vs, 20000.0)
+# Radii
+r_pro   = 1.81109
+r_retro = 3.81877   #radii that give circular orbits
 
-fig2 = plot_paths(sols, legend = true, n_points = 2048, label = "Photon Trajectory")
-plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
+# Circular geodesic velocities
+v_pro = CircularOrbits.fourvelocity(m, r_pro; contra_rotating=false)
+v_retro = CircularOrbits.fourvelocity(m, r_retro; contra_rotating=true)
+
+# Initial positions
+x_pro    = @SVector [0.0, r_pro, π/2, 0.0]
+x_retro = @SVector [0.0, r_retro, π/2, 0.0]
+
+# Trace geodesics
+sol_pro = tracegeodesics(m, x_pro, v_pro, λ_max, μ=0.0)   #μ=0.0 is null geodesic (photon)
+sol_retro = tracegeodesics(m, x_retro, v_retro, λ_max, μ=0.0)
+# Plotting
+p = plot(aspect_ratio=1)
+
+plot_paths!(p, sol_retro, label="Retrograde", color=:orange, n_points = 100000)
+plot_paths!(p, sol_pro, label="Prograde", color=:blue, n_points = 100000)
+plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
+
+xlims!(-10, 10)
+ylims!(-10, 10)
+
+
+xlabel!("x")
+ylabel!("y")
 ```
 ```@raw html
 </details>

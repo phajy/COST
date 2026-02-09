@@ -12,7 +12,7 @@ This is the documentation for the Catalogue of SpaceTimes (COST) Julia package. 
 
 
 ## Units
-In this catalogue we use $G=c=1$. This means that one gravitatinal radius $r_g = \dfrac{GM}{c^2} = M$.
+In this catalogue we use $G=c=1$. This means that one gravitatinal radius $r_g = \dfrac{GM}{c^2} = M$. Spin is measured with the parameter $a=\dfrac{J}{Mc}=\dfrac{J}{M}$.
 
 ## Orbits around a black hole
 

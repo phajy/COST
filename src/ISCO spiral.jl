@@ -1,3 +1,4 @@
+
 using Gradus
 
 # define Schwarzschild spacetime
@@ -22,19 +23,17 @@ end
 Gradus.inner_radius(m::Schwarzschild) = 2 * m.M
 
 m = Schwarzschild(1.0)
-x1 = SVector(0.0, 6, π/2, 0.0)
-v1 = SVector(0.0, 0.0, 0.0, 0.0963)
+x = SVector(0.0, 1000.0, π/2, 0.0)
+v = SVector(0.0, -1.0, 0.0, -6.655e-6)
 
-λ_max = 3200000000.0
-sol = tracegeodesics(m, x1, v1, λ_max, μ=1.0)
+λ_max = 2000.0
+sol = tracegeodesics(m, x, v, λ_max, μ=1.0)
 
-x2 = SVector(0.0, 5.99, π/2, 0.0)
-v2 = SVector(0.0, 0.0, 0.0, 0.0963)
-
-sol2 = tracegeodesics(m, x2, v2, λ_max, μ=1.0)
 using Plots
 
 # plot solution trajectory
-fig3 = plot_paths(sol, label = "Particle Trajectory along the ISCO", color = :red)
-plot_paths!(sol2, label = "Perturbed Particle Trajectory", color = :blue)
-plot_horizon!(m, label = "Event Horizon")
+fig3 = plot_paths(sol, label = "Particle Trajectory", color = :red)
+plot_horizon!(m, label = "Event Horizon", color = :black)
+
+xlims!(-10, 10)
+ylims!(-10, 10)

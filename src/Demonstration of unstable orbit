@@ -41,6 +41,5 @@ plot!(p, legend=:outertopright)
 
 xlabel!("x")
 ylabel!("y")
-title!("Unstable orbit and perturbation")
 
 

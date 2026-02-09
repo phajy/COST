@@ -46,7 +46,7 @@ $$\begin{aligned}
 
 ## Special radii
 
-The ISCO of a Schwarzschild black hole is at $6r_s or 6M$. Matter inside this radius will spiral into the event horizon as shown here:
+The ISCO of a Schwarzschild black hole is at $6r_s$ or $6M$. Matter inside this radius will spiral into the event horizon as shown here:
 
 
 ```@raw html
@@ -103,38 +103,6 @@ plot_horizon!(m, label = "Event Horizon")
 
 
 
-As these black holes do not spin, the photon orbit and the ISCO will have a constant radius.
-
-```@raw html
-<details>
-<summary>Click to expand / collapse code block.</summary>
-```
-
-```julia
-using Gradus, Plots
-
-m = KerrMetric(M=1.5, a=0.0)
-# observer position
-x = SVector(0.0, 10000.0, π/2, 0.0)
-
-# set up impact parameter space
-α = collect(range(-7.794, 7.794, 2))
-β = fill(0, size(α))
-
-# build initial velocity and position vectors
-vs = map_impact_parameters(m, x, α, β)
-xs = fill(x, size(vs))
-
-sols = tracegeodesics(m, xs, vs, 20000.0)
-
-fig5 = plot_paths(sols, legend = true, n_points = 2048, label = "Photon Trajectory")
-plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
-```
-```@raw html
-</details>
-```
-
-![Overlapping Orbits](figures/overlapping_orbits.png)
 
 
 
@@ -142,6 +110,9 @@ plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
 
 
 
+
+
+### Stable Orbit and Pertubation
 
 
 The plot below shows two orbits. One is at $7M$ and one is pertubated slightly so appears at $6.99M$. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO $(6M)$), will not cause it to spiral into the black hole.
@@ -159,7 +130,7 @@ using Gradus, Plots
 #Stable and Perturbed Stable orbits
 
 # Schwarzschild black hole
-m = KerrMetric(M=1.0, a=0.0)   #Kerr with a=0 is the same as a Schwarzschild
+m = KerrMetric(M=1.0, a=0.0)
 λ_max = 2000
 
 # Radii
@@ -183,18 +154,18 @@ sol_stable2  = tracegeodesics(m, x_stable2, v_stable2, λ_max, μ=1.0)
 p = plot(aspect_ratio=1)
 
 plot_paths!(p, sol_stable,   label="Stable (r=7M)", color=:blue)
-plot_paths!(p, sol_stable2,  label="Stable (r=6.99M)", color=:green)
+plot_paths!(p, sol_stable2,  label="Stable Perturbation (r=6.99M)", color=:green)
 plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 
 xlabel!("x")
 ylabel!("y")
-title!("Stable orbit and perturbation")
 
 
 xlims!(-10, 10)
 ylims!(-10, 10)  # Set limits to better visualize the orbits and horizon
 
 plot!(p, legend=:outertopright)  # Adjust legend position to avoid overlap with trajectories
+
 ```
 ```@raw html
 </details>
@@ -210,7 +181,7 @@ plot!(p, legend=:outertopright)  # Adjust legend position to avoid overlap with 
 
 
 
-
+### Unstable Orbit and Pertubation
 
 
 
@@ -257,15 +228,11 @@ plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 xlims!(-10, 10)
 ylims!(-10, 10)
 
-xlims!(-10, 10)
-ylims!(-10, 10)
-
 plot!(p, legend=:outertopright)
 
 
 xlabel!("x")
 ylabel!("y")
-title!("Unstable orbit and perturbation")
 ```
 
 ```@raw html
@@ -281,14 +248,10 @@ title!("Unstable orbit and perturbation")
 
 
 
+### No Frame Dragging Effect
 
+As Schwarzschild black holes do not spin, the photon orbit and the ISCO will have a constant radius as there is no concept of prograde or retrograde motion. The figure below demonstrates this by showing two photon orbits going round the black hole, clockwise and anti-clockwise at the same radius.
 
-
-
-
-## Particle orbits
-
-Outside the Innermost Stable Circular Orbit (ISCO) particles can follow circular orbits.
 
 ```@raw html
 <details>
@@ -298,20 +261,26 @@ Outside the Innermost Stable Circular Orbit (ISCO) particles can follow circular
 ```julia
 using Gradus, Plots
 
-m = KerrMetric(M=1.0, a=0.0)
+m = KerrMetric(M=1.5, a=0.0)
+# observer position
+x = SVector(0.0, 10000.0, π/2, 0.0)
 
-p = plot(aspect_ratio=1)
+# set up impact parameter space
+α = collect(range(-7.794, 7.794, 2))
+β = fill(0, size(α))
 
-for r in [6.0, 7.0]
-    v = CircularOrbits.fourvelocity(m, r)
-    # trace the circular orbit
-    path = tracegeodesics(m, @SVector([0.0, r, π/2, 0.0]), v, (0.0, 300.0), μ = 1.0)
-    plot_paths!(p, path, extent = 10, legend = false)
-    plot_horizon!(m, lw = 2.0, color = :black)
-end
+# build initial velocity and position vectors
+vs = map_impact_parameters(m, x, α, β)
+xs = fill(x, size(vs))
+
+sols = tracegeodesics(m, xs, vs, 20000.0)
+
+fig5 = plot_paths(sols, legend = true, n_points = 2048, label = "Photon Trajectory")
+plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
 ```
 ```@raw html
 </details>
 ```
 
-![Schwarzschild circular orbits](figures/schwarzschild_circular_orbits.png)
+![Overlapping Orbits](figures/overlapping_orbits.png)
+
