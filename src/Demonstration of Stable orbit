@@ -1,0 +1,41 @@
+using Gradus, Plots
+
+#Stable and Perturbed Stable orbits
+
+# Schwarzschild black hole
+m = KerrMetric(M=1.0, a=0.0)
+λ_max = 2000
+
+# Radii
+r_stable = 7.0
+r_stable2 = 6.99
+
+# Initial velocities
+v_stable   = CircularOrbits.fourvelocity(m, r_stable)  #gives the 4-velocity for a circular orbit at r_stable
+v_stable2  = v_stable    # Perturbation: same velocity as stable orbit, but at a slightly smaller radius
+
+# Initial positions
+x_stable   = @SVector [0.0, r_stable, π/2, 0.0]
+x_stable2  = @SVector [0.0, r_stable2, π/2, 0.0]
+
+# Trace geodesics
+sol_stable   = tracegeodesics(m, x_stable, v_stable, λ_max, μ=1.0)
+sol_stable2  = tracegeodesics(m, x_stable2, v_stable2, λ_max, μ=1.0)
+
+
+# Plot
+p = plot(aspect_ratio=1)
+
+plot_paths!(p, sol_stable,   label="Stable (r=7M)", color=:blue)
+plot_paths!(p, sol_stable2,  label="Stable (r=6.99M)", color=:green)
+plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
+
+xlabel!("x")
+ylabel!("y")
+title!("Stable orbit and perturbation")
+
+
+xlims!(-10, 10)
+ylims!(-10, 10)  # Set limits to better visualize the orbits and horizon
+
+plot!(p, legend=:outertopright)  # Adjust legend position to avoid overlap with trajectories

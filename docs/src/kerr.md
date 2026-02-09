@@ -84,6 +84,11 @@ $$\begin{aligned}
 
 The act of rotating introduces the phenomena known as frame dragging. Frame dragging is where spacetime itself is dragged inthe direction of the bodies rotation. This means that key radii around a spinning black hole will vary depending on the angular momentum.
 
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
 ```julia Kerr_Radii_Plot
 
 using Gradus
@@ -129,12 +134,21 @@ axislegend(ax)  # Add a legend using the labels
 
 fig
 ```
+```@raw html
+</details>
+```
+
 ![Kerr key radii](figures/kerr_special_radii.png)
 
 
 A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde).
 
 In the case of the photon orbit:
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
 
 ```julia Photon_Orbits
 using Gradus, Plots
@@ -156,11 +170,20 @@ sols = tracegeodesics(m, xs, vs, 20000.0)
 fig2 = plot_paths(sols, legend = true, n_points = 2048, label = "Photon Trajectory")
 plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
 ```
+```@raw html
+</details>
+```
+
 ![Kerr key radii](figures/double_photon_orbit_kerr.png)
 
 In this case the blue line depicts the prograde orbit and the orange line depicts the retrograde orbit.
 
 ## Line Profiles 
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
 
 ```julia
 using Gradus
@@ -183,6 +206,9 @@ fig4 = plot(
     legend = false,
     lw = 2
 )
+```
+```@raw html
+</details>
 ```
 
 ![Kerr key radii](figures/kerr_line_profile.png)
