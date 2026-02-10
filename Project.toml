@@ -7,17 +7,22 @@ authors = ["phajy <andy.young@bristol.ac.uk>"]
 projects = ["docs"]
 
 [deps]
+CFITSIO = "3b1b4be9-1499-4b22-8d78-7db3344d1961"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 Gradus = "c5b7b928-ea15-451c-ad6f-a331a0f3e4b7"
 Latexify = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+SpectralFitting = "f2c56810-742e-4b72-8bf4-27af3bb81a12"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
+XSPECModels = "e051c099-9e89-4e1f-aad2-39a4611ecf4d"
 
 [compat]
+CFITSIO = "1.7.2"
 Documenter = "1.16.0"
 Gradus = "0.4.30"
 Latexify = "0.16.10"
 Plots = "1.41.2"
 StaticArrays = "1.9.16"
 Symbolics = "7.0.2"
+XSPECModels = "0.2.4"
