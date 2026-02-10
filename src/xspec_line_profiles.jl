@@ -7,6 +7,9 @@ using CFITSIO
 
 Threads.nthreads() = 8
 
+# set up a disc line model
+# modify this to include parameters you're interested in, e.g., deformation parameters
+
 struct DiscLine{T} <: AbstractSpectralModel{T,Additive}
     "Normalisation"
     K::T
@@ -16,12 +19,18 @@ struct DiscLine{T} <: AbstractSpectralModel{T,Additive}
     a::T
 end
 
-# define DiscLine model with parameter ranges
+# set up the default model parameters and their ranges
+# the parameter ranges are used when creating the table model
+# you can also set whether the parameter is frozen or not (frozen parameters are held constant during fitting)
+
 function DiscLine(;K = FitParam(1.0),
-    inc = FitParam(30.,lower_limit=7,upper_limit=85),
-    a = FitParam(0.998,lower_limit=0.0,upper_limit=0.998))
+    inc = FitParam(30.,lower_limit=7,upper_limit=85; frozen = true),
+    a = FitParam(0.998,lower_limit=0.0,upper_limit=0.998; frozen = false))
     DiscLine(K, inc, a)
 end
+
+# the invoke routine evaluates the model
+# update this to the model you are interested in testing
 
 function SpectralFitting.invoke!(output, domain, model::DiscLine)
     g_domain = copy(domain)
@@ -34,10 +43,11 @@ function SpectralFitting.invoke!(output, domain, model::DiscLine)
     output .= data[2][1:end-1]
 end
 
-# create a table model with one parameter
+# create the table model that will be used in XSPEC
+# you will need to modify logged = [0] and NumbVals = [10] to have entries for each variable parameter in your model
+# you might also want to change the output filename
 
 model = DiscLine()
-model.inc.frozen = true # freeze inclination
 
 full_model_vals , model_names = SpectralFitting._all_parameters_with_names(model)
 
@@ -66,7 +76,7 @@ Out_path = "DiscLineTable.fits"
 REDSHIFT = "F"
 ESCALE = "F"
 logged = [0] # whether the parameters are logged or not (1 for log, 0 for linear)
-NumbVals = [5]
+NumbVals = [10]
 ENERGIES_Nbins = 1000
 E_Min = 0.1
 E_Max = 20.0
