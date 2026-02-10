@@ -50,15 +50,18 @@ sol = tracegeodesics(m, x, v, λ_max, μ=1.0)
 using Plots
 
 # plot solution trajectory
-fig3 = plot_paths(sol, label = &quot;Particle Trajectory&quot;, color = :red)
-plot_horizon!(m, label = &quot;Event Horizon&quot;)</code></pre></details><p><img src="figures/ISCO_spiral.png" alt="Schwarzchild_ISCO_spiral"/></p><h3 id="Stable-Orbit-and-Pertubation"><a class="docs-heading-anchor" href="#Stable-Orbit-and-Pertubation">Stable Orbit and Pertubation</a><a id="Stable-Orbit-and-Pertubation-1"></a><a class="docs-heading-anchor-permalink" href="#Stable-Orbit-and-Pertubation" title="Permalink"></a></h3><p>The plot below shows two orbits. One is at <span>$7M$</span> and one is pertubated slightly so appears at <span>$6.99M$</span>. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO <span>$(6M)$</span>), will not cause it to spiral into the black hole.</p><details>
+fig3 = plot_paths(sol, label = &quot;Particle Trajectory&quot;, color = :red, n_points = 10000)
+plot_horizon!(m, label = &quot;Event Horizon&quot;, color = :black)
+
+xlims!(-10, 10)
+ylims!(-10, 10)</code></pre></details><p><img src="figures/ISCO_spiral.png" alt="Schwarzchild_ISCO_spiral"/></p><h3 id="Stable-Orbit-and-Pertubation"><a class="docs-heading-anchor" href="#Stable-Orbit-and-Pertubation">Stable Orbit and Pertubation</a><a id="Stable-Orbit-and-Pertubation-1"></a><a class="docs-heading-anchor-permalink" href="#Stable-Orbit-and-Pertubation" title="Permalink"></a></h3><p>The plot below shows two orbits. One is at <span>$7M$</span> and one is pertubated slightly so appears at <span>$6.99M$</span>. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO <span>$(6M)$</span>), will not cause it to spiral into the black hole.</p><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
 
 #Stable and Perturbed Stable orbits
 
 # Schwarzschild black hole
 m = KerrMetric(M=1.0, a=0.0)
-λ_max = 2000
+λ_max = 20000
 
 # Radii
 r_stable = 7.0
@@ -132,22 +135,41 @@ plot!(p, legend=:outertopright)
 
 
 xlabel!(&quot;x&quot;)
-ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/Unstable_orbits.png" alt="Unstable Orbits"/></p><h3 id="No-Frame-Dragging-Effect"><a class="docs-heading-anchor" href="#No-Frame-Dragging-Effect">No Frame Dragging Effect</a><a id="No-Frame-Dragging-Effect-1"></a><a class="docs-heading-anchor-permalink" href="#No-Frame-Dragging-Effect" title="Permalink"></a></h3><p>As Schwarzschild black holes do not spin, the photon orbit and the ISCO will have a constant radius as there is no concept of prograde or retrograde motion. The figure below demonstrates this by showing two photon orbits going round the black hole, clockwise and anti-clockwise at the same radius.</p><details>
+ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/Unstable_orbits.png" alt="Unstable Orbits"/></p><h3 id="No-Frame-Dragging"><a class="docs-heading-anchor" href="#No-Frame-Dragging">No Frame Dragging</a><a id="No-Frame-Dragging-1"></a><a class="docs-heading-anchor-permalink" href="#No-Frame-Dragging" title="Permalink"></a></h3><p>As Schwarzschild black holes do not spin, the photon orbit and the ISCO will have a constant radius as there is no concept of prograde or retrograde motion. The figure below demonstrates this by showing two photon orbits going round the black hole, clockwise and anti-clockwise at the same radius.</p><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
 
-m = KerrMetric(M=1.5, a=0.0)
-# observer position
-x = SVector(0.0, 10000.0, π/2, 0.0)
+#Overlapping prograde and retrograde photon orbits around a Schwarzschild black hole
 
-# set up impact parameter space
-α = collect(range(-7.794, 7.794, 2))
-β = fill(0, size(α))
 
-# build initial velocity and position vectors
-vs = map_impact_parameters(m, x, α, β)
-xs = fill(x, size(vs))
+# Kerr black hole
+m = KerrMetric(M=1.0, a=0.0)
+λ_max = 2000
 
-sols = tracegeodesics(m, xs, vs, 20000.0)
+# Radii
+r_pro   = 3.0
+r_retro = 3.0
 
-fig5 = plot_paths(sols, legend = true, n_points = 2048, label = &quot;Photon Trajectory&quot;)
-plot_horizon!(m, lw = 2.0, color = :black, label = &quot;Event Horizon&quot;)</code></pre></details><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Monday 9 February 2026 23:02">Monday 9 February 2026</span>. Using Julia version 1.12.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+# Circular geodesic velocities
+v_pro = @SVector [0.0, 0.0, 0.0, 1.1] #four velocities for circular orbits
+v_retro = @SVector [0.0, 0.0, 0.0, -1.1]
+
+# Initial positions
+x_pro    = @SVector [0.0, r_pro, π/2, 0.0]    #starting at the same position
+x_retro = @SVector [0.0, r_retro, π/2, 0.0]
+
+# Trace geodesics
+sol_pro = tracegeodesics(m, x_pro, v_pro, λ_max, μ=0.0)   #μ=0.0 is null geodesic (photon)
+sol_retro = tracegeodesics(m, x_retro, v_retro, λ_max, μ=0.0)
+# Plotting
+p = plot(aspect_ratio=1)
+
+plot_paths!(p, sol_retro, label=&quot;Clockwise orbit&quot;, color=:orange, n_points = 100000)
+plot_paths!(p, sol_pro, label=&quot;Anti-clockwise orbit&quot;, color=:blue, n_points = 100000)
+plot_horizon!(m, lw=2, color=:black, label=&quot;Event Horizon&quot;)
+
+xlims!(-10, 10)
+ylims!(-10, 10)
+
+
+xlabel!(&quot;x&quot;)
+ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Tuesday 10 February 2026 10:31">Tuesday 10 February 2026</span>. Using Julia version 1.12.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

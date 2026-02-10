@@ -38,15 +38,14 @@ r_{s} = 2 M\]</p><ul><li>(<span>$t$</span>) : time coordinate</li><li>(<span>$r$
 \Gamma^{r}{}_{\phi\phi} &amp;= \frac{\Delta \sin^2\theta}{2\Sigma^3}[-2r\Sigma^2 + r_s a^2 \sin^2\theta(r^2 - a^2\cos^2\theta)], &amp;
 \Gamma^{\theta}{}_{\phi\phi} &amp;= -\frac{\sin\theta\cos\theta}{\Sigma^3}[A\Sigma + (r^2 + a^2) r_s a^2 \sin^2\theta].
 
-\end{aligned}\]</p><h2 id="Special-radii"><a class="docs-heading-anchor" href="#Special-radii">Special radii</a><a id="Special-radii-1"></a><a class="docs-heading-anchor-permalink" href="#Special-radii" title="Permalink"></a></h2><h3 id="Frame-Dragging"><a class="docs-heading-anchor" href="#Frame-Dragging">Frame Dragging</a><a id="Frame-Dragging-1"></a><a class="docs-heading-anchor-permalink" href="#Frame-Dragging" title="Permalink"></a></h3><p>In the case of a spinning black hole, rotation leads to the dragging of spacetime in the direction of the spin, an effect known as frame dragging. It is because of frame dragging that different radii are observed for these orbits. A clear example is provided by the two distinct photon orbit radii in the Kerr spacetime. Photons may orbit in the same direction as the black hole’s rotation (prograde) or in the opposite direction (retrograde). Frame dragging effectively boosts prograde motion, allowing the prograde orbit to lie closer to the event horizon, while the retrograde orbit occurs at a larger radius as it opposes the frame dragging. The effect that frame dragging has on the photon orbit and the ISCO will increase with the angular momentum of the black hole.</p><details>
+\end{aligned}\]</p><p>Where</p><p class="math-container">\[A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta\]</p><h2 id="Special-radii"><a class="docs-heading-anchor" href="#Special-radii">Special radii</a><a id="Special-radii-1"></a><a class="docs-heading-anchor-permalink" href="#Special-radii" title="Permalink"></a></h2><h3 id="Frame-Dragging"><a class="docs-heading-anchor" href="#Frame-Dragging">Frame Dragging</a><a id="Frame-Dragging-1"></a><a class="docs-heading-anchor-permalink" href="#Frame-Dragging" title="Permalink"></a></h3><p>In the case of a spinning black hole, rotation leads to the dragging of spacetime in the direction of the spin, an effect known as frame dragging. Frame dragging causes orbits like the ISCO and photon orbit to vary in radius. The effect that frame dragging has on the photon orbit and the ISCO will increase with the angular momentum of the black hole.</p><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">
 using Gradus
 using Makie, CairoMakie
 
-# Plot of horizon radius as a function of spin parameter a #
 
 # Create a range of a values from -1 to 1 with 200 steps
-a_values = range(-1, 1, length=200)
+a_values = range(-1.0, 1.0, length=200)
 
 # Initialize an array to store the horizon radii
 horizon_radii = zeros(length(a_values))
@@ -67,21 +66,21 @@ for (i, a) in enumerate(a_values)
     horizon_radii[i] = rs[closest_idx]
 
     # Calculate the ISCO radius
+    println(&quot;Metric: &quot;, m)
     isco_radii[i] = Gradus.isco(m)
 
-     #Calculate the photon orbit radius
+     #Calculate the photon orbit radius for a Kerr black hole
     photon_radii[i] = 2*(1+cos((2/3)*acos(-a)))
 end
 
-# Plot the horizon radius as a function of a
+# Plot the radii as a function of a
 fig = Figure()
-ax = Axis(fig[1, 1], xlabel=&quot;Spin parameter (a)&quot;, ylabel=&quot;Horizon radius at θ=π/2&quot;)
-lines!(ax, a_values, horizon_radii, color=:blue, label=&quot;Horizon radius&quot;)
+ax = Axis(fig[1, 1], xlabel=&quot;Spin parameter (a)&quot;, ylabel=&quot;Radii at θ=π/2&quot;)
+lines!(ax, a_values, horizon_radii, color=:black, label=&quot;Horizon radius&quot;)
 lines!(ax, a_values, isco_radii, color=:red, label=&quot;ISCO radius&quot;)
-lines!(ax, a_values, photon_radii, color=:green, label=&quot;Photon orbit radius&quot;)
+lines!(ax, a_values, photon_radii, color=:blue, label=&quot;Photon orbit radius&quot;)
 axislegend(ax)  # Add a legend using the labels
-
-fig</code></pre></details><p><img src="figures/kerr_special_radii.png" alt="Kerr key radii"/></p><h3 id="Prograde-and-Retrograde-Orbits"><a class="docs-heading-anchor" href="#Prograde-and-Retrograde-Orbits">Prograde and Retrograde Orbits</a><a id="Prograde-and-Retrograde-Orbits-1"></a><a class="docs-heading-anchor-permalink" href="#Prograde-and-Retrograde-Orbits" title="Permalink"></a></h3><p>A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde).</p><details>
+fig</code></pre></details><p><img src="figures/kerr_special_radii.png" alt="Kerr key radii"/></p><h3 id="Prograde-and-Retrograde-Orbits"><a class="docs-heading-anchor" href="#Prograde-and-Retrograde-Orbits">Prograde and Retrograde Orbits</a><a id="Prograde-and-Retrograde-Orbits-1"></a><a class="docs-heading-anchor-permalink" href="#Prograde-and-Retrograde-Orbits" title="Permalink"></a></h3><p>A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde). </p><p>A clear visual representation of frame dragging is provided by the figure below. It depicts  two photons orbit a Kerr black hole. One orbits in the same direction as the black hole’s rotation (prograde)and one orbits in the opposite direction (retrograde).</p><p>Frame dragging effectively boosts prograde motion, allowing the prograde orbit to lie closer to the event horizon, while the retrograde orbit occurs at a larger radius as it opposes the frame dragging.</p><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
 
 #Prograde and retrograde photon orbits
@@ -118,7 +117,7 @@ ylims!(-10, 10)
 
 
 xlabel!(&quot;x&quot;)
-ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/double_photon_orbit_kerr.png" alt="Kerr key radii"/></p><p>In this case the blue line depicts the prograde orbit and the orange line depicts the retrograde orbit.</p><h2 id="Line-Profiles"><a class="docs-heading-anchor" href="#Line-Profiles">Line Profiles</a><a id="Line-Profiles-1"></a><a class="docs-heading-anchor-permalink" href="#Line-Profiles" title="Permalink"></a></h2><details>
+ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/double_photon_orbit_kerr.png" alt="Kerr key radii"/></p><h2 id="Line-Profiles"><a class="docs-heading-anchor" href="#Line-Profiles">Line Profiles</a><a id="Line-Profiles-1"></a><a class="docs-heading-anchor-permalink" href="#Line-Profiles" title="Permalink"></a></h2><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus
 using StaticArrays
 using Plots
@@ -138,4 +137,4 @@ fig4 = plot(
     ylabel = &quot;Flux&quot;,
     legend = false,
     lw = 2
-)</code></pre></details><p><img src="figures/kerr_line_profile.png" alt="Kerr key radii"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="schwarzschild.html">« Schwarzschild</a><a class="docs-footer-nextpage" href="Kerr-Newman.html">Kerr-Newman »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Monday 9 February 2026 23:02">Monday 9 February 2026</span>. Using Julia version 1.12.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+)</code></pre></details><p><img src="figures/kerr_line_profile.png" alt="Kerr key radii"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="schwarzschild.html">« Schwarzschild</a><a class="docs-footer-nextpage" href="Kerr-Newman.html">Kerr-Newman »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Tuesday 10 February 2026 10:31">Tuesday 10 February 2026</span>. Using Julia version 1.12.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
