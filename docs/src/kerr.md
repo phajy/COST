@@ -73,6 +73,11 @@ $$\begin{aligned}
 
 \end{aligned}$$
 
+Where
+
+$$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
+
+
 
 
 
@@ -85,13 +90,7 @@ $$\begin{aligned}
 ### Frame Dragging
 
 In the case of a spinning black hole, rotation leads to the dragging of spacetime
-in the direction of the spin, an effect known as frame dragging. It is because
-of frame dragging that different radii are observed for these orbits. A clear
-example is provided by the two distinct photon orbit radii in the Kerr spacetime. Photons may orbit in the same direction as the black hole’s rotation
-(prograde) or in the opposite direction (retrograde). Frame dragging effectively
-boosts prograde motion, allowing the prograde orbit to lie closer to the event
-horizon, while the retrograde orbit occurs at a larger radius as it opposes the
-frame dragging. The effect that frame dragging has on the photon orbit and
+in the direction of the spin, an effect known as frame dragging. Frame dragging causes orbits like the ISCO and photon orbit to vary in radius. The effect that frame dragging has on the photon orbit and
 the ISCO will increase with the angular momentum of the black hole.
 
 
@@ -105,10 +104,9 @@ the ISCO will increase with the angular momentum of the black hole.
 using Gradus
 using Makie, CairoMakie
 
-# Plot of horizon radius as a function of spin parameter a #
 
 # Create a range of a values from -1 to 1 with 200 steps
-a_values = range(-1, 1, length=200)
+a_values = range(-1.0, 1.0, length=200)
 
 # Initialize an array to store the horizon radii
 horizon_radii = zeros(length(a_values))
@@ -129,20 +127,20 @@ for (i, a) in enumerate(a_values)
     horizon_radii[i] = rs[closest_idx]
 
     # Calculate the ISCO radius
+    println("Metric: ", m)
     isco_radii[i] = Gradus.isco(m)
 
-     #Calculate the photon orbit radius
+     #Calculate the photon orbit radius for a Kerr black hole
     photon_radii[i] = 2*(1+cos((2/3)*acos(-a)))
 end
 
-# Plot the horizon radius as a function of a
+# Plot the radii as a function of a
 fig = Figure()
-ax = Axis(fig[1, 1], xlabel="Spin parameter (a)", ylabel="Horizon radius at θ=π/2")
-lines!(ax, a_values, horizon_radii, color=:blue, label="Horizon radius")
+ax = Axis(fig[1, 1], xlabel="Spin parameter (a)", ylabel="Radii at θ=π/2")
+lines!(ax, a_values, horizon_radii, color=:black, label="Horizon radius")
 lines!(ax, a_values, isco_radii, color=:red, label="ISCO radius")
-lines!(ax, a_values, photon_radii, color=:green, label="Photon orbit radius")
+lines!(ax, a_values, photon_radii, color=:blue, label="Photon orbit radius")
 axislegend(ax)  # Add a legend using the labels
-
 fig
 ```
 ```@raw html
@@ -164,7 +162,12 @@ fig
 ### Prograde and Retrograde Orbits
 
 
-A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde).
+A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde). 
+
+A clear visual representation of frame dragging is provided by the figure below. It depicts  two photons orbit a Kerr black hole. One orbits in the same direction as the black hole’s rotation (prograde)and one orbits in the opposite direction (retrograde).
+
+Frame dragging effectively boosts prograde motion, allowing the prograde orbit to lie closer to the event horizon, while the retrograde orbit occurs at a larger radius as it opposes the
+frame dragging.
 
 ```@raw html
 <details>
@@ -216,7 +219,6 @@ ylabel!("y")
 
 ![Kerr key radii](figures/double_photon_orbit_kerr.png)
 
-In this case the blue line depicts the prograde orbit and the orange line depicts the retrograde orbit.
 
 ## Line Profiles 
 

@@ -42,6 +42,15 @@ $$g_{\mu\nu} =
 
 ## Christoffel symbols
 
-$$\Gamma^{r}_{\phi\phi} = -r, \qquad
-\Gamma^{\phi}_{r\phi} = \frac{1}{r}$$
+
+$$\begin{aligned}
+\Gamma^{r}_{\theta\theta} & = -r, &
+\Gamma^{r}_{\phi\phi} & = -r\sin^2\theta, &
+\Gamma^{\theta}_{r\theta} & = \frac{1}{r}, \\[2mm]
+\Gamma^{\theta}_{\phi\phi} & = -\sin\theta\cos\theta, &
+\Gamma^{\phi}_{r\phi} & = \frac{1}{r}, &
+\Gamma^{\phi}_{\theta\phi} & = \cot\theta
+\end{aligned}$$
+
+
 
