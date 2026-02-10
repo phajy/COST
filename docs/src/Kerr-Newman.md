@@ -34,7 +34,7 @@ $$g_{\mu\nu} =
 where  
 
 $$\Sigma = r^{2} + a^{2} \cos^{2}\theta, \quad
-\Delta = r^{2} - r_{s} r + a^{2}, \quad
+\Delta = r^{2} - r_{s} r + a^{2} + Q^{2}, \quad
 r_{s} = 2 M$$
 
 - ($t$) : time coordinate

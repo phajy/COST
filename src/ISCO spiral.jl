@@ -32,7 +32,7 @@ sol = tracegeodesics(m, x, v, λ_max, μ=1.0)
 using Plots
 
 # plot solution trajectory
-fig3 = plot_paths(sol, label = "Particle Trajectory", color = :red)
+fig3 = plot_paths(sol, label = "Particle Trajectory", color = :red, n_points = 10000)
 plot_horizon!(m, label = "Event Horizon", color = :black)
 
 xlims!(-10, 10)

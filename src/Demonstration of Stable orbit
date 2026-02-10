@@ -4,7 +4,7 @@ using Gradus, Plots
 
 # Schwarzschild black hole
 m = KerrMetric(M=1.0, a=0.0)
-λ_max = 2000
+λ_max = 20000
 
 # Radii
 r_stable = 7.0

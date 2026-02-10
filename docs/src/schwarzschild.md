@@ -89,8 +89,11 @@ sol = tracegeodesics(m, x, v, λ_max, μ=1.0)
 using Plots
 
 # plot solution trajectory
-fig3 = plot_paths(sol, label = "Particle Trajectory", color = :red)
-plot_horizon!(m, label = "Event Horizon")
+fig3 = plot_paths(sol, label = "Particle Trajectory", color = :red, n_points = 10000)
+plot_horizon!(m, label = "Event Horizon", color = :black)
+
+xlims!(-10, 10)
+ylims!(-10, 10)
 ```
 ```@raw html
 </details>
@@ -131,7 +134,7 @@ using Gradus, Plots
 
 # Schwarzschild black hole
 m = KerrMetric(M=1.0, a=0.0)
-λ_max = 2000
+λ_max = 20000
 
 # Radii
 r_stable = 7.0
@@ -248,7 +251,7 @@ ylabel!("y")
 
 
 
-### No Frame Dragging Effect
+### No Frame Dragging
 
 As Schwarzschild black holes do not spin, the photon orbit and the ISCO will have a constant radius as there is no concept of prograde or retrograde motion. The figure below demonstrates this by showing two photon orbits going round the black hole, clockwise and anti-clockwise at the same radius.
 
@@ -261,22 +264,41 @@ As Schwarzschild black holes do not spin, the photon orbit and the ISCO will hav
 ```julia
 using Gradus, Plots
 
-m = KerrMetric(M=1.5, a=0.0)
-# observer position
-x = SVector(0.0, 10000.0, π/2, 0.0)
+#Overlapping prograde and retrograde photon orbits around a Schwarzschild black hole
 
-# set up impact parameter space
-α = collect(range(-7.794, 7.794, 2))
-β = fill(0, size(α))
 
-# build initial velocity and position vectors
-vs = map_impact_parameters(m, x, α, β)
-xs = fill(x, size(vs))
+# Kerr black hole
+m = KerrMetric(M=1.0, a=0.0)
+λ_max = 2000
 
-sols = tracegeodesics(m, xs, vs, 20000.0)
+# Radii
+r_pro   = 3.0
+r_retro = 3.0
 
-fig5 = plot_paths(sols, legend = true, n_points = 2048, label = "Photon Trajectory")
-plot_horizon!(m, lw = 2.0, color = :black, label = "Event Horizon")
+# Circular geodesic velocities
+v_pro = @SVector [0.0, 0.0, 0.0, 1.1] #four velocities for circular orbits
+v_retro = @SVector [0.0, 0.0, 0.0, -1.1]
+
+# Initial positions
+x_pro    = @SVector [0.0, r_pro, π/2, 0.0]    #starting at the same position
+x_retro = @SVector [0.0, r_retro, π/2, 0.0]
+
+# Trace geodesics
+sol_pro = tracegeodesics(m, x_pro, v_pro, λ_max, μ=0.0)   #μ=0.0 is null geodesic (photon)
+sol_retro = tracegeodesics(m, x_retro, v_retro, λ_max, μ=0.0)
+# Plotting
+p = plot(aspect_ratio=1)
+
+plot_paths!(p, sol_retro, label="Clockwise orbit", color=:orange, n_points = 100000)
+plot_paths!(p, sol_pro, label="Anti-clockwise orbit", color=:blue, n_points = 100000)
+plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
+
+xlims!(-10, 10)
+ylims!(-10, 10)
+
+
+xlabel!("x")
+ylabel!("y")
 ```
 ```@raw html
 </details>
