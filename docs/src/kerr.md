@@ -243,6 +243,12 @@ ylabel!("y")
 
 ## Redshift Heatmap
 
+The following animation shows how radiation from the accretion disc is shifted in wavelength. The animation starts with a negative (clockwise) spin $(a=-1)$ on the central black hole which slowly increases through to $a=1$.
+
+The empty region in the centre marks the ISCO. The ISCO decreases in radius as the spin increases which is why this empty region gets smaller.
+
+The disc itself is spinning anticlockwise the entire time which is why the blue-shifted (bright) half of the disc is on the left and the red-shifted (dark) half is on the right. As the spin increases, the brightness and darkness becomes more intense on each half.
+
 ```@raw html
 <details>
 <summary>Click to expand / collapse code block.</summary>
