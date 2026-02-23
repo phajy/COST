@@ -1,0 +1,29 @@
+using Plots
+
+M = 1.0          # Black hole mass
+L_val = 4.0      # Angular momentum of particle
+L_ISCO = 2*sqrt(3) # Angular momentum at ISCO
+
+# radius array (avoid r = 2M)
+r = range(2.01*M, 20M, length=500)
+
+# Schwarzschild effective potential
+Veff = (1 .- 2*M ./ r) .* (1 .+ (L_val^2) ./ r.^2)
+V_ISCO = (1 .- 2*M ./ r) .* (1 .+ (L_ISCO^2) ./ r.^2)
+Vnull = (1 .- 2*M ./ r) .* ((L_val^2) ./ r.^2)
+
+
+# plot
+plot(r, Veff, xlabel="r", ylabel="V_eff", lw=2,
+color=:orange, label="Timelike Geodesic Potential", legend=true)
+plot!(r, V_ISCO, lw=2, color=:green, label="ISCO Potential")
+plot!(r, Vnull, lw=2, color=:blue, label="Null Geodesic Potential")
+
+# mark ISCO at r = 6M
+L_ISCO = 2*sqrt(3)*M
+Veff_ISCO = (1 - 2M/6M)*(1 + L_ISCO^2 / (6M)^2)
+vline!([6M], linestyle=:dot, color=:red, label="ISCO")
+vline!([3M], linestyle=:dash, color=:blue, label="Photon Orbit")
+vline!([2M], linestyle=:dash, color=:black, label="Event Horizon")
+
+plot!(legend=:right)
