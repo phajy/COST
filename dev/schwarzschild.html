@@ -15,7 +15,38 @@
 \Gamma^{\phi}_{\theta\phi} &amp; = \cot\theta, &amp; 
 \Gamma^{r}_{\phi\phi} &amp; = -(r - r_s)\sin^2\theta, &amp; 
 \Gamma^{\theta}_{\phi\phi} &amp; = -\sin\theta \cos\theta
-\end{aligned}\]</p><h2 id="Special-radii"><a class="docs-heading-anchor" href="#Special-radii">Special radii</a><a id="Special-radii-1"></a><a class="docs-heading-anchor-permalink" href="#Special-radii" title="Permalink"></a></h2><p>The ISCO of a Schwarzschild black hole is at <span>$6r_s$</span> or <span>$6M$</span>. Matter inside this radius will spiral into the event horizon as shown here:</p><details>
+\end{aligned}\]</p><h2 id="Special-radii"><a class="docs-heading-anchor" href="#Special-radii">Special radii</a><a id="Special-radii-1"></a><a class="docs-heading-anchor-permalink" href="#Special-radii" title="Permalink"></a></h2><p>Around a Schwarzschild black hole, there are two key orbits with fixed radii. The event horizon has a radius of <span>$2r_s$</span> or <span>$2M$</span>, the photon orbit is at 3M, and the ISCO is at 6M. These orbits are shown in the figure below.</p><details>
+<summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">
+using Gradus, Plots
+
+m = KerrMetric(M=1.0, a=0.0)
+
+p = plot(aspect_ratio=1)
+
+λ_max = 20000
+
+# Radii
+r_photon = 3
+r_isco = 6
+
+# Initial positions
+x_photon = @SVector [0.0, r_photon, π/2, 0.0]
+x_isco = @SVector [0.0, r_isco, π/2, 0.0]
+
+# Circular geodesic velocities
+v_photon = CircularOrbits.fourvelocity(m, r_photon)
+v_isco = CircularOrbits.fourvelocity(m, r_isco)
+
+path_ph = tracegeodesics(m, x_photon, v_photon, λ_max, μ = 0.0)
+path_isco = tracegeodesics(m, x_isco, v_isco, λ_max, μ = 1.0)
+
+# Plot
+plot_paths!(p, path_ph, extent = 10, label=&quot;Photon Orbit&quot;)
+plot_paths!(p, path_isco, extent = 10, label=&quot;ISCO&quot;)
+
+plot_horizon!(m, lw=2, color=:black, label=&quot;Event Horizon&quot;)
+
+p</code></pre></details><p><img src="figures/Schwarzschild_orbits.png" alt="Schwarzchild_orbits"/></p><p>The ISCO of a Schwarzschild black hole is at <span>$6M$</span>. Matter inside this radius will spiral into the event horizon as shown here:</p><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">
 using Gradus
 
@@ -172,4 +203,4 @@ ylims!(-10, 10)
 
 
 xlabel!(&quot;x&quot;)
-ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Thursday 12 February 2026 10:49">Thursday 12 February 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Monday 23 February 2026 00:14">Monday 23 February 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
