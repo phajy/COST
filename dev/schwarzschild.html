@@ -85,7 +85,51 @@ fig3 = plot_paths(sol, label = &quot;Particle Trajectory&quot;, color = :red, n_
 plot_horizon!(m, label = &quot;Event Horizon&quot;, color = :black)
 
 xlims!(-10, 10)
-ylims!(-10, 10)</code></pre></details><p><img src="figures/ISCO_spiral.png" alt="Schwarzchild_ISCO_spiral"/></p><h3 id="Stable-Orbit-and-Pertubation"><a class="docs-heading-anchor" href="#Stable-Orbit-and-Pertubation">Stable Orbit and Pertubation</a><a id="Stable-Orbit-and-Pertubation-1"></a><a class="docs-heading-anchor-permalink" href="#Stable-Orbit-and-Pertubation" title="Permalink"></a></h3><p>The plot below shows two orbits. One is at <span>$7M$</span> and one is pertubated slightly so appears at <span>$6.99M$</span>. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO <span>$(6M)$</span>), will not cause it to spiral into the black hole.</p><details>
+ylims!(-10, 10)</code></pre></details><p><img src="figures/ISCO_spiral.png" alt="Schwarzchild_ISCO_spiral"/></p><h3 id="Effective-Potential"><a class="docs-heading-anchor" href="#Effective-Potential">Effective Potential</a><a id="Effective-Potential-1"></a><a class="docs-heading-anchor-permalink" href="#Effective-Potential" title="Permalink"></a></h3><p>The effective potential of a Schwarzschild black hole is given by:</p><p class="math-container">\[V_{\rm eff}(r) = \left( 1 - \frac{2 M}{r} \right) \left( 1 + \frac{L^2}{r^2} \right)\]</p><p>By setting the derivative <span>$\dfrac{dV_{\rm eff}}{dr} = 0$</span>, we can see the condition for a circular orbit:</p><p class="math-container">\[Mr^2 - L^2 r + 3ML^2 = 0\]</p><p>Rearranging this for <span>$L^2$</span> gives us:</p><p class="math-container">\[L^2 = \dfrac{Mr^2}{r-3M}\]</p><p>The figure below shows this equation plotted as a function of r. The denominator <span>$r-3M$</span> means <span>$L^2$</span> diverges when <span>$r=3M$</span>. The minimum of this function occurs at the ISCO radius <span>$(r=6M)$</span>.</p><details>
+<summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Plots
+
+M = 1.0
+
+# Radius array (r &gt; 3M to avoid divergence)
+r = range(3.1*M, 20M, length=500)
+
+# Angular momentum squared for circular orbits
+L2 = M * r.^2 ./ (r .- 3*M)
+
+# Plot L² vs r
+plot(r, L2, xlabel=&quot;r&quot;, ylabel=&quot;L²&quot;, label =&quot;Angular Momentum for Circular Orbit&quot;, lw=2, color=:blue)
+
+# Add vertical dotted line for ISCO at r = 6M
+vline!([6M], linestyle=:dot, lw=2, color=:red, label=&quot;ISCO (r = 6M)&quot;)</code></pre></details><p><img src="figures/Angular_momentum_Schwarzschild.png" alt="Schwarzchild_Ang_Mom"/></p><p>The value of the angular momentum at the ISCO can be determined by putting r=6M into the above equation for <span>$L^2$</span> which gives <span>$L_{\rm ISCO}=2\sqrt3M$</span>. We can then plot the effective potential for different values of <span>$L$</span> including <span>$L_{\rm ISCO}$</span>. The effective potential for a null geodesic is also shown which has a maximum at <span>$3M$</span> (the photon orbit radius). The fact it is a maximum means it is an unstable orbit as expected.</p><p>The time-like geodesic <span>$(L=4)$</span> has both a maximum <span>$(r=4M)$</span> and a minimum <span>$(r=12M)$</span>. This means a particle moving with this angular momentum would form a stable orbit at <span>$12M$</span> and could potentially form an unstable orbit at <span>$4M$</span>.</p><p>The ISCO potential line only has one stationary point and it is a point of inflection at <span>$r=6M$</span>. This shows that <span>$L=2\sqrt3$</span> is the lower limit before a particle could not form a circular orbit anymore.</p><details>
+<summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Plots
+
+M = 1.0          # Black hole mass
+L_val = 4.0      # Angular momentum of particle
+L_ISCO = 2*sqrt(3) # Angular momentum at ISCO
+
+# radius array (avoid r = 2M)
+r = range(2.01*M, 20M, length=500)
+
+# Schwarzschild effective potential
+Veff = (1 .- 2*M ./ r) .* (1 .+ (L_val^2) ./ r.^2)
+V_ISCO = (1 .- 2*M ./ r) .* (1 .+ (L_ISCO^2) ./ r.^2)
+Vnull = (1 .- 2*M ./ r) .* ((L_val^2) ./ r.^2)
+
+
+# plot
+plot(r, Veff, xlabel=&quot;r&quot;, ylabel=&quot;V_eff&quot;, lw=2,
+color=:orange, label=&quot;Timelike Geodesic Potential&quot;, legend=true)
+plot!(r, V_ISCO, lw=2, color=:green, label=&quot;ISCO Potential&quot;)
+plot!(r, Vnull, lw=2, color=:blue, label=&quot;Null Geodesic Potential&quot;)
+
+# mark ISCO at r = 6M
+L_ISCO = 2*sqrt(3)*M
+Veff_ISCO = (1 - 2M/6M)*(1 + L_ISCO^2 / (6M)^2)
+vline!([6M], linestyle=:dot, color=:red, label=&quot;ISCO&quot;)
+vline!([3M], linestyle=:dash, color=:blue, label=&quot;Photon Orbit&quot;)
+vline!([2M], linestyle=:dash, color=:black, label=&quot;Event Horizon&quot;)
+
+plot!(legend=:right)</code></pre></details><p><img src="figures/Effective_Potential_Schwarzschild.png" alt="Schwarzchild_Eff_Pot"/></p><h3 id="Stable-Orbit-and-Pertubation"><a class="docs-heading-anchor" href="#Stable-Orbit-and-Pertubation">Stable Orbit and Pertubation</a><a id="Stable-Orbit-and-Pertubation-1"></a><a class="docs-heading-anchor-permalink" href="#Stable-Orbit-and-Pertubation" title="Permalink"></a></h3><p>The plot below shows two orbits. One is at <span>$7M$</span> and one is pertubated slightly so appears at <span>$6.99M$</span>. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO <span>$(6M)$</span>), will not cause it to spiral into the black hole.</p><details>
 <summary>Click to expand / collapse code block.</summary><pre><code class="language-julia hljs">using Gradus, Plots
 
 #Stable and Perturbed Stable orbits
@@ -203,4 +247,4 @@ ylims!(-10, 10)
 
 
 xlabel!(&quot;x&quot;)
-ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Monday 23 February 2026 00:14">Monday 23 February 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ylabel!(&quot;y&quot;)</code></pre></details><p><img src="figures/overlapping_orbits.png" alt="Overlapping Orbits"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="Minkowski.html">« Minkowski</a><a class="docs-footer-nextpage" href="kerr.html">Kerr »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Monday 23 February 2026 16:20">Monday 23 February 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
