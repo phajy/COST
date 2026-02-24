@@ -4,6 +4,7 @@ using Gradus
 using SpectralFitting
 using XSPECModels
 using CFITSIO
+using Plots
 
 Threads.nthreads() = 8
 
@@ -17,6 +18,8 @@ struct DiscLine{T} <: AbstractSpectralModel{T,Additive}
     inc::T
     "Spin"
     a::T
+    "Line Energy (keV)"
+    E_line::T
 end
 
 # set up the default model parameters and their ranges
@@ -25,21 +28,23 @@ end
 
 function DiscLine(;K = FitParam(1.0),
     inc = FitParam(30.,lower_limit=7,upper_limit=85; frozen = true),
-    a = FitParam(0.998,lower_limit=0.0,upper_limit=0.998; frozen = false))
-    DiscLine(K, inc, a)
+    a = FitParam(0.998,lower_limit=0.0,upper_limit=0.998; frozen = false),
+    E_line = FitParam(6.4,lower_limit=0.1,upper_limit=20.0; frozen = true))
+    DiscLine(K, inc, a, E_line)
 end
 
 # the invoke routine evaluates the model
 # update this to the model you are interested in testing
 
 function SpectralFitting.invoke!(output, domain, model::DiscLine)
-    g_domain = copy(domain)
+    # Scale domain to g = E/E_line (dimensionless energy shift)
+    g_domain = domain ./ model.E_line
     
     m = KerrMetric(;a = model.a)
     x = SVector(0.0, 1e3, deg2rad(model.inc), 0.0)
     d = ThinDisc(0.0, Inf)
 
-    data = lineprofile(m, x, d;bins = g_domain, method = TransferFunctionMethod(), numrₑ = 100)
+    data = lineprofile(m, x, d; bins = g_domain, method = TransferFunctionMethod(), numrₑ = 100)
     output .= data[2][1:end-1]
 end
 
@@ -48,6 +53,17 @@ end
 # you might also want to change the output filename
 
 model = DiscLine()
+
+# simple plot of the line profile to check the model is working as expected
+energy_grid = collect(range(0.1, 10.0, length=251))  # 251 edges for 250 bins
+flux = invokemodel(energy_grid, model)
+energy_centers = (energy_grid[1:end-1] .+ energy_grid[2:end]) ./ 2
+plot(energy_centers, flux, 
+    xlabel="Energy (keV)", 
+    ylabel="Flux", 
+    title="Disc Line Profile (E₀ = 6.4 keV)",
+    legend=false,
+    lw=2)
 
 full_model_vals , model_names = SpectralFitting._all_parameters_with_names(model)
 
