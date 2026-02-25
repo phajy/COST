@@ -2,7 +2,7 @@
 
 using Gradus
 using SpectralFitting
-using XSPECModels
+#using XSPECModels
 using CFITSIO
 using Plots
 
@@ -20,6 +20,8 @@ struct DiscLine{T} <: AbstractSpectralModel{T,Additive}
     a::T
     "Line Energy (keV)"
     E_line::T
+    "Deformation Parameter"
+    eps3::T
 end
 
 # set up the default model parameters and their ranges
@@ -29,8 +31,9 @@ end
 function DiscLine(;K = FitParam(1.0),
     inc = FitParam(30.,lower_limit=7,upper_limit=85; frozen = true),
     a = FitParam(0.998,lower_limit=0.0,upper_limit=0.998; frozen = false),
-    E_line = FitParam(6.4,lower_limit=0.1,upper_limit=20.0; frozen = true))
-    DiscLine(K, inc, a, E_line)
+    E_line = FitParam(6.4,lower_limit=0.1,upper_limit=20.0; frozen = true),
+    eps3 = FitParam(0.0,lower_limit=-5.0,upper_limit=5.0; frozen = false))
+    DiscLine(K, inc, a, E_line, eps3)
 end
 
 # the invoke routine evaluates the model
@@ -40,7 +43,7 @@ function SpectralFitting.invoke!(output, domain, model::DiscLine)
     # Scale domain to g = E/E_line (dimensionless energy shift)
     g_domain = domain ./ model.E_line
     
-    m = KerrMetric(;a = model.a)
+    m = JohannsenPsaltisMetric(;a = model.a, ϵ3 = model.eps3)
     x = SVector(0.0, 1e3, deg2rad(model.inc), 0.0)
     d = ThinDisc(0.0, Inf)
 
@@ -91,8 +94,8 @@ SPECTRA_Units = "photons/cm^2/s"
 Out_path = "DiscLineTable.fits"
 REDSHIFT = "F"
 ESCALE = "F"
-logged = [0] # whether the parameters are logged or not (1 for log, 0 for linear)
-NumbVals = [10]
+logged = [0, 0] # whether the parameters are logged or not (1 for log, 0 for linear)
+NumbVals = [10, 10]
 ENERGIES_Nbins = 1000
 E_Min = 0.1
 E_Max = 20.0
