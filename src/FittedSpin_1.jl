@@ -13,7 +13,7 @@ scatter(input_spin, fitted_spin;
     yerr = y_err,
     xlabel = "True Spin",
     ylabel = "Fitted Spin",
-    title = "Fitted vs Real Spin for duration: 10,0000",
+    title = "Fitted vs Real Spin for duration: 100,000",
     color = :blue,
     markersize = 2,
     legend = false
