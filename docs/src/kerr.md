@@ -26,11 +26,7 @@ where
 $$\Sigma = r^{2} + a^{2} \cos^{2}\theta, \quad
 \Delta = r^{2} - r_{s} r + a^{2}, \quad
 r_{s} = 2 M$$
-
-- ($t$) : time coordinate
-- ($r$) : radial coordinate  
-- ($\theta$) : polar angle  
-- ($\phi$) : azimuthal angle  
+ 
 - ($a$) : spin parameter $(0 \le a \le M)$  
 
 When $(a = 0)$, this reduces to the Schwarzschild metric.
@@ -218,6 +214,97 @@ ylabel!("y")
 ```
 
 ![Kerr key radii](figures/double_photon_orbit_kerr.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Redshift Heatmap
+
+The following animation shows how radiation from the accretion disc is shifted in wavelength. The animation starts with a negative (clockwise) spin $(a=-1)$ of the central black hole and slowly increases to $a=1$.
+
+The empty region in the centre corresponds to the ISCO. As the black hole spin increases, the ISCO moves inward, causing this central hole to shrink.
+
+The accretion disc itself spins anticlockwise throughout, which is why the blueshifted (bright) side of the disc is always on the left and the redshifted (dark) side is on the right. As the spin increases, the Doppler shift becomes stronger, making the bright and dark regions more intense.
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+
+using Gradus, Plots
+
+n = 10
+a_vals = range(-0.998, 0.998, length=n)
+
+anim = @animate for a ∈ a_vals
+
+    # metric and metric parameters
+    m = KerrMetric(M=1.0, a=a)
+    # observer position
+    x = SVector(0.0, 1000.0, deg2rad(70), 0.0)
+    # accretion disc
+    d = ThinDisc(Gradus.isco(m), 30.0)
+
+    pf = ConstPointFunctions.redshift(m, x) ∘ ConstPointFunctions.filter_intersected()
+
+    α, β, img = rendergeodesics(
+        m,
+        x,
+        d,
+        # maximum integration time
+        2000.0,
+        αlims = (-40, 40),
+        βlims = (-20, 25),
+        image_width = 800,
+        image_height = 400,
+        verbose = true,
+        pf = pf,
+    )
+    
+    heatmap(α, β, img, aspect_ratio = 1, clims = (0, 1.4))
+end
+gif(anim, "disc_image.gif", fps = 10)
+```
+```@raw html
+</details>
+```
+
+![Disc Animation](figures/disc_image.gif)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Line Profiles 

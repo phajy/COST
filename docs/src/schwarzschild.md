@@ -21,11 +21,6 @@ where
 
 $$r_{s} = 2M$$
   
-- ($t$) : time coordinate
-- ($r$) : radial coordinate  
-- ($\theta$) : polar angle  
-- ($\phi$) : azimuthal angle  
-
 ## Christoffel symbols
 
 
@@ -46,7 +41,88 @@ $$\begin{aligned}
 
 ## Special radii
 
-The ISCO of a Schwarzschild black hole is at $6r_s$ or $6M$. Matter inside this radius will spiral into the event horizon as shown here:
+Around a Schwarzschild black hole, there are two key orbits with fixed radii. The event horizon has a radius of $2r_s$ or $2M$, the photon orbit is at 3M, and the ISCO is at 6M. These orbits are shown in the figure below.
+
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+
+using Gradus, Plots
+
+m = KerrMetric(M=1.0, a=0.0)
+
+p = plot(aspect_ratio=1)
+
+λ_max = 20000
+
+# Radii
+r_photon = 3
+r_isco = 6
+
+# Initial positions
+x_photon = @SVector [0.0, r_photon, π/2, 0.0]
+x_isco = @SVector [0.0, r_isco, π/2, 0.0]
+
+# Circular geodesic velocities
+v_photon = CircularOrbits.fourvelocity(m, r_photon)
+v_isco = CircularOrbits.fourvelocity(m, r_isco)
+
+path_ph = tracegeodesics(m, x_photon, v_photon, λ_max, μ = 0.0)
+path_isco = tracegeodesics(m, x_isco, v_isco, λ_max, μ = 1.0)
+
+# Plot
+plot_paths!(p, path_ph, extent = 10, label="Photon Orbit")
+plot_paths!(p, path_isco, extent = 10, label="ISCO")
+
+plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
+
+p
+```
+```@raw html
+</details>
+```
+
+![Schwarzchild_orbits](figures/Schwarzschild_orbits.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The ISCO of a Schwarzschild black hole is at $6M$. Matter inside this radius will spiral into the event horizon as shown here:
 
 
 ```@raw html
@@ -100,6 +176,160 @@ ylims!(-10, 10)
 ```
 
 ![Schwarzchild_ISCO_spiral](figures/ISCO_spiral.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Effective Potential
+
+The effective potential of a Schwarzschild black hole is given by:
+
+$$V_{\rm eff}(r) = \left( 1 - \frac{2 M}{r} \right) \left( 1 + \frac{L^2}{r^2} \right)$$
+
+By setting the derivative $\dfrac{dV_{\rm eff}}{dr} = 0$, we can see the condition for a circular orbit:
+
+$$Mr^2 - L^2 r + 3ML^2 = 0$$
+
+Rearranging this for $L$ gives us:
+
+$$L^2 = \dfrac{Mr^2}{r-3M}$$
+
+The denominator $r-3M$ means $L^2$ diverges when $r=3M$. The minimum of this function occurs at the ISCO radius $(r=6M)$.
+
+The figure below shows the angular momentum required for a circular orbit $(L)$ as a function of radius $(r)$.
+
+
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+using Plots
+
+M = 1.0
+
+# Radius array (r > 3M to avoid divergence)
+r = range(3.1*M, 20M, length=500)
+
+# Angular momentum for circular orbits
+L = sqrt.(M * r.^2 ./ (r .- 3*M))
+
+# Plot L vs r
+plot(r, L, xlabel="r", ylabel="L", label ="Angular Momentum for Circular Orbit", lw=2, color=:blue)
+
+# Add vertical dotted line for ISCO at r = 6M
+vline!([6M], linestyle=:dot, lw=2, color=:red, label="ISCO (r = 6M)")
+```
+```@raw html
+</details>
+```
+
+![Schwarzchild_Ang_Mom](figures/Angular_momentum_Schwarzschild.png)
+
+
+
+
+
+
+
+
+
+
+The value of the angular momentum at the ISCO can be determined by putting r=6M into the above equation for $L$ which gives $L_{\rm ISCO}=2\sqrt3M$. We can then plot the effective potential for different values of $L$ including $L_{\rm ISCO}$. The effective potential for a null geodesic is also shown which has a maximum at $3M$ (the photon orbit radius). The fact it is a maximum means it is an unstable orbit as expected.
+
+The time-like geodesic $(L=4)$ has both a maximum $(r=4M)$ and a minimum $(r=12M)$. This means a particle moving with this angular momentum would form a stable orbit at $12M$ and could potentially form an unstable orbit at $4M$. This unstable orbit radius at $r=4M$ also happens to be the marginally bound orbit where the particle has energy $E=1$.
+
+The ISCO potential line only has one stationary point and it is a point of inflection at $r=6M$. This shows that $L=2\sqrt3$ is the exact point where the circular orbit changes from stable to unstable.
+
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+using Plots
+
+M = 1.0          # Black hole mass
+L_val = 4.0      # Angular momentum of particle
+L_ISCO = 2*sqrt(3) # Angular momentum at ISCO
+
+# radius array (avoid r = 2M)
+r = range(2.01*M, 20M, length=500)
+
+# Schwarzschild effective potential
+Veff = (1 .- 2*M ./ r) .* (1 .+ (L_val^2) ./ r.^2)
+V_ISCO = (1 .- 2*M ./ r) .* (1 .+ (L_ISCO^2) ./ r.^2)
+Vnull = (1 .- 2*M ./ r) .* ((L_val^2) ./ r.^2)
+
+
+# plot
+plot(r, Veff, xlabel="r", ylabel="V_eff", lw=2,
+color=:orange, label="L=4", legend=true)
+plot!(r, V_ISCO, lw=2, color=:green, label="L=L_ISCO")
+plot!(r, Vnull, lw=2, color=:blue, label="Null Geodesic Potential")
+
+# mark ISCO at r = 6M
+L_ISCO = 2*sqrt(3)*M
+Veff_ISCO = (1 - 2M/6M)*(1 + L_ISCO^2 / (6M)^2)
+vline!([6M], linestyle=:dash, color=:red, label="ISCO")
+vline!([3M], linestyle=:dash, color=:blue, label="Photon Orbit")
+vline!([2M], linestyle=:dash, color=:black, label="Event Horizon")
+
+plot!(legend=:right)
+```
+```@raw html
+</details>
+```
+
+![Schwarzchild_Eff_Pot](figures/Effective_Potential_Schwarzschild.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

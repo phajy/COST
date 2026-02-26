@@ -1,10 +1,10 @@
 # Minkowski metric
 
-The Minkowski metric describes the geometry of flat spacetime.
+The Minkowski metric is the simplest case of a metric. It describes the geometry of a flat spacetime.
 
 ## Metric definition
 
-The Minkowski metric in cartesian coordinates given by:
+The Minkowski metric in cartesian coordinates is given by:
 
 $$ds^2 = -dt^2 + dx^2 + dy^2 + dz^2$$
 
@@ -23,7 +23,7 @@ $$g_{\mu\nu} =
 \end{pmatrix}$$
 
 
-And in polar coordinates: 
+And in Boyer–Lindquist coordinates:
 
 $$ds^2 = -dt^2 + dr^2 + r^2d\theta^2 + r^2sin^2{\theta}d\phi^2$$
 

@@ -42,11 +42,7 @@ $$\Sigma = r^{2} + a^{2} \cos^{2}\theta, \quad
 r_{s} = 2 M, \quad
 h = \epsilon_3 \dfrac{(r_s/2)^3 r}{\Sigma^2}$$
 
-
-- ($t$) : time coordinate
-- ($r$) : radial coordinate  
-- ($\theta$) : polar angle  
-- ($\phi$) : azimuthal angle  
+ 
 - ($a$) : spin parameter $(0 \le a \le M)$
 - ($\epsilon_{3}$) : deviation parameter
 
