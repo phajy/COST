@@ -26,11 +26,7 @@ where
 $$\Sigma = r^{2} + a^{2} \cos^{2}\theta, \quad
 \Delta = r^{2} - r_{s} r + a^{2}, \quad
 r_{s} = 2 M$$
-
-- ($t$) : time coordinate
-- ($r$) : radial coordinate  
-- ($\theta$) : polar angle  
-- ($\phi$) : azimuthal angle  
+ 
 - ($a$) : spin parameter $(0 \le a \le M)$  
 
 When $(a = 0)$, this reduces to the Schwarzschild metric.

@@ -15,14 +15,14 @@ Vnull = (1 .- 2*M ./ r) .* ((L_val^2) ./ r.^2)
 
 # plot
 plot(r, Veff, xlabel="r", ylabel="V_eff", lw=2,
-color=:orange, label="Timelike Geodesic Potential", legend=true)
-plot!(r, V_ISCO, lw=2, color=:green, label="ISCO Potential")
+color=:orange, label="L=4", legend=true)
+plot!(r, V_ISCO, lw=2, color=:green, label="L=L_ISCO")
 plot!(r, Vnull, lw=2, color=:blue, label="Null Geodesic Potential")
 
 # mark ISCO at r = 6M
 L_ISCO = 2*sqrt(3)*M
 Veff_ISCO = (1 - 2M/6M)*(1 + L_ISCO^2 / (6M)^2)
-vline!([6M], linestyle=:dot, color=:red, label="ISCO")
+vline!([6M], linestyle=:dash, color=:red, label="ISCO")
 vline!([3M], linestyle=:dash, color=:blue, label="Photon Orbit")
 vline!([2M], linestyle=:dash, color=:black, label="Event Horizon")
 
