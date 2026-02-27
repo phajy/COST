@@ -37,6 +37,17 @@ $$\begin{aligned}
 \end{aligned}$$
 
 
+## Riemann-Tensors
+
+$$\begin{aligned}
+R_{trtr} &= -\frac{ r_s}{r^{3}}, & 
+R_{t\theta t\theta} &= \frac{1}{2}  \frac{(r - r_s) r_s}{r^{2}}, &
+R_{t\phi t\phi} &= \frac{1}{2} \frac{(r - r_s) r_s}{r^{2}} \sin^{2}\theta, \\
+
+R_{r\theta r\theta} &= -\frac{1}{2} \frac{r_s}{r - r_s}, &
+R_{r\phi r\phi} &= -\frac{1}{2} \frac{r_ssin^{2}\theta}{r - r_s}, &
+R_{\theta\phi\theta\phi} &= r r_s \sin^{2}\theta
+\end{aligned}$$
 
 
 ## Special radii

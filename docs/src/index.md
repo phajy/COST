@@ -2,6 +2,13 @@
 
 This is the documentation for the Catalogue of SpaceTimes (COST) Julia package. It is a work in progress.
 
+## About 
+
+The aim of this documentation is to provide users with easy access to relevant information about a variety of spacetimes.
+
+This documentation was produced using Gradus, a general-relativity ray-tracing software.
+For more information, see the [Gradus website](https://astro-group-bristol.github.io/Gradus.jl/dev/).
+
 ## Individual SpaceTimes
 
 - [Minkowski Metric](Minkowski.md)
@@ -23,6 +30,9 @@ The metrics that are shown are written in Boyer–Lindquist coordinates.
 Spin is measured with the parameter $a=\dfrac{J}{Mc}=\dfrac{J}{M}$. Where $J$ is the total angular momentum of the black hole.
 
 Energy is measured in relativistic units so that $E = \frac{total energy}{mc^2}$. $E=1$ is where the particle has energy equal to its rest mass energy.
+
+## Metrics
+A metric is a mathematical object which determines how distances and time intervals between events are measured in a given spacetime.
 
 ## Christoffel symbols
 Christoffel symbols are derived directly from the metric $g_{\mu\nu}$ and its derivatives $g_{\mu\nu,\alpha} = \dfrac{\partial g_{\mu\nu}}{\partial x^{\alpha}}$ using the equation:
@@ -50,9 +60,9 @@ $$\Gamma^{\alpha}_{\mu\nu} = \left( \frac{\partial e_\mu}{\partial x^\nu} \right
 
 ### Photon Orbit
 There exists a radius around a black hole at which a photon can form
-a closed orbit. This is called the photon orbit and it is very unstable. Any slight
-perturbation would cause the photon to either spiral into the event horizon or
-escape to infinity. We will see that every type of black hole has a different photon orbit radius as it depends on parameters such as spin (a).
+a closed orbit, known as a photon orbit. This orbit is very unstable. Any slight
+perturbation causes the photon to either spiral into the event horizon or
+escape to infinity. Every type of black hole has a different photon orbit radius as it depends on parameters such as spin (a).
 
 ### ISCO
 The ISCO is the inner-most stable circular orbit. It defines the inner edge of the
@@ -63,7 +73,8 @@ the orbit to become unstable. The area inside the ISCO is called the plunging re
 ### Marginally bound orbit
 The marginally bound orbit is the radius at which a particle will perform an unstable circular orbit with just enough energy to escape to infinity if slightly perturbed outward, corresponding to $E=1$.
 
-
+## Line Profiles
+A line profile is graph which shows how flux varies with energy or wavelength. In the case of black holes, line profiles are produced from the reflected x-rays of the acreation disk of the black hole. The most prominent feature in the spectrum is the iron kα line at 6.4 keV. As this line is intrinsically narrow, any broadening observed can be attributed to GR effects.
 
 ## COST.jl function documentation
 

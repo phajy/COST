@@ -82,3 +82,5 @@ Where
 $$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
 
 These symbols are the same as that for the Kerr metric as all that needs to change is the defenition of $\Delta$.
+
+## Special radii
