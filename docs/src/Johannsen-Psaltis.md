@@ -47,6 +47,90 @@ h = \epsilon_3 \dfrac{(r_s/2)^3 r}{\Sigma^2}$$
 - ($\epsilon_{3}$) : deviation parameter
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Naked Singularities
+Certain combinations of spin $(a)$ and the deviatoin parameter $(ϵ3)$ can lead to the black hole having no event horizon at certain angles. This would lead to the singularity being exposed which is called a naked singularity.
+
+The plot below shows the event horizon in the equatorial plane for different values of spin. The parts of the event horizon that have no solution is where a naked singularity would be present.
+
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+using Gradus, Plots
+
+function draw_horizon(p, m)
+    rs, θs = event_horizon(m, resolution = 200)
+    radius = rs
+
+    x = @. radius * sin(θs)
+    y = @. radius * cos(θs)
+    plot!(p, x, y, label = "a = $(m.a)")
+end
+
+p = plot(aspect_ratio = 1)
+for a in [0.0, 0.5, 0.6, 0.7, 0.8, 0.9]
+    m = JohannsenPsaltisMetric(M = 1.0, a = a, ϵ3 = 2.0)
+    draw_horizon(p, m)
+end
+p
+```
+```@raw html
+</details>
+```
+
+![Naked Singularities](figures/Naked_Singularities.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Line Profile
 
 ```@raw html
@@ -81,4 +165,52 @@ fig4 = plot(
 ```
 
 ![Johannsen-Psaltis Line Profile](figures/johannsen_line_prof.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

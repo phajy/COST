@@ -29,7 +29,7 @@ The metrics that are shown are written in Boyer–Lindquist coordinates.
 
 Spin is measured with the parameter $a=\dfrac{J}{Mc}=\dfrac{J}{M}$. Where $J$ is the total angular momentum of the black hole.
 
-Energy is measured in relativistic units so that $E = \frac{total energy}{mc^2}$. $E=1$ is where the particle has energy equal to its rest mass energy.
+Energy is measured in relativistic units so that $E = \frac{total\ energy}{mc^2}$. $E=1$ is where the particle has energy equal to its rest mass energy.
 
 ## Metrics
 A metric is a mathematical object which determines how distances and time intervals between events are measured in a given spacetime.
@@ -55,20 +55,45 @@ This can also be seen with the equation:
 
 $$\Gamma^{\alpha}_{\mu\nu} = \left( \frac{\partial e_\mu}{\partial x^\nu} \right)^\alpha$$
 
+## Riemann Tensors
+A surface can have two types of curvature: intrinsic and extrinsic. Intrinsic curvature is curvature that can be measured entirely within the surface itself, without reference to a higher-dimensional space. One way to detect intrinsic curvature is by parallel transporting a vector around a closed loop: on an intrinsically curved surface, the vector will not return to its original orientation. A sphere is an example of a surface with intrinsic curvature.
+
+Extrinsic curvature, on the other hand, depends on how a surface is embedded in a higher-dimensional space. A surface can appear curved from the outside but still have zero intrinsic curvature. In this case, a vector parallel transported around a closed loop returns to its original orientation. A cylinder is a good example: although it appears curved in three dimensions, it can be unrolled into a flat plane, so an ant walking on it would not detect any intrinsic curvature.
+
+After a vector completes a closed loop on an intrinsically curved surface, the amount that it has changed direction is proportional to the value of the vector itself, the size of the loop in the $x^\mu$ direction, and the size of the loop in the $x^\nu$ direction.
+
+$$\delta v^{\alpha} = -R^{\alpha}_{\ \beta \mu \nu} v^{\beta} \delta x^{\mu} \delta x^{\nu}$$
+
+The constant of proportoinality is called the Riemann curvature tensor $R^{\alpha}_{\ \beta \mu \nu}$. Its components are calculated from the Christoffel symbols and their derivatives in the following way:
+
+
+$$R^\alpha_{\ \beta\mu\nu}
+=
+\Gamma^\alpha_{\ \beta\nu , \mu}
+-
+\Gamma^\alpha_{\ \beta\mu , \nu}
++
+\Gamma^\alpha_{\ \sigma\mu}\Gamma^\sigma_{\ \beta\nu}
+-
+\Gamma^\alpha_{\ \sigma\nu}\Gamma^\sigma_{\ \beta\mu}$$
+
+
 
 ## Orbits around a black hole
 
 ### Photon Orbit
-There exists a radius around a black hole at which a photon can form
-a closed orbit, known as a photon orbit. This orbit is very unstable. Any slight
-perturbation causes the photon to either spiral into the event horizon or
-escape to infinity. Every type of black hole has a different photon orbit radius as it depends on parameters such as spin (a).
+There exists a radius around a black hole at which a photon can move on a circular null orbit. This is known as the photon orbit (or photon sphere in the spherically symmetric case), and it is highly unstable. Any small perturbation will cause the photon to either spiral into the event horizon or escape to infinity.
+
+The radius of the photon orbit depends on the parameters of the black hole. For a non-rotating black hole there is a single photon sphere, whereas for a rotating black hole the photon orbit radius depends on the spin parameter (a) and on whether the photon is rotating with or against the black holes spin.
 
 ### ISCO
-The ISCO is the inner-most stable circular orbit. It defines the inner edge of the
-accretion disk and arises because infalling matter converts potential energy to
-kinetic energy. The matter eventually reaches relativistic speeds which cause
-the orbit to become unstable. The area inside the ISCO is called the plunging region as any matter inside will spiral into the event horizon. The ISCO also varies with spin and other parameters of the black hole.
+The ISCO (Innermost Stable Circular Orbit) is the smallest radius at which stable circular motion is possible around a black hole. It defines the inner edge of the accretion disk.
+
+The effective potential for a particle orbiting a black hole has a minimum at radii where stable circular orbits occur and a maximum where unstable circular orbits occur. The minimum and maximum approach each other as you look at particle orbits with a smaller radius. The radius at which they merge corresponds to an inflection point of the effective potential. This radius defines the ISCO.
+
+Inside the ISCO lies the plunging region, where matter can no longer maintain a stable circular orbit and rapidly spirals into the event horizon.
+
+The ISCO radius also depends on the parameters of the black hole. For a rotating black hole, it varies with the spin parameter a, decreasing for prograde orbits and increasing for retrograde orbits. It can also change in modified or non-Kerr spacetimes.
 
 ### Marginally bound orbit
 The marginally bound orbit is the radius at which a particle will perform an unstable circular orbit with just enough energy to escape to infinity if slightly perturbed outward, corresponding to $E=1$.
