@@ -6,8 +6,7 @@ using SpectralFitting
 using CFITSIO
 using Plots
 
-# solva can handle quiet a few threads (e.g,. 32) - much more than my laptop
-Threads.nthreads() = 32
+Threads.nthreads() = 8
 
 # set up a disc line model
 # modify this to include parameters you're interested in, e.g., deformation parameters
@@ -103,8 +102,8 @@ SPECTRA_Units = "photons/cm^2/s"
 Out_path = "DiscLineTable.fits"
 REDSHIFT = "F"
 ESCALE = "F"
-logged = [0] # whether the parameters are logged or not (1 for log, 0 for linear)
-NumbVals = [8]
+logged = [0, 0] # whether the parameters are logged or not (1 for log, 0 for linear)
+NumbVals = [10, 10]
 ENERGIES_Nbins = 1000
 E_Min = 0.1
 E_Max = 20.0
