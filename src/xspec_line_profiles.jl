@@ -6,7 +6,8 @@ using SpectralFitting
 using CFITSIO
 using Plots
 
-Threads.nthreads() = 8
+# solva can handle quiet a few threads (e.g,. 32) - much more than my laptop
+Threads.nthreads() = 32
 
 # set up a disc line model
 # modify this to include parameters you're interested in, e.g., deformation parameters
@@ -44,11 +45,19 @@ function SpectralFitting.invoke!(output, domain, model::DiscLine)
     g_domain = domain ./ model.E_line
     
     m = JohannsenPsaltisMetric(;a = model.a, ϵ3 = model.eps3)
+    @info "Calculating line profile for parameters: a = $(model.a), ϵ3 = $(model.eps3)"
+    ns = is_naked_singularity(m)
+
     x = SVector(0.0, 1e3, deg2rad(model.inc), 0.0)
     d = ThinDisc(0.0, Inf)
 
     data = lineprofile(m, x, d; bins = g_domain, method = TransferFunctionMethod(), numrₑ = 100)
-    output .= data[2][1:end-1]
+    if ns
+        @warn "The model parameters correspond to a naked singularity."
+        output .= 0
+    else
+        output .= data[2][1:end-1]
+    end
 end
 
 # create the table model that will be used in XSPEC
@@ -94,8 +103,8 @@ SPECTRA_Units = "photons/cm^2/s"
 Out_path = "DiscLineTable.fits"
 REDSHIFT = "F"
 ESCALE = "F"
-logged = [0, 0] # whether the parameters are logged or not (1 for log, 0 for linear)
-NumbVals = [10, 10]
+logged = [0] # whether the parameters are logged or not (1 for log, 0 for linear)
+NumbVals = [8]
 ENERGIES_Nbins = 1000
 E_Min = 0.1
 E_Max = 20.0
