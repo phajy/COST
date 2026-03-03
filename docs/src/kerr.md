@@ -418,6 +418,44 @@ fig4 = plot(
 </details>
 ```
 
-![Kerr Line Profile](figures/kerr_line_profile.png)
+![Kerr Line Profile](figures/LineKerrSpins.png)
 
 
+## Inclination Angle 
+
+Line profiles are dependent on parameters such as the black hole’s spin and the observer’s inclination angle. By varying the inclination angle, the amount of the disc’s rotational motion that lies along the observer’s line of sight changes.
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+using Gradus
+using StaticArrays
+using Plots
+
+inclination = [20.0, 40.0, 60.0, 70.0, 80.0]
+m = KerrMetric(M = 1.0, a = 0.998)
+
+d = ThinDisc(0.0, Inf)
+
+
+plt = Plots.plot(
+    xlabel = "E / E₀",
+    ylabel = "Flux",
+    lw = 2
+)
+
+for inc in inclination
+    x = SVector(0.0, 10_000.0, deg2rad(inc), 0.0)
+    bins, flux = lineprofile(m, x, d)
+    Plots.plot!(plt, bins, flux, label = "Inclination angle = $inc")
+end
+
+plt
+```
+```@raw html
+</details>
+```
+![Inclination Angles](figures/LineKerrIncl.png)
