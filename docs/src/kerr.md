@@ -74,13 +74,6 @@ Where
 $$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
 
 
-
-
-
-
-
-
-
 ## Special radii
 
 ### Frame Dragging
@@ -144,13 +137,6 @@ fig
 ```
 
 ![Kerr key radii](figures/kerr_special_radii.png)
-
-
-
-
-
-
-
 
 
 
@@ -293,16 +279,108 @@ gif(anim, "disc_image.gif", fps = 10)
 ![Disc Animation](figures/disc_image.gif)
 
 
+## Shawdow map
+
+A black hole shadow map shows which photons from a background source behind the black hole reach a distant observer and which are captured by the black hole. The spacetime around a Kerr black hole is axially symmetric, and due to frame dragging, photons moving in the same direction as the spin (prograde) and those moving against it (retrograde) are affected differently. This is why the shadow in the plot below has a D shape.
 
 
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+using Gradus, Plots
+
+m = KerrMetric(1.0, 0.998)
+x = SVector(0.0, 10000.0, π / 2, 0.0)
+
+α, β, img = rendergeodesics(
+    m,
+    x,
+    20_000.0,
+    image_width = 100,
+    image_height = 100,
+    αlims = (-6, 9),
+    βlims = (-6, 6),
+    verbose = true,
+    ensemble = Gradus.EnsembleSerial(),  
+)
+
+p = Plots.heatmap(
+    α,
+    β,
+    img,
+    color = Plots.cgrad(:thermal, rev = true),
+    xlabel = "α",
+    ylabel = "β",
+    aspect_ratio = 1,
+    minorgrid = true,
+)
+
+Plots.contour!(p, α, β, img, color = :red)
+```
+```@raw html
+</details>
+```
 
 
+![Kerr Shadow Map](figures/KerrShadow.png)
 
 
+## Ergosphere
 
+The ergosphere is a region outside the event horizon of a Kerr black hole where spacetime is being dragged by the black hole's spin.
 
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
 
+```julia
+using Plots
 
+M = 1.0
+a = 0.998
+
+θ = range(0, 2π, length=1000)
+
+# Event Horizon
+r_plus = M + sqrt(M^2 - a^2)
+x_e = r_erg .* sin.(θ)
+y_e = r_erg .* cos.(θ)
+
+# Ergosphere
+r_erg = M .+ sqrt.(M^2 .- a^2 .* cos.(θ).^2)
+x_h = r_plus .* sin.(θ)
+y_h = r_plus .* cos.(θ)
+
+# Plot ergosphere
+Plots.plot(x_e, y_e,
+    aspect_ratio=1,
+    label="Ergosphere",
+    linewidth=2,
+    xlims=(-2.5, 2.5),   # must be inside plot()
+    ylims=(-2, 2),
+    legend=(0.9, 0.9))
+
+# Plot event horizon
+Plots.plot!(x_h, y_h,
+    label="Event Horizon",
+    linewidth=2,
+    linestyle=:dash)
+
+# Plot singularity
+Plots.scatter!([0], [0],
+    color=:black,
+    markersize=4,
+    label="Singularity")
+```
+```@raw html
+</details>
+```
+
+![Ergosphere](figures/ErgospherePlot.png)
 
 
 
@@ -340,6 +418,6 @@ fig4 = plot(
 </details>
 ```
 
-![Kerr key radii](figures/kerr_line_profile.png)
+![Kerr Line Profile](figures/kerr_line_profile.png)
 
 

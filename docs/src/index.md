@@ -12,8 +12,8 @@ For more information, see the [Gradus website](https://astro-group-bristol.githu
 ## Individual SpaceTimes
 
 - [Minkowski Metric](Minkowski.md)
-- [Schwarzschild Metric](schwarzschild.md)
-- [Kerr Metric](kerr.md)
+- [Schwarzschild Metric](Schwarzschild.md)
+- [Kerr Metric](Kerr.md)
 - [Kerr-Newman Metric](Kerr-Newman.md)
 - [Johannsen-Psaltis Metric](Johannsen-Psaltis.md)
 
@@ -99,7 +99,7 @@ The ISCO radius also depends on the parameters of the black hole. For a rotating
 The marginally bound orbit is the radius at which a particle will perform an unstable circular orbit with just enough energy to escape to infinity if slightly perturbed outward, corresponding to $E=1$.
 
 ## Line Profiles
-A line profile is graph which shows how flux varies with energy or wavelength. In the case of black holes, line profiles are produced from the reflected x-rays of the acreation disk of the black hole. The most prominent feature in the spectrum is the iron kα line at 6.4 keV. As this line is intrinsically narrow, any broadening observed can be attributed to GR effects.
+A line profile is a graph which shows how flux varies with energy or wavelength. In the case of black holes, line profiles are produced from the reflected x-rays of the acreation disk of the black hole. The most prominent feature in the spectrum is the iron kα line at 6.4 keV. As this line is intrinsically narrow, any broadening observed can be attributed to GR effects.
 
 ## COST.jl function documentation
 

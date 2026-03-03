@@ -547,3 +547,49 @@ ylabel!("y")
 
 ![Overlapping Orbits](figures/overlapping_orbits.png)
 
+## Shadow Map
+
+A black hole shadow map shows which photons from a background source behind the black hole reach a distant observer and which are captured by the black hole. In the plot below, the shadow is a perfect circle because a Schwarzschild black hole is non-spinning and spherically symmetric, so its gravity bends light equally in every direction.
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+using Gradus, Plots
+
+
+m = KerrMetric(1.0, 0.0)
+x = SVector(0.0, 10000.0, π / 2, 0.0)
+
+α, β, img = rendergeodesics(
+    m,
+    x,
+    20_000.0,
+    image_width = 100,
+    image_height = 100,
+    αlims = (-6, 6),
+    βlims = (-6, 6),
+    verbose = true,
+    ensemble = Gradus.EnsembleSerial(),   
+)
+
+
+p = Plots.heatmap(
+    α,
+    β,
+    img,
+    color = Plots.cgrad(:thermal, rev = false),
+    xlabel = "α",
+    ylabel = "β",
+    aspect_ratio = 1,
+    minorgrid = true,
+)
+
+```
+```@raw html
+</details>
+```
+
+![Shadow Map Schwartz](figures/SchwarzShadow.png)
