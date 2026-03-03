@@ -51,11 +51,11 @@ function SpectralFitting.invoke!(output, domain, model::DiscLine)
     x = SVector(0.0, 1e3, deg2rad(model.inc), 0.0)
     d = ThinDisc(0.0, Inf)
 
-    data = lineprofile(m, x, d; bins = g_domain, method = TransferFunctionMethod(), numrₑ = 100)
-    if ns
+     if ns
         @warn "The model parameters correspond to a naked singularity."
         output .= 0
     else
+        data = lineprofile(m, x, d; bins = g_domain, method = TransferFunctionMethod(), numrₑ = 100)
         output .= data[2][1:end-1]
     end
 end
