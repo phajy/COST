@@ -1,7 +1,7 @@
 # Johannsen–Psaltis metric
 
 The Johannsen–Psaltis metric is a Kerr-like parametric deviation designed to test the no-hair
-theorem in the strong-field regime close to a black hole. It has three parameters: mass M, spin a, and deviation ϵ3.
+theorem in the strong-field regime close to a black hole. It has three parameters: mass M, spin a, and deviation $\epsilon_{3}$.
 
 ## Metric definition
 
@@ -75,9 +75,9 @@ h = \epsilon_3 \dfrac{(r_s/2)^3 r}{\Sigma^2}$$
 
 
 ## Naked Singularities
-Certain combinations of spin $(a)$ and the deviatoin parameter $(ϵ3)$ can lead to the black hole having no event horizon at certain angles. This would lead to the singularity being exposed which is called a naked singularity.
+Certain combinations of spin $(a)$ and the deviatoin parameter $(\epsilon_{3})$ can lead to the black hole having no event horizon at certain angles. This would lead to the singularity being exposed which is called a naked singularity.
 
-The plot below shows the event horizon in the equatorial plane for different values of spin. The parts of the event horizon that have no solution is where a naked singularity would be present.
+The plot below shows the event horizon in the equatorial plane for different values of spin for $\epsilon_{3} = 2$. The parts of the event horizon that have no solution is where a naked singularity would be present.
 
 
 ```@raw html
@@ -111,7 +111,7 @@ p
 ![Naked Singularities](figures/Naked_Singularities.png)
 
 
-
+It can be seen from the plot below which combinations of $a$ and $\epsilon_3$ will produce a naked singularity.
 
 
 
