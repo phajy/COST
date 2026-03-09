@@ -4,16 +4,12 @@ using Plots
 using Interpolations, Statistics
 
 
-#a1 = 0.692456
-#a2 = 0.6
-#ϵ3 = -0.25
+a1 = 0.3
+a2 = 0.374598
 
-a1 = 0.374598
-a2 = 0.3
-ϵ3 = -0.25
+
 m1 = KerrMetric(M = 1.0, a = a1) #defines the spacetime
-m2 = JohannsenPsaltisMetric(M = 1.0, a = a2, ϵ3 = ϵ3 )
-
+m2 = KerrMetric(M = 1.0, a = a2)
 d = ThinDisc(0.0, Inf) #defines the accretion disk. Gradus will start with the emission at the ISCO and extends to infinity
 
 x = SVector(0.0, 10_000.0, deg2rad(60.0), 0.0)#defines the observers position in spacetime (t, r, θ, ϕ)
@@ -37,31 +33,26 @@ Plots.plot!(
     ylabel = "Flux",
     legend = true,
     lw = 2,
-    label = "a = $a2 & ϵ3 = $ϵ3 (Johannsen-Psaltis)"
+    label = "a = $a2  "
 )
 
-#Evaluates the interpolation function at the Kerr energy bins (bins1).
+
 interp = LinearInterpolation(bins2, flux2, extrapolation_bc=Line())
-
-
-#flux2_interp now contains the JP flux sampled at the same energies as the Kerr spectrum.
 flux2_interp = interp.(bins1)
 
-#Normalises the flux so their shapes can be compared
 flux1_norm = flux1 ./ sum(flux1)
 flux2_norm = flux2_interp ./ sum(flux2_interp)
 
-#Calculates the root mean square difference between Kerr and JP
 rmse = sqrt(mean((flux1_norm .- flux2_norm).^2))
-println("RMSE = ", rmse)#If RMSE = 0 theyre almost identical
+println("RMSE = ", rmse)
 
-#Correlation coefficient measures how similar their shapes are 
 corr = cor(flux1_norm, flux2_norm)
-println("Correlation = ", corr)# corr = 1 then identical. corr = 0 no correltation
+println("Correlation = ", corr)
 
-#find their ratio
 ratio = flux2_norm ./ flux1_norm
+residual = (flux2_norm .- flux1_norm) ./ flux1_norm
 
+#plot(bins1, ratio, xlabel="E/E₀", ylabel="JP/Kerr", label="Ratio")
 plot(
     bins1,
     ratio,

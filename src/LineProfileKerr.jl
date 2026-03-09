@@ -2,8 +2,8 @@ using Gradus
 using StaticArrays
 using Plots
 
-spins = [0.2, 0.4, 0.6, 0.8, 0.998]
-
+#spins = [0.2, 0.4, 0.6, 0.8, 0.998]
+spins = [0.4]
 d = ThinDisc(0.0, Inf)
 x = SVector(0.0, 10_000.0, deg2rad(60.0), 0.0)
 
