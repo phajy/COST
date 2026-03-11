@@ -318,7 +318,6 @@ p = Plots.heatmap(
     minorgrid = true,
 )
 
-Plots.contour!(p, α, β, img, color = :red)
 ```
 ```@raw html
 </details>
