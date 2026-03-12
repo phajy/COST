@@ -15,11 +15,15 @@ plt = Plots.plot(
     lw = 2
 )
 
-for ϵ3 in eps3
-    m = JohannsenPsaltisMetric(M = 1.0, a = 0.2, ϵ3 = ϵ3 )
+
+colors = [:red, :blue, :darkgreen]
+
+for (i, ϵ3) in enumerate(eps3)
+    m = JohannsenPsaltisMetric(M = 1.0, a = 0.2, ϵ3 = ϵ3)
     bins, flux = lineprofile(m, x, d)
-    Plots.plot!(plt, bins, flux, label = "ϵ3 = $ϵ3")
+    plot!(plt, bins, flux, label = "ϵ3 = $ϵ3", color = colors[i])
 end
+
 
 plt
 
