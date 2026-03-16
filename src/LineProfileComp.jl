@@ -53,7 +53,7 @@ flux2_norm = flux2_interp ./ sum(flux2_interp)
 
 #Calculates the root mean square difference between Kerr and JP
 rmse = sqrt(mean((flux1_norm .- flux2_norm).^2))
-println("RMSE = ", rmse)#If RMSE = 0 theyre almost identical
+println("RMSE = ", rmse)#If RMSE = 0, they're almost identical
 
 #Correlation coefficient measures how similar their shapes are 
 corr = cor(flux1_norm, flux2_norm)
@@ -69,9 +69,8 @@ plot(
     ylabel = "JP/Kerr",
     label = "Ratio",
     xlims = (0.45, maximum(bins1)),  # keep your x-axis limits
-    ylims = (0, 2)                   # set y-axis from -1 to 1
+    ylims = (0, 2),                  # set y-axis from -1 to 1
+    legend = false,
 )
 
 hline!([1], linestyle = :dash, label = "")
-hline!([1], linestyle = :dash, label = "")
-hline!([1], linestyle=:dash)

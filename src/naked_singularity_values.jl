@@ -18,7 +18,7 @@ function calc_exclusion(as, ϵs)
 end
 
 as = range(0, 1.0, 100)
-ϵs = range(-10, 10, 100)
+ϵs = range(-3, 3, 100)
 
 img = calc_exclusion(as, ϵs)
 heatmap(

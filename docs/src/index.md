@@ -38,7 +38,7 @@ A metric is a mathematical object which determines how distances and time interv
 Christoffel symbols are derived directly from the metric $g_{\mu\nu}$ and its derivatives $g_{\mu\nu,\alpha} = \dfrac{\partial g_{\mu\nu}}{\partial x^{\alpha}}$ using the equation:
 
 
-$$\Gamma^{\alpha}_{\mu\nu} =
+$$\Gamma^{\alpha}_{\ \mu\nu} =
 \frac{1}{2}\ g^{\alpha\beta}
 \left(
 g_{\beta\mu,\nu}
@@ -53,7 +53,7 @@ The Christoffel symbols take into account how the basis vectors of the coordinat
 This can also be seen with the equation:
 
 
-$$\Gamma^{\alpha}_{\mu\nu} = \left( \frac{\partial e_\mu}{\partial x^\nu} \right)^\alpha$$
+$$\Gamma^{\alpha}_{\ \mu\nu} = \left( \frac{\partial e_\mu}{\partial x^\nu} \right)^\alpha$$
 
 ## Riemann Tensors
 A surface can have two types of curvature: intrinsic and extrinsic. Intrinsic curvature is curvature that can be measured entirely within the surface itself, without reference to a higher-dimensional space. One way to detect intrinsic curvature is by parallel transporting a vector around a closed loop: on an intrinsically curved surface, the vector will not return to its original orientation. A sphere is an example of a surface with intrinsic curvature.
