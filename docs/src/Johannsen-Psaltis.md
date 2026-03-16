@@ -109,30 +109,6 @@ fig
 ![eps3](figures/Eps3Plot.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Naked Singularities
 Certain combinations of spin $(a)$ and the deviatoin parameter $(\epsilon_{3})$ can lead to the black hole having no event horizon at certain angles. This would lead to the singularity being exposed which is called a naked singularity.
 
@@ -262,6 +238,50 @@ fig4 = plot(
 ```
 
 ![Johannsen-Psaltis Line Profile](figures/johannsen_line_prof.png)
+
+
+## Shawdow map
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+sing Gradus, Plots
+
+m = JohannsenPsaltisMetric(M = 1.0, a = 0.9, ϵ3 = 2.0 )
+x = SVector(0.0, 10000.0, π / 2, 0.0)
+
+α, β, img = rendergeodesics(
+    m,
+    x,
+    20_000.0,
+    image_width = 100,
+    image_height = 100,
+    αlims = (-6, 6),
+    βlims = (-6, 6),
+    verbose = true,
+    ensemble = Gradus.EnsembleSerial(),   
+)
+
+
+p = Plots.heatmap(
+    α,
+    β,
+    img,
+    color = Plots.cgrad(:thermal, rev = false),
+    xlabel = "α",
+    ylabel = "β",
+    aspect_ratio = 1,
+    minorgrid = true,
+)
+```
+```@raw html
+</details>
+```
+
+![JP Shadow Map](figures/JPShadowPlot.png)
 
 
 
