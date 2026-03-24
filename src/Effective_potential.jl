@@ -15,7 +15,7 @@ Vnull = (1 .- 2*M ./ r) .* ((L_val^2) ./ r.^2)
 
 # plot
 plot(r, Veff, xlabel="r", ylabel="V_eff", lw=2,
-color=:orange, label="L=4", legend=true)
+color=:orange, label="L=4", legend=true, legendfontsize=12)
 plot!(r, V_ISCO, lw=2, color=:green, label="L=L_ISCO")
 plot!(r, Vnull, lw=2, color=:blue, label="Null Geodesic Potential")
 

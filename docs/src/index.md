@@ -17,6 +17,13 @@ For more information, see the [Gradus website](https://astro-group-bristol.githu
 - [Kerr-Newman Metric](Kerr-Newman.md)
 - [Johannsen-Psaltis Metric](Johannsen-Psaltis.md)
 
+## Metrics
+In general relativity, the geometry of spacetime is encoded in the spacetime metric. The metric is a mathematical object which determines how distances and time intervals between events are measured in a given spacetime. It is determined by solving Einstein’s field equations, which relate the curvature of spacetime to the distribution of energy and momentum:
+
+$$G^{\mu\nu} + \Lambda g^{\mu\nu} = 8\pi T^{\mu\nu}$$
+
+These are sixteen equations that reduce to ten due to the symmetry of the tensors involved. $G^{\mu\nu}$ is the Einstein tensor, $\Lambda$ is the cosmological constant which is used to describe a vacuum energy field that adds to the expansion rate of the universe. $g^{\mu\nu}$ is the spacetime metric, and $T^{\mu\nu}$ is the stress-energy tensor which is equal to the flux of 4-momentum component $\mu$ in some direction $\nu$.
+
 
 ## Units
 In this catalogue we use $G=c=1$. This means that one gravitatinal radius $r_g = \dfrac{GM}{c^2} = M$.
@@ -30,9 +37,6 @@ The metrics that are shown are written in Boyer–Lindquist coordinates.
 Spin is measured with the parameter $a=\dfrac{J}{Mc}=\dfrac{J}{M}$. Where $J$ is the total angular momentum of the black hole.
 
 Energy is measured in relativistic units so that $E = \frac{total\ energy}{mc^2}$. $E=1$ is where the particle has energy equal to its rest mass energy.
-
-## Metrics
-A metric is a mathematical object which determines how distances and time intervals between events are measured in a given spacetime.
 
 ## Christoffel symbols
 Christoffel symbols are derived directly from the metric $g_{\mu\nu}$ and its derivatives $g_{\mu\nu,\alpha} = \dfrac{\partial g_{\mu\nu}}{\partial x^{\alpha}}$ using the equation:
@@ -48,10 +52,7 @@ g_{\beta\nu,\mu}
 g_{\mu\nu,\beta}
 \right)$$
 
-The Christoffel symbols take into account how the basis vectors of the coordinate system change with respect to one another. For example, $e_r$ will change in direction as $\theta$ changes. Christoffel symbols are zero in Cartesian coordinates because $e_x$ will not change with $y$ or $z$ or vice versa.
-
-This can also be seen with the equation:
-
+The Christoffel symbols describe how the basis vectors of the coordinate system vary from point to point. For example, in spherical coordinates the radial basis vector $e_r$ changes direction as the angular coordinate $\theta$ varies. In Cartesian coordinates the basis vectors are constant, and therefore all Christoffel symbols vanish. This can also be seen with the equation:
 
 $$\Gamma^{\alpha}_{\ \mu\nu} = \left( \frac{\partial e_\mu}{\partial x^\nu} \right)^\alpha$$
 
@@ -77,6 +78,18 @@ $$R^\alpha_{\ \beta\mu\nu}
 -
 \Gamma^\alpha_{\ \sigma\nu}\Gamma^\sigma_{\ \beta\mu}$$
 
+## Ricci Tensors and Scalars
+The Ricci tensor comes from a contraction of the Riemann tensor:
+
+$$R^\alpha_{\ \mu\alpha\nu} = R_{\mu\nu}$$
+
+By contracting this further, you arrive at the Ricci Scalar:
+
+$$g^{\mu\nu}R_{\mu\nu} = R^{\mu}_{\ \mu} = R$$
+
+Both of these are then used to define the Einstein tensor:
+
+$$G^{\mu\nu} = R^{\mu\nu} - \frac{1}{2}g^{\mu\nu}R$$
 
 
 ## Orbits around a black hole
@@ -99,7 +112,7 @@ The ISCO radius also depends on the parameters of the black hole. For a rotating
 The marginally bound orbit is the radius at which a particle will perform an unstable circular orbit with just enough energy to escape to infinity if slightly perturbed outward, corresponding to $E=1$.
 
 ## Line Profiles
-A line profile is a graph which shows how flux varies with energy or wavelength. In the case of black holes, line profiles are produced from the reflected x-rays of the acreation disk of the black hole. The most prominent feature in the spectrum is the iron kα line at 6.4 keV. As this line is intrinsically narrow, any broadening observed can be attributed to GR effects.
+A line profile is a graph which shows how flux varies with energy or wavelength. In the case of black holes, line profiles are produced from the reflected x-rays of the accretion disk of the black hole. The most prominent feature in the spectrum is the iron kα line at 6.4 keV. As this line is intrinsically narrow, any broadening observed can be attributed to GR effects.
 
 ## COST.jl function documentation
 

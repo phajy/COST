@@ -1,6 +1,6 @@
 # Schwarzschild metric
 
-The Schwarzschild metric describes the geometry of spacetime outside a non-rotating, spherical black hole with no magnetic field. Its only parameter is mass M.
+The Schwarzschild metric describes the geometry of spacetime outside a static, spherically symmetric black hole. It is the simplest solution to Einstein's field equations that isn't the Minkowski metric and is fully characterised by just its mass.
 
 ## Metric definition
 
@@ -52,7 +52,7 @@ R_{\theta\phi\theta\phi} &= r r_s \sin^{2}\theta
 
 ## Special radii
 
-Around a Schwarzschild black hole, there are two key orbits with fixed radii. The event horizon has a radius of $2r_s$ or $2M$, the photon orbit is at 3M, and the ISCO is at 6M. These orbits are shown in the figure below.
+Around a Schwarzschild black hole, there are two key orbits with fixed radii. The event horizon has a radius of $r_s$ or $2M$, the photon orbit is at 3M, and the ISCO is at 6M. These orbits are shown in the figure below.
 
 
 ```@raw html
@@ -133,7 +133,7 @@ p
 
 
 
-The ISCO of a Schwarzschild black hole is at $6M$. Matter inside this radius will spiral into the event horizon as shown here:
+Matter inside the ISCO will spiral into the event horizon as shown here:
 
 
 ```@raw html
@@ -359,7 +359,7 @@ plot!(legend=:right)
 ### Stable Orbit and Pertubation
 
 
-The plot below shows two orbits. One is at $7M$ and one is pertubated slightly so appears at $6.99M$. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO $(6M)$), will not cause it to spiral into the black hole.
+The plot below shows two orbits. One is at $7M$ and one is pertubated slightly so appears at $6.99M$. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO), will not cause it to spiral into the black hole.
 
 
 

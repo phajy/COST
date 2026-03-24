@@ -37,4 +37,4 @@ ylabel!("y")
 xlims!(-10, 10)
 ylims!(-10, 10)  # Set limits to better visualize the orbits and horizon
 
-plot!(p, legend=:outertopright)  # Adjust legend position to avoid overlap with trajectories
+#plot!(p, legend=:topmiddle)  # Adjust legend position to avoid overlap with trajectories
