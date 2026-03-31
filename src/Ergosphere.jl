@@ -1,37 +1,34 @@
-using Plots
+using Gradus, Plots
 
 M = 1.0
-a = 0.998
+m = KerrMetric(M=M, a=1.0)
+
+p = Plots.plot(
+    aspect_ratio=1,
+    legend=:topright,
+    xlabel="x (r_g)",
+    ylabel="y (r_g)"
+)
 
 θ = range(0, 2π, length=1000)
 
-# Event Horizon
-r_plus = M + sqrt(M^2 - a^2)
-x_e = r_erg .* sin.(θ)
-y_e = r_erg .* cos.(θ)
+# Ergosphere radius
+r_erg = M .+ sqrt.(M^2 .- m.a^2 .* cos.(θ).^2)
 
-# Ergosphere
-r_erg = M .+ sqrt.(M^2 .- a^2 .* cos.(θ).^2)
-x_h = r_plus .* sin.(θ)
-y_h = r_plus .* cos.(θ)
+# Convert to Cartesian coordinates
+x_erg = r_erg .* sin.(θ)
+y_erg = r_erg .* cos.(θ)
 
-# Plot ergosphere
-Plots.plot(x_e, y_e,
-    aspect_ratio=1,
+# Plot Ergosphere
+Plots.plot!(p, x_erg, y_erg,
     label="Ergosphere",
-    linewidth=2,
-    xlims=(-2.5, 2.5),   # must be inside plot()
-    ylims=(-2, 2),
-    legend=(0.9, 0.9))
+    lw=2,
+    linestyle=:dash,
+    color=:red
+)
 
-# Plot event horizon
-Plots.plot!(x_h, y_h,
-    label="Event Horizon",
-    linewidth=2,
-    linestyle=:dash)
+Plots.xlims!(-3, 3)
+Plots.ylims!(-2, 2)
 
-# Plot singularity
-Plots.scatter!([0], [0],
-    color=:black,
-    markersize=4,
-    label="Singularity")
+# Event horizon
+plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
