@@ -1,6 +1,6 @@
 # Minkowski metric
 
-The Minkowski metric is the simplest case of a metric. It describes the geometry of a flat spacetime.
+The Minkowski metric is the simplest spacetime metric, describing a flat spacetime with no curvature. It provides the geometric framework for special relativity.
 
 ## Metric definition
 
@@ -53,4 +53,7 @@ $$\begin{aligned}
 \end{aligned}$$
 
 
+## Riemann Tensors
+
+As the Riemann tensors quantify curvature, they are all equal to zero in Minkowski (flat) spacetime.
 

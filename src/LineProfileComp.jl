@@ -4,12 +4,22 @@ using Plots
 using Interpolations, Statistics
 
 
+<<<<<<< HEAD
 a1 = 0.581705  
 a2 = 0.3
 ϵ3 = -0.25
 
 
 
+=======
+#a1 = 0.692456
+#a2 = 0.6
+#ϵ3 = -0.25
+
+a1 = 0.772184
+a2 = 0.85
+ϵ3 = -1.0
+>>>>>>> 793f13b35a2672297862c3b9b0e8c0672951a4ee
 m1 = KerrMetric(M = 1.0, a = a1) #defines the spacetime
 m2 = JohannsenPsaltisMetric(M = 1.0, a = a2, ϵ3 = ϵ3 )
 is_naked_singularity(m2)
@@ -18,6 +28,7 @@ d = ThinDisc(0.0, Inf) #defines the accretion disk. Gradus will start with the e
 
 x = SVector(0.0, 10_000.0, deg2rad(60), 0.0)#defines the observers position in spacetime (t, r, θ, ϕ)
 
+<<<<<<< HEAD
 bins1, flux1 = lineprofile(m1, x, d)
 
 
@@ -25,6 +36,10 @@ bins1, flux1 = lineprofile(m1, x, d)
 
 bins2, flux2  = lineprofile(m2, x, d; method = BinningMethod())
 
+=======
+bins1, flux1 = lineprofile(m1, x, d; method = BinningMethod())
+bins2, flux2  = lineprofile(m2, x, d; method = BinningMethod())
+>>>>>>> 793f13b35a2672297862c3b9b0e8c0672951a4ee
 Plots.plot(
     bins1,
     flux1,
@@ -58,7 +73,7 @@ flux2_norm = flux2_interp ./ sum(flux2_interp)
 
 #Calculates the root mean square difference between Kerr and JP
 rmse = sqrt(mean((flux1_norm .- flux2_norm).^2))
-println("RMSE = ", rmse)#If RMSE = 0 theyre almost identical
+println("RMSE = ", rmse)#If RMSE = 0, they're almost identical
 
 #Correlation coefficient measures how similar their shapes are 
 corr = cor(flux1_norm, flux2_norm)
@@ -74,9 +89,8 @@ plot(
     ylabel = "JP/Kerr",
     label = "Ratio",
     xlims = (0.45, maximum(bins1)),  # keep your x-axis limits
-    ylims = (0, 2)                   # set y-axis from -1 to 1
+    ylims = (0, 2),                  # set y-axis from -1 to 1
+    legend = false,
 )
 
 hline!([1], linestyle = :dash, label = "")
-hline!([1], linestyle = :dash, label = "")
-hline!([1], linestyle=:dash)

@@ -1,6 +1,6 @@
 # Schwarzschild metric
 
-The Schwarzschild metric describes the geometry of spacetime outside a non-rotating, spherical black hole with no magnetic field. Its only parameter is mass M.
+The Schwarzschild metric describes the geometry of spacetime outside a static, spherically symmetric black hole. It is the simplest solution to Einstein's field equations that isn't the Minkowski metric and is fully characterised by just its mass.
 
 ## Metric definition
 
@@ -52,7 +52,7 @@ R_{\theta\phi\theta\phi} &= r r_s \sin^{2}\theta
 
 ## Special radii
 
-Around a Schwarzschild black hole, there are two key orbits with fixed radii. The event horizon has a radius of $2r_s$ or $2M$, the photon orbit is at 3M, and the ISCO is at 6M. These orbits are shown in the figure below.
+Around a Schwarzschild black hole, there are two key orbits with fixed radii. The event horizon has a radius of $r_s$ or $2M$, the photon orbit is at 3M, and the ISCO is at 6M. These orbits are shown in the figure below.
 
 
 ```@raw html
@@ -133,7 +133,7 @@ p
 
 
 
-The ISCO of a Schwarzschild black hole is at $6M$. Matter inside this radius will spiral into the event horizon as shown here:
+Matter inside the ISCO will spiral into the event horizon as shown here:
 
 
 ```@raw html
@@ -226,7 +226,7 @@ Rearranging this for $L$ gives us:
 
 $$L^2 = \dfrac{Mr^2}{r-3M}$$
 
-The denominator $r-3M$ means $L^2$ diverges when $r=3M$. The minimum of this function occurs at the ISCO radius $(r=6M)$.
+The denominator $r-3M$ means $L$ diverges when $r=3M$. The minimum of this function occurs at the ISCO radius $(r=6M)$.
 
 The figure below shows the angular momentum required for a circular orbit $(L)$ as a function of radius $(r)$.
 
@@ -356,10 +356,10 @@ plot!(legend=:right)
 
 
 
-### Stable Orbit and Pertubation
+### Stable Orbit Pertubation
 
 
-The plot below shows two orbits. One is at $7M$ and one is pertubated slightly so appears at $6.99M$. Both of these orbits have equal velocity and both are circular. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO $(6M)$), will not cause it to spiral into the black hole.
+The plot below shows two orbits. One is at $7M$ and one is pertubated slightly so appears at $6.99M$. Both of these orbits have equal initial velocity. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO), will not cause it to spiral into the black hole.
 
 
 
@@ -425,11 +425,11 @@ plot!(p, legend=:outertopright)  # Adjust legend position to avoid overlap with 
 
 
 
-### Unstable Orbit and Pertubation
+### Unstable Orbit Pertubation
 
 
 
-Whereas this figure shows two orbits again. Only this time one is on the ISCO and the other has a pertubation such that it is very slightly inside. Now, the one on the ISCO is only just stable and remains circular, but the pertubated one is in the plunging region so it spirals into the event horizon.
+The figure below shows two orbits again, only this time one is on the ISCO and the other has a pertubation such that it is very slightly inside. Now, the one on the ISCO is only just stable and remains circular, but the pertubated one is in the plunging region so it spirals into the event horizon.
 
 ```@raw html
 <details>
