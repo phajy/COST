@@ -25,6 +25,11 @@ $$G^{\mu\nu} + \Lambda g^{\mu\nu} = 8\pi T^{\mu\nu}$$
 These are sixteen equations that reduce to ten due to the symmetry of the tensors involved. $G^{\mu\nu}$ is the Einstein tensor, $\Lambda$ is the cosmological constant which is used to describe a vacuum energy field that adds to the expansion rate of the universe. $g^{\mu\nu}$ is the spacetime metric, and $T^{\mu\nu}$ is the stress-energy tensor which is equal to the flux of 4-momentum component $\mu$ in some direction $\nu$.
 
 
+## The No-hair theorem
+
+The No-hair theorem states that a neutral black hole can be fully defined by just its mass and its spin. Metrics that are solutions to Einstein's field equations obey this theorem. However, some metrics such as the Johannsen-Psaltis metric have been introduced with more parameters than the No-hair theorem allows for. These metrics are used to test the theorem and therefore general relativity itself.
+
+
 ## Units
 In this catalogue we use $G=c=1$. This means that one gravitatinal radius $r_g = \dfrac{GM}{c^2} = M$.
 

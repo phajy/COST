@@ -1,6 +1,6 @@
 # Kerr - Newman metric
 
-The Kerr-Newman metric describes the geometry of spacetime outside an electrically charged rotating black hole 
+The Kerr-Newman metric describes the geometry of spacetime outside an electrically charged rotating black hole. It is fully parameterised by mass, spin and charge meaning it obeys the No-hair theorem.
 
 ## Metric definition
 
