@@ -33,9 +33,6 @@ plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 xlims!(-10, 10)
 ylims!(-10, 10)
 
-xlims!(-10, 10)
-ylims!(-10, 10)
-
 plot!(p, legend=:outertopright)
 
 
