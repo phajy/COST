@@ -26,7 +26,7 @@ scatter(input_spin, fitted_spin;
     yerr = y_err,
     xlabel = "True Spin",
     ylabel = "Fitted Spin",
-    title = "Fitted vs Real Spin at 6.4keV for duration: 100,000",
+    #title = "Fitted vs Real Spin at 6.4keV for duration: 100,000",
     color = :blue,
     markersize = 2,
     legend = false
@@ -34,3 +34,6 @@ scatter(input_spin, fitted_spin;
 
 #line obf
 plot!([0, 1], [0, 1], linestyle = :dash, color = :red)
+
+
+savefig("docs/src/figures/SpinVsSpin1.png")
