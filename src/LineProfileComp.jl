@@ -4,47 +4,29 @@ using Plots
 using Interpolations, Statistics
 
 
-<<<<<<< HEAD
-a1 = 0.581705  
+a1 =  0.374598 
 a2 = 0.3
 ϵ3 = -0.25
 
-
-
-=======
-#a1 = 0.692456
-#a2 = 0.6
-#ϵ3 = -0.25
-
-a1 = 0.772184
-a2 = 0.85
-ϵ3 = -1.0
->>>>>>> 793f13b35a2672297862c3b9b0e8c0672951a4ee
 m1 = KerrMetric(M = 1.0, a = a1) #defines the spacetime
 m2 = JohannsenPsaltisMetric(M = 1.0, a = a2, ϵ3 = ϵ3 )
-is_naked_singularity(m2)
+#is_naked_singularity(m2)
 
 d = ThinDisc(0.0, Inf) #defines the accretion disk. Gradus will start with the emission at the ISCO and extends to infinity
 
 x = SVector(0.0, 10_000.0, deg2rad(60), 0.0)#defines the observers position in spacetime (t, r, θ, ϕ)
 
-<<<<<<< HEAD
 bins1, flux1 = lineprofile(m1, x, d)
 
+bins2, flux2  = lineprofile(m2, x, d)
 
-#bins2, flux2  = lineprofile(m2, x, d)
+#bins2, flux2  = lineprofile(m2, x, d; )#method = BinningMethod())
 
-bins2, flux2  = lineprofile(m2, x, d; method = BinningMethod())
-
-=======
-bins1, flux1 = lineprofile(m1, x, d; method = BinningMethod())
-bins2, flux2  = lineprofile(m2, x, d; method = BinningMethod())
->>>>>>> 793f13b35a2672297862c3b9b0e8c0672951a4ee
 Plots.plot(
     bins1,
     flux1,
     xlabel = "E / E₀",
-    ylabel = "Flux",
+    ylabel = "Flux (a.u.)",
     legend = true,
     lw = 2,
     label = "a = $a1 (Kerr)"
@@ -54,11 +36,13 @@ Plots.plot!(
     bins2,
     flux2,
     xlabel = "E / E₀",
-    ylabel = "Flux",
+    ylabel = "Flux (a.u.)",
     legend = true,
     lw = 2,
     label = "a = $a2 & ϵ3 = $ϵ3 (Johannsen-Psaltis)"
 )
+
+savefig("docs/src/figures/a0.3e-0.25.png")
 
 #Evaluates the interpolation function at the Kerr energy bins (bins1).
 interp = LinearInterpolation(bins2, flux2, extrapolation_bc=Line())

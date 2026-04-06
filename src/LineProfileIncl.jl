@@ -2,15 +2,16 @@ using Gradus
 using StaticArrays
 using Plots
 
-inclination = [20.0, 40.0, 60.0, 70, 80.0]
-m = KerrMetric(M = 1.0, a = 0.998)
+#inclination = [20.0, 40.0, 60.0, 70, 80.0]
+inclination = [50.0, 55.0, 60.0, 65.0, 70.0]
+m = KerrMetric(M = 1.0, a = 0.8)
 
 d = ThinDisc(0.0, Inf)
 
 
 plt = Plots.plot(
     xlabel = "E / E₀",
-    ylabel = "Flux",
+    ylabel = "Flux (a.u.)",
     lw = 2
 )
 
