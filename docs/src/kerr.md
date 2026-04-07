@@ -329,7 +329,19 @@ p = Plots.heatmap(
 
 ## Ergosphere
 
-The ergosphere is a region outside the event horizon of a Kerr black hole where spacetime is being dragged by the black hole's spin.
+Around rotating black holes there exists a region known as the ergosphere defined by the condition:
+
+$$g_{tt} = 0$$
+
+Solving this for the Kerr spacetime gives a quadratic in $r$ which leads to the solution:
+
+$$r_{\text{ergo}} = M + \sqrt{M^2 - a^2 \cos^2\theta}$$
+
+Inside this region, all time-like trajectories are forced to co-rotate with the black hole, meaning
+that stationary observers with fixed $\phi$ do not exist. Outside the ergosphere, static observers with
+$\dfrac{d\phi}{dt} = 0$ are permitted, whereas within it, such trajectories are no longer physically possible.
+
+The following figure shows the ergosphere for a maximally spinning Kerr black hole.
 
 ```@raw html
 <details>
