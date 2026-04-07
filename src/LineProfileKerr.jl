@@ -8,7 +8,7 @@ x = SVector(0.0, 10_000.0, deg2rad(30.0), 0.0)
 
 plt = Plots.plot(
     xlabel = "E / E₀",
-    ylabel = "Flux",
+    ylabel = "Flux (a.u.)",
     lw = 2
 )
 
