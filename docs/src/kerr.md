@@ -281,7 +281,9 @@ gif(anim, "disc_image.gif", fps = 10)
 
 ## Shawdow map
 
-A black hole shadow map shows which photons from a background source behind the black hole reach a distant observer and which are captured by the black hole. The spacetime around a Kerr black hole is axially symmetric, and due to frame dragging, photons moving in the same direction as the spin (prograde) and those moving against it (retrograde) are affected differently. This is why the shadow in the plot below has a D shape.
+The shadow of a Kerr black hole is asymmetric and exhibits a characteristic "D-shaped" distortion. This arises from the black hole’s frame dragging, allowing the prograde photons (on the left) emitted from behind the black hole to pass closer to the event horizon. Whereas the retrograde photons (on the right) cannot come as close to the event horizon without being captured.
+
+The plot below shows the shadow of a Kerr black hole with $a=0.998$.
 
 
 ```@raw html
