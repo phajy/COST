@@ -391,6 +391,9 @@ plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 ![Ergosphere](figures/ErgospherePlot.png)
 
 
+As this is a maximally spinning black hole, the ergosphere expands significantly near the equatorial plane while remaining constrained near the poles. As the spin of the black hole decreases, the ergosphere becomes more spherically symmetric and closer to the event horizon.
+
+
 
 
 ## Line Profiles 
