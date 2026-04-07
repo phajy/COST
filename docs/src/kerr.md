@@ -393,22 +393,23 @@ using Gradus
 using StaticArrays
 using Plots
 
-m = KerrMetric(M = 1.0, a = 0.998) #defines the spacetime
+spins = [-0.9, -0.5, 0.0, 0.5, 0.9]
+d = ThinDisc(0.0, Inf)
+x = SVector(0.0, 10_000.0, deg2rad(30.0), 0.0)
 
-d = ThinDisc(0.0, Inf) #defines the accretion disk. Gradus will start with the emission at the ISCO and extends to infinity
-
-x = SVector(0.0, 10_000.0, deg2rad(60.0), 0.0)#defines the observers position in spacetime (t, r, θ, ϕ)
-
-bins, flux = lineprofile(m, x, d)
-
-fig4 = plot(
-    bins,
-    flux,
-    xlabel = "g = E / E₀",
+plt = Plots.plot(
+    xlabel = "E / E₀",
     ylabel = "Flux",
-    legend = false,
     lw = 2
 )
+
+for a in spins
+    m = KerrMetric(M = 1.0, a = a)
+    bins, flux = lineprofile(m, x, d)
+    Plots.plot!(plt, bins, flux, label = "a = $a")
+end
+
+plt
 ```
 ```@raw html
 </details>
