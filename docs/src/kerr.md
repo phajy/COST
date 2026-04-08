@@ -40,7 +40,7 @@ $$\begin{aligned}
 \Gamma^{r}{}_{tt} &= \frac{r_s\Delta (r^2 - a^2cos^2\theta)}{2 \Sigma^3}, & 
 \Gamma^{\theta}{}_{tt} &= - \frac{r_sa^2rsin{\theta}cos\theta}{\Sigma^3}, \\[2mm]
 
-\Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\theta}, & 
+\Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\Delta}, & 
 \Gamma^{\phi}{}_{tr} &= \frac{ r_s a (r^2 - a^2 \cos^2\theta)}{2\Sigma^2 \Delta} , \\[2mm]
 
 \Gamma^{t}{}_{t\theta} &= -\frac{r_s a^2 r \sin\theta \cos\theta}{\Sigma^2}, &
@@ -72,6 +72,10 @@ $$\begin{aligned}
 Where
 
 $$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
+
+## Riemann tensor
+
+The Kerr metric in Boyer–Lindquist coordinates contains off-diagonal terms $(g_{t\phi} \neq 0)$, leading to a large number of non-zero Christoffel symbols. As a result, the coordinate components of the Riemann tensor become extremely lengthy and are not presented explicitly.
 
 
 ## Special radii
@@ -400,6 +404,8 @@ As this is a maximally spinning black hole, the ergosphere expands significantly
 
 ## Line Profiles 
 
+As the spin of the black hole becomes more prograde, the ISCO radius decreases and the matter at the inner-edge of the accretion disc moves faster. The blue peak is therefore subject to an increased doppler shift. It also becomes lower and broader due to increased gravitational redshift and smearing from emission originating closer to the black hole. The red wing shows the same trend but is less pronounced because it already primarily reflects gravitational redshift so increased amounts do not cause it to change as much. The increased gravitational redshift also causes the red tail to extend to lower observed energies with increasing prograde spin.
+
 ```@raw html
 <details>
 <summary>Click to expand / collapse code block.</summary>
@@ -437,7 +443,7 @@ plt
 
 ## Inclination Angle 
 
-Line profiles are dependent on parameters such as the black hole’s spin and the observer’s inclination angle. By varying the inclination angle, the amount of the disc’s rotational motion that lies along the observer’s line of sight changes.
+By varying the inclination angle, the component of the disc’s rotational motion that lies along the observer’s line of sight changes. If the disc were to be viewed at a $90^{\circ}$ inclination angle, the Doppler shift of the disc would be a maximum. As the angle moved away from this point, less matter would be moving directly towards and away from the observer's line of sight so the Doppler shift would decrease.
 
 ```@raw html
 <details>
@@ -449,22 +455,22 @@ using Gradus
 using StaticArrays
 using Plots
 
-inclination = [20.0, 40.0, 60.0, 70.0, 80.0]
-m = KerrMetric(M = 1.0, a = 0.998)
+inclination = [50.0, 55.0, 60.0, 65.0, 70.0]
+m = KerrMetric(M = 1.0, a = 0.8)
 
 d = ThinDisc(0.0, Inf)
 
 
 plt = Plots.plot(
     xlabel = "E / E₀",
-    ylabel = "Flux",
+    ylabel = "Flux (a.u.)",
     lw = 2
 )
 
 for inc in inclination
     x = SVector(0.0, 10_000.0, deg2rad(inc), 0.0)
     bins, flux = lineprofile(m, x, d)
-    Plots.plot!(plt, bins, flux, label = "Inclination angle = $inc")
+    Plots.plot!(plt, bins, flux, label = "i° = $inc")
 end
 
 plt
