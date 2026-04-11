@@ -89,6 +89,10 @@ The Kerr-Newman metric in Boyer–Lindquist coordinates contains off-diagonal te
 
 ## Special radii
 
+Similar to the Kerr case, the event horizon is defined by $\Delta = 0$ which in this case leads to:
+
+$$r_{\text{horizon}} = M + \sqrt{M^2 - a^2-Q^2}$$
+
 ```@raw html
 <details>
 <summary>Click to expand / collapse code block.</summary>
@@ -100,7 +104,7 @@ using CairoMakie
 
 M = 1.0
 a = 0.8
-qmax = 0.95 * sqrt(1 - a^2)
+qmax = sqrt(1 - a^2)
 Q_values = range(-qmax, qmax, length=200)
 
 horizon_radii = zeros(length(Q_values))
@@ -123,9 +127,9 @@ end
 # Only after loop completes:
 
 fig = Figure()
-ax = Axis(fig[1, 1], xlabel="Charge Q", ylabel="Radius (equatorial plane)")
+ax = Axis(fig[1, 1], xlabel="Charge (Q)", ylabel="Radii at θ=π/2")
 
-lines!(ax, Q_values, horizon_radii, color=:blue, label="Horizon radius")
+lines!(ax, Q_values, horizon_radii, color=:black, label="Horizon radius")
 lines!(ax, Q_values, isco_radii, color=:red, label="ISCO radius")
 
 axislegend(ax)

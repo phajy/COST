@@ -82,9 +82,11 @@ The Kerr metric in Boyer–Lindquist coordinates contains off-diagonal terms $(g
 
 ### Frame Dragging
 
-In the case of a spinning black hole, rotation leads to the dragging of spacetime
-in the direction of the spin, an effect known as frame dragging. Frame dragging causes orbits like the ISCO and photon orbit to vary in radius. The effect that frame dragging has on the photon orbit and
-the ISCO will increase with the angular momentum of the black hole.
+In the case of a spinning black hole, rotation leads to the dragging of spacetime in the direction of the spin, an effect known as frame dragging. Frame dragging causes orbits like the ISCO and photon orbit to vary in radius. The effect that frame dragging has on the photon orbit and the ISCO will increase with the angular momentum of the black hole.
+
+For a Kerr black hole, the event horizon is given by the condition $\Delta = 0$ which leads to:
+
+$$r_{\text{horizon}} = M + \sqrt{M^2 - a^2}$$
 
 
 ```@raw html
