@@ -1,14 +1,15 @@
 using Gradus, Plots
 
-m = KerrMetric(1.0, 0.998)
+#m = KerrMetric(1.0, 0.998)
+m = JohannsenPsaltisMetric(M = 1.0, a = 0.9, ϵ3 = 2.0)
 x = SVector(0.0, 10000.0, π / 2, 0.0)
 
 α, β, img = rendergeodesics(
     m,
     x,
     20_000.0,
-    image_width = 600,
-    image_height = 600,
+    image_width = 50,
+    image_height = 50,
     αlims = (-6, 9),
     βlims = (-6, 6),
     verbose = true,

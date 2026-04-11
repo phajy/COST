@@ -12,8 +12,8 @@ For more information, see the [Gradus website](https://astro-group-bristol.githu
 ## Individual SpaceTimes
 
 - [Minkowski Metric](Minkowski.md)
-- [Schwarzschild Metric](Schwarzschild.md)
-- [Kerr Metric](Kerr.md)
+- [Schwarzschild Metric](schwarzschild.md)
+- [Kerr Metric](kerr.md)
 - [Kerr-Newman Metric](Kerr-Newman.md)
 - [Johannsen-Psaltis Metric](Johannsen-Psaltis.md)
 

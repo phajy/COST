@@ -6,8 +6,8 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "Minkowski" => "Minkowski.md",
-        "Schwarzschild" => "Schwarzschild.md",
-        "Kerr" => "Kerr.md",
+        "Schwarzschild" => "schwarzschild.md",
+        "Kerr" => "kerr.md",
         "Kerr-Newman" => "Kerr-Newman.md",
         "Johannsen-Psaltis" => "Johannsen-Psaltis.md"
         ],
