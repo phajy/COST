@@ -549,7 +549,13 @@ ylabel!("y")
 
 ## Shadow Map
 
-A black hole shadow map shows which photons from a background source behind the black hole reach a distant observer and which are captured by the black hole. In the plot below, the shadow is a perfect circle because a Schwarzschild black hole is non-spinning and spherically symmetric, so its gravity bends light equally in every direction.
+A shadow map represents the apparent image of the black hole as seen by an observer viewing background
+photons, with each point corresponding to a photon trajectory traced backwards from the observer to
+the black hole. The colour scale indicates the number of integration steps used to trace each
+photon trajectory. Brighter regions correspond to photons that propagate for a longer duration before
+either escaping to the observer or being captured by the black hole.
+
+In the plot below, the shadow is a perfect circle because a Schwarzschild black hole is non-spinning and spherically symmetric, so its gravity bends light equally in every direction.
 
 ```@raw html
 <details>

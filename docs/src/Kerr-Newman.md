@@ -48,7 +48,7 @@ $$\begin{aligned}
 \Gamma^{r}{}_{tt} &= \frac{r_s\Delta (r^2 - a^2cos^2\theta)}{2 \Sigma^3}, & 
 \Gamma^{\theta}{}_{tt} &= - \frac{r_sa^2rsin{\theta}cos\theta}{\Sigma^3}, \\[2mm]
 
-\Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\theta}, & 
+\Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\Delta}, & 
 \Gamma^{\phi}{}_{tr} &= \frac{ r_s a (r^2 - a^2 \cos^2\theta)}{2\Sigma^2 \Delta} , \\[2mm]
 
 \Gamma^{t}{}_{t\theta} &= -\frac{r_s a^2 r \sin\theta \cos\theta}{\Sigma^2}, &
@@ -83,7 +83,15 @@ $$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
 
 These symbols are the same as that for the Kerr metric as all that needs to change is the defenition of $\Delta$.
 
+## Riemann tensor
+
+The Kerr-Newman metric in Boyer–Lindquist coordinates contains off-diagonal terms $(g_{t\phi} \neq 0)$, leading to a large number of non-zero Christoffel symbols. As a result, the coordinate components of the Riemann tensor become extremely lengthy and are not presented explicitly.
+
 ## Special radii
+
+Similar to the Kerr case, the event horizon is defined by $\Delta = 0$ which in this case leads to:
+
+$$r_{\text{horizon}} = M + \sqrt{M^2 - a^2-Q^2}$$
 
 ```@raw html
 <details>
@@ -96,7 +104,7 @@ using CairoMakie
 
 M = 1.0
 a = 0.8
-qmax = 0.95 * sqrt(1 - a^2)
+qmax = sqrt(1 - a^2)
 Q_values = range(-qmax, qmax, length=200)
 
 horizon_radii = zeros(length(Q_values))
@@ -119,9 +127,9 @@ end
 # Only after loop completes:
 
 fig = Figure()
-ax = Axis(fig[1, 1], xlabel="Charge Q", ylabel="Radius (equatorial plane)")
+ax = Axis(fig[1, 1], xlabel="Charge (Q)", ylabel="Radii at θ=π/2")
 
-lines!(ax, Q_values, horizon_radii, color=:blue, label="Horizon radius")
+lines!(ax, Q_values, horizon_radii, color=:black, label="Horizon radius")
 lines!(ax, Q_values, isco_radii, color=:red, label="ISCO radius")
 
 axislegend(ax)

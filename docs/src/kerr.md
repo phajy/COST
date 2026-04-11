@@ -40,7 +40,7 @@ $$\begin{aligned}
 \Gamma^{r}{}_{tt} &= \frac{r_s\Delta (r^2 - a^2cos^2\theta)}{2 \Sigma^3}, & 
 \Gamma^{\theta}{}_{tt} &= - \frac{r_sa^2rsin{\theta}cos\theta}{\Sigma^3}, \\[2mm]
 
-\Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\theta}, & 
+\Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\Delta}, & 
 \Gamma^{\phi}{}_{tr} &= \frac{ r_s a (r^2 - a^2 \cos^2\theta)}{2\Sigma^2 \Delta} , \\[2mm]
 
 \Gamma^{t}{}_{t\theta} &= -\frac{r_s a^2 r \sin\theta \cos\theta}{\Sigma^2}, &
@@ -73,14 +73,20 @@ Where
 
 $$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
 
+## Riemann tensor
+
+The Kerr metric in Boyer–Lindquist coordinates contains off-diagonal terms $(g_{t\phi} \neq 0)$, leading to a large number of non-zero Christoffel symbols. As a result, the coordinate components of the Riemann tensor become extremely lengthy and are not presented explicitly.
+
 
 ## Special radii
 
 ### Frame Dragging
 
-In the case of a spinning black hole, rotation leads to the dragging of spacetime
-in the direction of the spin, an effect known as frame dragging. Frame dragging causes orbits like the ISCO and photon orbit to vary in radius. The effect that frame dragging has on the photon orbit and
-the ISCO will increase with the angular momentum of the black hole.
+In the case of a spinning black hole, rotation leads to the dragging of spacetime in the direction of the spin, an effect known as frame dragging. Frame dragging causes orbits like the ISCO and photon orbit to vary in radius. The effect that frame dragging has on the photon orbit and the ISCO will increase with the angular momentum of the black hole.
+
+For a Kerr black hole, the event horizon is given by the condition $\Delta = 0$ which leads to:
+
+$$r_{\text{horizon}} = M + \sqrt{M^2 - a^2}$$
 
 
 ```@raw html
@@ -281,7 +287,9 @@ gif(anim, "disc_image.gif", fps = 10)
 
 ## Shawdow map
 
-A black hole shadow map shows which photons from a background source behind the black hole reach a distant observer and which are captured by the black hole. The spacetime around a Kerr black hole is axially symmetric, and due to frame dragging, photons moving in the same direction as the spin (prograde) and those moving against it (retrograde) are affected differently. This is why the shadow in the plot below has a D shape.
+The shadow of a Kerr black hole is asymmetric and exhibits a characteristic "D-shaped" distortion. This arises from the black hole’s frame dragging, allowing the prograde photons (on the left) emitted from behind the black hole to pass closer to the event horizon. Whereas the retrograde photons (on the right) cannot come as close to the event horizon without being captured.
+
+The plot below shows the shadow of a Kerr black hole with $a=0.998$.
 
 
 ```@raw html
@@ -329,7 +337,19 @@ p = Plots.heatmap(
 
 ## Ergosphere
 
-The ergosphere is a region outside the event horizon of a Kerr black hole where spacetime is being dragged by the black hole's spin.
+Around rotating black holes there exists a region known as the ergosphere defined by the condition:
+
+$$g_{tt} = 0$$
+
+Solving this for the Kerr spacetime gives a quadratic in $r$ which leads to the solution:
+
+$$r_{\text{ergo}} = M + \sqrt{M^2 - a^2 \cos^2\theta}$$
+
+Inside this region, all time-like trajectories are forced to co-rotate with the black hole, meaning
+that stationary observers with fixed $\phi$ do not exist. Outside the ergosphere, static observers with
+$\dfrac{d\phi}{dt} = 0$ are permitted, whereas within it, such trajectories are no longer physically possible.
+
+The following figure shows the ergosphere for a maximally spinning Kerr black hole.
 
 ```@raw html
 <details>
@@ -379,9 +399,14 @@ plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 ![Ergosphere](figures/ErgospherePlot.png)
 
 
+As this is a maximally spinning black hole, the ergosphere expands significantly near the equatorial plane while remaining constrained near the poles. As the spin of the black hole decreases, the ergosphere becomes more spherically symmetric and closer to the event horizon.
+
+
 
 
 ## Line Profiles 
+
+As the spin of the black hole becomes more prograde, the ISCO radius decreases and the matter at the inner-edge of the accretion disc moves faster. The blue peak is therefore subject to an increased doppler shift. It also becomes lower and broader due to increased gravitational redshift and smearing from emission originating closer to the black hole. The red wing shows the same trend but is less pronounced because it already primarily reflects gravitational redshift so increased amounts do not cause it to change as much. The increased gravitational redshift also causes the red tail to extend to lower observed energies with increasing prograde spin.
 
 ```@raw html
 <details>
@@ -393,22 +418,23 @@ using Gradus
 using StaticArrays
 using Plots
 
-m = KerrMetric(M = 1.0, a = 0.998) #defines the spacetime
+spins = [-0.9, -0.5, 0.0, 0.5, 0.9]
+d = ThinDisc(0.0, Inf)
+x = SVector(0.0, 10_000.0, deg2rad(30.0), 0.0)
 
-d = ThinDisc(0.0, Inf) #defines the accretion disk. Gradus will start with the emission at the ISCO and extends to infinity
-
-x = SVector(0.0, 10_000.0, deg2rad(60.0), 0.0)#defines the observers position in spacetime (t, r, θ, ϕ)
-
-bins, flux = lineprofile(m, x, d)
-
-fig4 = plot(
-    bins,
-    flux,
-    xlabel = "g = E / E₀",
+plt = Plots.plot(
+    xlabel = "E / E₀",
     ylabel = "Flux",
-    legend = false,
     lw = 2
 )
+
+for a in spins
+    m = KerrMetric(M = 1.0, a = a)
+    bins, flux = lineprofile(m, x, d)
+    Plots.plot!(plt, bins, flux, label = "a = $a")
+end
+
+plt
 ```
 ```@raw html
 </details>
@@ -419,7 +445,7 @@ fig4 = plot(
 
 ## Inclination Angle 
 
-Line profiles are dependent on parameters such as the black hole’s spin and the observer’s inclination angle. By varying the inclination angle, the amount of the disc’s rotational motion that lies along the observer’s line of sight changes.
+By varying the inclination angle, the component of the disc’s rotational motion that lies along the observer’s line of sight changes. If the disc were to be viewed at a $90^{\circ}$ inclination angle, the Doppler shift of the disc would be a maximum. As the angle moved away from this point, less matter would be moving directly towards and away from the observer's line of sight so the Doppler shift would decrease.
 
 ```@raw html
 <details>
@@ -431,22 +457,22 @@ using Gradus
 using StaticArrays
 using Plots
 
-inclination = [20.0, 40.0, 60.0, 70.0, 80.0]
-m = KerrMetric(M = 1.0, a = 0.998)
+inclination = [50.0, 55.0, 60.0, 65.0, 70.0]
+m = KerrMetric(M = 1.0, a = 0.8)
 
 d = ThinDisc(0.0, Inf)
 
 
 plt = Plots.plot(
     xlabel = "E / E₀",
-    ylabel = "Flux",
+    ylabel = "Flux (a.u.)",
     lw = 2
 )
 
 for inc in inclination
     x = SVector(0.0, 10_000.0, deg2rad(inc), 0.0)
     bins, flux = lineprofile(m, x, d)
-    Plots.plot!(plt, bins, flux, label = "Inclination angle = $inc")
+    Plots.plot!(plt, bins, flux, label = "i° = $inc")
 end
 
 plt
