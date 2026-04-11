@@ -194,52 +194,6 @@ heatmap(
 
 ![Naked Singularity values](figures/Naked_singularity_values.png)
 
-
-
-
-
-
-
-
-
-
-
-## Line Profile
-
-```@raw html
-<details>
-<summary>Click to expand / collapse code block.</summary>
-```
-
-```julia
-using Gradus
-using StaticArrays
-using Plots
-
-m = JohannsenPsaltisMetric(M = 1.0, a = 0.8, ϵ3 = 0.5) #defines the spacetime
-
-d = ThinDisc(0.0, Inf) #defines the accretion disk. Gradus will start with the emission at the ISCO and extends to infinity
-
-x = SVector(0.0, 10_000.0, deg2rad(60.0), 0.0)#defines the observers position in spacetime (t, r, θ, ϕ)
-
-bins, flux = lineprofile(m, x, d)
-
-fig4 = plot(
-    bins,
-    flux,
-    xlabel = "g = E / E₀",
-    ylabel = "Flux",
-    legend = false,
-    lw = 2
-)
-```
-```@raw html
-</details>
-```
-
-![Johannsen-Psaltis Line Profile](figures/johannsen_line_prof.png)
-
-
 ## Shawdow map
 
 ```@raw html
@@ -283,7 +237,69 @@ p = Plots.heatmap(
 
 ![JP Shadow Map](figures/JPShadowPlot.png)
 
+## Degeneracy Testing 
 
+Certain deformation parameter $\epsilon_{3}$ and spin a combinations for the Johannsen-Psaltis metric can produce indistinguishable spectral line profiles to the Kerr metric of a different spin.
+
+```@raw html
+<details>
+<summary>Click to expand / collapse code block.</summary>
+```
+
+```julia
+
+using Gradus
+using StaticArrays
+using Plots
+using Interpolations, Statistics
+
+
+a1 =  0.411873 
+a2 = 0.3
+ϵ3 = 0.5
+
+m1 = KerrMetric(M = 1.0, a = a1) #defines the spacetime
+m2 = JohannsenPsaltisMetric(M = 1.0, a = a2, ϵ3 = ϵ3 )
+#is_naked_singularity(m2)
+
+d = ThinDisc(0.0, Inf) #defines the accretion disk. Gradus will start with the emission at the ISCO and extends to infinity
+
+x = SVector(0.0, 10_000.0, deg2rad(60), 0.0)#defines the observers position in spacetime (t, r, θ, ϕ)
+
+bins1, flux1 = lineprofile(m1, x, d)
+
+bins2, flux2  = lineprofile(m2, x, d)
+
+#bins2, flux2  = lineprofile(m2, x, d; )#method = BinningMethod())
+
+Plots.plot(
+    bins1,
+    flux1,
+    xlabel = "E / E₀",
+    ylabel = "Flux (a.u.)",
+    legend = true,
+    lw = 2,
+    label = "a = $a1 (Kerr)"
+)
+
+Plots.plot!(
+    bins2,
+    flux2,
+    xlabel = "E / E₀",
+    ylabel = "Flux (a.u.)",
+    legend = true,
+    lw = 2,
+    label = "a = $a2 & ϵ3 = $ϵ3 (Johannsen-Psaltis)"
+)
+
+```
+```@raw html
+</details>
+```
+
+![JP Shadow Map](figures/a0.3e0.5.png)
+
+![JP Shadow Map](figures/a0.3e-0.25.png)
 
 
 
