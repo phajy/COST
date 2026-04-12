@@ -1,8 +1,8 @@
-# Kerr metric
+# Kerr Metric
 
 The Kerr metric describes the geometry of spacetime outside a rotating black hole with no magnetic field. It is fully defined by mass and spin meaning it obeys the No-hair theorem and is an exact solution to Einstein's field equations.
 
-## Metric definition
+## Metric Definition
 
 The Kerr metric is given by:
 
@@ -32,7 +32,7 @@ r_{s} = 2 M$$
 When $(a = 0)$, this reduces to the Schwarzschild metric.
 
 
-## Christoffel symbols
+## Christoffel Symbols
 
 
 
@@ -73,12 +73,12 @@ Where
 
 $$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
 
-## Riemann tensor
+## Riemann Tensor
 
 The Kerr metric in Boyer–Lindquist coordinates contains off-diagonal terms $(g_{t\phi} \neq 0)$, leading to a large number of non-zero Christoffel symbols. As a result, the coordinate components of the Riemann tensor become extremely lengthy and are not presented explicitly.
 
 
-## Special radii
+## Special Radii
 
 ### Frame Dragging
 
@@ -229,7 +229,7 @@ ylabel!("y")
 
 
 
-## Redshift Heatmap
+## Redshift Heat-map
 
 The following animation shows how radiation from the accretion disc is shifted in wavelength. The animation starts with a negative (clockwise) spin $(a=-1)$ of the central black hole and slowly increases to $a=1$.
 
@@ -285,7 +285,7 @@ gif(anim, "disc_image.gif", fps = 10)
 ![Disc Animation](figures/disc_image.gif)
 
 
-## Shawdow map
+## Shawdow Map
 
 The shadow of a Kerr black hole is asymmetric and exhibits a characteristic "D-shaped" distortion. This arises from the black hole’s frame dragging, allowing the prograde photons (on the left) emitted from behind the black hole to pass closer to the event horizon. Whereas the retrograde photons (on the right) cannot come as close to the event horizon without being captured.
 

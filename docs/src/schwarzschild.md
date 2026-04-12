@@ -1,8 +1,8 @@
-# Schwarzschild metric
+# Schwarzschild Metric
 
 The Schwarzschild metric describes the geometry of spacetime outside a static, spherically symmetric black hole. It is the simplest solution to Einstein's field equations that isn't the Minkowski metric and is fully characterised by just its mass.
 
-## Metric definition
+## Metric Definition
 
 The metric is given by:
 $$ds^{2} = -\left(1-\dfrac{r_s}{r}\right) dt^{2} + \left(1-\dfrac{r_s}{r}\right)^{-1}dr^{2} + r^{2}d\theta^{2} + r^{2}sin^{2}(\theta)d\phi^{2}$$
@@ -21,7 +21,7 @@ where
 
 $$r_{s} = 2M$$
   
-## Christoffel symbols
+## Christoffel Symbols
 
 
 $$\begin{aligned}
@@ -37,7 +37,7 @@ $$\begin{aligned}
 \end{aligned}$$
 
 
-## Riemann-Tensors
+## Riemann Tensors
 
 $$\begin{aligned}
 R_{trtr} &= -\frac{ r_s}{r^{3}}, & 
@@ -50,7 +50,7 @@ R_{\theta\phi\theta\phi} &= r r_s \sin^{2}\theta
 \end{aligned}$$
 
 
-## Special radii
+## Special Radii
 
 Around a Schwarzschild black hole, there are two key orbits with fixed radii. The event horizon has a radius of $r_s$ or $2M$, the photon orbit is at 3M, and the ISCO is at 6M. These orbits are shown in the figure below.
 

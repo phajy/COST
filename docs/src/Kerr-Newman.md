@@ -1,8 +1,8 @@
-# Kerr - Newman metric
+# Kerr - Newman Metric
 
 The Kerr-Newman metric describes the geometry of spacetime outside an electrically charged rotating black hole. It is fully parameterised by mass, spin and charge meaning it obeys the No-hair theorem.
 
-## Metric definition
+## Metric Definition
 
 The Kerr-Newman metric is given by:
 
@@ -83,11 +83,11 @@ $$A = (r^2 + a^2)\,\Sigma + r_s a^2 r \sin^2\theta$$
 
 These symbols are the same as that for the Kerr metric as all that needs to change is the defenition of $\Delta$.
 
-## Riemann tensor
+## Riemann Tensor
 
 The Kerr-Newman metric in Boyer–Lindquist coordinates contains off-diagonal terms $(g_{t\phi} \neq 0)$, leading to a large number of non-zero Christoffel symbols. As a result, the coordinate components of the Riemann tensor become extremely lengthy and are not presented explicitly.
 
-## Special radii
+## Special Radii
 
 Similar to the Kerr case, the event horizon is defined by $\Delta = 0$ which in this case leads to:
 

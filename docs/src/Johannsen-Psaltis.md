@@ -1,9 +1,9 @@
-# Johannsen–Psaltis metric
+# Johannsen–Psaltis Metric
 
 The Johannsen–Psaltis metric is a Kerr-like parametric deviation designed to test the no-hair
-theorem in the strong-field regime close to a black hole. It has three parameters: mass M, spin a, and deviation $\epsilon_{3}$.
+theorem in the strong-field regime close to a black hole. It has three parameters: mass $M$, spin $a$, and deviation $\epsilon_{3}$.
 
-## Metric definition
+## Metric Definition
 
 The Johannsen–Psaltis metric is given by
 
@@ -48,9 +48,35 @@ h = \epsilon_3 \dfrac{(r_s/2)^3 r}{\Sigma^2}$$
 
 
 
-## Parametric deviation Paramter
 
-In the Johannsen–Psaltis metric, the deformation parameter ϵ3 is used to introduce deviations from the Kerr spacetime. The radii of the event horizon and the ISCO were plotted for different values of ϵ3.
+
+
+
+
+## Christoffel Symbols
+The Christoffel symbols for the Johannsen–Psaltis metric are obtained from the standard expression in terms of derivatives of the metric tensor. Due to the presence of the deformation function parametrized by $\epsilon_3$, the resulting expressions are significantly more complex than in the Kerr case. In practice, these quantities are computed numerically within Gradus and used to solve the geodesic equations governing particle and photon trajectories.
+
+
+
+
+## Riemann-Tensor
+The Johannsen-Psaltis metric in Boyer–Lindquist coordinates contains off-diagonal terms $(g_{t\phi} \neq 0)$, leading to a large number of non-zero Christoffel symbols. As a result, the coordinate components of the Riemann tensor become extremely lengthy and are not presented explicitly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Deviation Paramter
+
+In the Johannsen–Psaltis metric, the deformation parameter $\epsilon_3$ is used to introduce deviations from the Kerr spacetime. The radii of the event horizon and the ISCO were plotted for different values of $\epsilon_3$.
 
 
 ```@raw html
@@ -107,6 +133,23 @@ fig
 </details>
 ```
 ![eps3](figures/Eps3Plot.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Naked Singularities
@@ -194,7 +237,7 @@ heatmap(
 
 ![Naked Singularity values](figures/Naked_singularity_values.png)
 
-## Shawdow map
+## Shawdow Map
 
 ```@raw html
 <details>
