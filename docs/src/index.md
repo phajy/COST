@@ -9,7 +9,7 @@ The aim of this documentation is to provide users with easy access to relevant i
 This documentation was produced using Gradus, a general-relativity ray-tracing software.
 For more information, see the [Gradus website](https://astro-group-bristol.github.io/Gradus.jl/dev/).
 
-## Individual SpaceTimes
+## Individual Spacetimes
 
 - [Minkowski Metric](Minkowski.md)
 - [Schwarzschild Metric](Schwarzschild.md)
@@ -25,7 +25,7 @@ $$G^{\mu\nu} + \Lambda g^{\mu\nu} = 8\pi T^{\mu\nu}$$
 These are sixteen equations that reduce to ten due to the symmetry of the tensors involved. $G^{\mu\nu}$ is the Einstein tensor, $\Lambda$ is the cosmological constant which is used to describe a vacuum energy field that adds to the expansion rate of the universe. $g^{\mu\nu}$ is the spacetime metric, and $T^{\mu\nu}$ is the stress-energy tensor which is equal to the flux of 4-momentum component $\mu$ in some direction $\nu$.
 
 
-## The No-hair theorem
+## The No-Hair Theorem
 
 The No-hair theorem states that a neutral black hole can be fully defined by just its mass and its spin. Metrics that are solutions to Einstein's field equations obey this theorem. However, some metrics such as the Johannsen-Psaltis metric have been introduced with more parameters than the No-hair theorem allows for. These metrics are used to test the theorem and therefore general relativity itself.
 
@@ -43,7 +43,7 @@ Spin is measured with the parameter $a=\dfrac{J}{Mc}=\dfrac{J}{M}$. Where $J$ is
 
 Energy is measured in relativistic units so that $E = \frac{total\ energy}{mc^2}$. $E=1$ is where the particle has energy equal to its rest mass energy.
 
-## Christoffel symbols
+## Christoffel Symbols
 Christoffel symbols are derived directly from the metric $g_{\mu\nu}$ and its derivatives $g_{\mu\nu,\alpha} = \dfrac{\partial g_{\mu\nu}}{\partial x^{\alpha}}$ using the equation:
 
 
@@ -97,7 +97,7 @@ Both of these are then used to define the Einstein tensor:
 $$G^{\mu\nu} = R^{\mu\nu} - \frac{1}{2}g^{\mu\nu}R$$
 
 
-## Orbits around a black hole
+## Characteristic Orbits
 
 ### Photon Orbit
 There exists a radius around a black hole at which a photon can move on a circular null orbit. This is known as the photon orbit (or photon sphere in the spherically symmetric case), and it is highly unstable. Any small perturbation will cause the photon to either spiral into the event horizon or escape to infinity.
@@ -113,7 +113,7 @@ Inside the ISCO lies the plunging region, where matter can no longer maintain a 
 
 The ISCO radius also depends on the parameters of the black hole. For a rotating black hole, it varies with the spin parameter a, decreasing for prograde orbits and increasing for retrograde orbits. It can also change in modified or non-Kerr spacetimes.
 
-### Marginally bound orbit
+### Marginally Bound Orbit
 The marginally bound orbit is the radius at which a particle will perform an unstable circular orbit with just enough energy to escape to infinity if slightly perturbed outward, corresponding to $E=1$.
 
 ## Line Profiles
