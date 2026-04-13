@@ -24,19 +24,19 @@ sol_ISCO     = tracegeodesics(m, x_ISCO, v_ISCO, λ_max, μ=1.0)
 sol_unstable = tracegeodesics(m, x_unstable, v_unstable, λ_max, μ=1.0)
 
 # Plotting
-p = plot(aspect_ratio=1)
+p = Plots.plot(aspect_ratio=1)
 
 plot_paths!(p, sol_ISCO,     label="ISCO (r=6M)", color=:red)
 plot_paths!(p, sol_unstable, label="Unstable (r=5.99M)", color=:orange)
 plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 
-xlims!(-10, 10)
-ylims!(-10, 10)
+Plots.xlims!(-10, 10)
+Plots.ylims!(-10, 10)
 
-plot!(p, legend=:outertopright)
+#Plots.plot!(p, legend=:outertopright)
 
 
-xlabel!("x")
-ylabel!("y")
+Plots.xlabel!("x (r_g)")
+Plots.ylabel!("y (r_g)")
 
 

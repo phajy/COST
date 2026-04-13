@@ -14,10 +14,10 @@ Vnull = (1 .- 2*M ./ r) .* ((L_val^2) ./ r.^2)
 
 
 # plot
-plot(r, Veff, xlabel="r", ylabel="V_eff", lw=2,
+Plots.plot(r, Veff, xlabel="r(M)", ylabel="V_eff", lw=2,
 color=:orange, label="L=4", legend=true, legendfontsize=12)
-plot!(r, V_ISCO, lw=2, color=:green, label="L=L_ISCO")
-plot!(r, Vnull, lw=2, color=:blue, label="Null Geodesic Potential")
+Plots.plot!(r, V_ISCO, lw=2, color=:green, label="L=L_ISCO")
+Plots.plot!(r, Vnull, lw=2, color=:blue, label="Null Geodesic Potential")
 
 # mark ISCO at r = 6M
 L_ISCO = 2*sqrt(3)*M
@@ -26,4 +26,4 @@ vline!([6M], linestyle=:dash, color=:red, label="ISCO")
 vline!([3M], linestyle=:dash, color=:blue, label="Photon Orbit")
 vline!([2M], linestyle=:dash, color=:black, label="Event Horizon")
 
-plot!(legend=:right)
+Plots.plot!(legend=:right)

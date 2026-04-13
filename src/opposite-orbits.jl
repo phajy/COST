@@ -23,7 +23,7 @@ x_retro = @SVector [0.0, r_retro, π/2, 0.0]
 sol_pro = tracegeodesics(m, x_pro, v_pro, λ_max, μ=0.0)   #μ=0.0 is null geodesic (photon)
 sol_retro = tracegeodesics(m, x_retro, v_retro, λ_max, μ=0.0)
 # Plotting
-p = plot(aspect_ratio=1)
+p = plot(aspect_ratio=1, legendfontsize=12)
 
 plot_paths!(p, sol_retro, label="Retrograde", color=:orange, n_points = 100000)
 plot_paths!(p, sol_pro, label="Prograde", color=:blue, n_points = 100000)
@@ -33,7 +33,7 @@ xlims!(-10, 10)
 ylims!(-10, 10)
 
 
-xlabel!("x")
-ylabel!("y")
+xlabel!("x (r_g)")
+ylabel!("y (r_g)")
 
 

@@ -24,17 +24,17 @@ sol_stable2  = tracegeodesics(m, x_stable2, v_stable2, λ_max, μ=1.0)
 
 
 # Plot
-p = plot(aspect_ratio=1)
+p = Plots.plot(aspect_ratio=1)
 
 plot_paths!(p, sol_stable,   label="Stable (r=7M)", color=:blue)
 plot_paths!(p, sol_stable2,  label="Stable Perturbation (r=6.99M)", color=:green)
 plot_horizon!(m, lw=2, color=:black, label="Event Horizon")
 
-xlabel!("x")
-ylabel!("y")
+Plots.xlabel!("x (r_g)")
+Plots.ylabel!("y (r_g)")
 
 
-xlims!(-10, 10)
-ylims!(-10, 10)  # Set limits to better visualize the orbits and horizon
+Plots.xlims!(-10, 10)
+Plots.ylims!(-10, 10)  # Set limits to better visualize the orbits and horizon
 
 #plot!(p, legend=:topmiddle)  # Adjust legend position to avoid overlap with trajectories

@@ -36,4 +36,4 @@ scatter(input_spin, fitted_spin;
 plot!([0, 1], [0, 1], linestyle = :dash, color = :red)
 
 
-savefig("docs/src/figures/SpinVsSpin1.png")
+savefig("src/figures/SpinVsSpin.png")
