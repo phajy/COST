@@ -27,7 +27,7 @@ These are sixteen equations that reduce to ten due to the symmetry of the tensor
 
 ## The No-Hair Theorem
 
-The No-hair theorem states that a neutral black hole can be fully defined by just its mass and its spin. Metrics that are solutions to Einstein's field equations obey this theorem. However, some metrics such as the Johannsen-Psaltis metric have been introduced with more parameters than the No-hair theorem allows for. These metrics are used to test the theorem and therefore general relativity itself.
+The no-hair theorem states that a neutral black hole can be fully defined by just its mass and its spin. Metrics that are solutions to Einstein's field equations obey this theorem. However, some metrics such as the Johannsen-Psaltis metric have been introduced with more parameters than the no-hair theorem allows for. These metrics are used to test the theorem and therefore general relativity itself.
 
 
 ## Units
