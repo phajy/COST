@@ -261,6 +261,8 @@ heatmap(
 
 ## Shawdow Map
 
+The Johannsen-Psaltis black hole shadow displays the characteristic D-shaped structure of the Kerr shadow but with a distorted flat edge. Introducing ϵ3 modifies photon trajectories, changing the structure of the shadow. Non-smooth features are strongly associated with non-closed event horizons and are thought to be due to turbulent photon trajectories in the Johannsen-Psaltis spacetime. For a closed event horizon, negative values of ϵ3 increase the radii of the Johannsen-Psaltis shadow with respect to the Kerr. In contrast, for positive values of ϵ3, the flat edge moves inward.
+
 ```@raw html
 <details>
 <summary>Click to expand / collapse code block.</summary>
