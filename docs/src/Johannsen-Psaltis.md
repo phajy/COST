@@ -137,7 +137,7 @@ fig
 
 It is clear from this figure that positive values of $\epsilon_3$ reduce the ISCO radius.
 
-Variations in the ISCO radius directly affect the orbital velocity of matter in the accretion disc, which will increase the Doppler effect and relativistic beaming in the line profile shown below. In the plot, it can be seen that smaller ISCO radii lead to an extended red wing. This is a result of increased gravitational redshift, as a larger fraction of the emission originates from regions deeper within the gravitational potential. 
+Varying the ISCO radius directly affects the orbital velocity of matter in the accretion disc, this in turn will increase the Doppler effect and relativistic beaming in the line profile shown below. In the plot, it can be seen that smaller ISCO radii lead to an extended red wing. This is a result of increased gravitational redshift, as a larger fraction of the emission comes from regions deeper within the gravitational well. 
 
 The blue peak becomes sharper and increases in flux with increasing $\epsilon_3$. This is also due to the higher orbital velocities at smaller radii, which enhance relativistic beaming on the approaching side of the disc. As a result, emission is concentrated into a narrower and more intense high energy peak.
 
@@ -304,7 +304,7 @@ p = Plots.heatmap(
 
 ## Degeneracy Testing 
 
-The following plot shows line profiles from accretion discs in Kerr and Johannsen–Psaltis spacetimes for different values of spin $a$ and deviation parameter $\epsilon_3$. All cases exhibit a degree of degeneracy between the two models; however, this degeneracy is strongest at low spin $(a=0.3)$, where the profiles are nearly indistinguishable. As the spin increases to $a=0.6$, differences begin to emerge, particularly in the structure of the blue peak. At higher spin ($a=0.85$), the degeneracy is significantly reduced, with clear discrepancies between the profiles. Overall, the results indicate that the degeneracy between Kerr and non-Kerr line profiles decreases with increasing spin.
+The following plots show line profiles from accretion discs in Kerr and Johannsen–Psaltis spacetimes for different values of spin $a$ and deviation parameter $\epsilon_3$. All cases exhibit a degree of degeneracy between the two models; however, this degeneracy is strongest at low spin $(a=0.3)$, where the profiles are nearly indistinguishable. As the spin increases to $a=0.6$, differences begin to emerge, particularly in the structure of the blue peak. At higher spin ($a=0.85$), the degeneracy is significantly reduced, with clear discrepancies between the profiles. Overall, the results indicate that the degeneracy between Kerr and non-Kerr line profiles decreases with increasing spin.
 
 ```@raw html
 <details>
@@ -376,7 +376,7 @@ Plots.plot!(
 
 
 
-
+These results are very significant because it means that line profiles produced from non-Kerr models can in many cases, be closely reproduced by a Kerr model with an appropriately chosen spin. As a result, any claim of a violation of the no-hair theorem based solely on iron line spectroscopy would require substantial supporting evidence from other observations. Such methods include observations of stellar orbits in the vicinity of the black hole, the detection and analysis of gravitational waves emitted, and studies of gravitational lensing effects on background sources.
 
 
 

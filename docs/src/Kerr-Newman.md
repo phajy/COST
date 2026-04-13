@@ -93,6 +93,8 @@ Similar to the Kerr case, the event horizon is defined by $\Delta = 0$ which in 
 
 $$r_{\text{horizon}} = M + \sqrt{M^2 - a^2-Q^2}$$
 
+The plot below shows the variation of the event horizon radius and the ISCO as a function of the black hole charge $Q$ with fixed spin $(a=0.8)$. As $|Q|$ increases, both the event horizon and ISCO radii decrease. This trend is symmetric with respect to the sign of the charge, as the metric only depends on $Q^2$, meaning that positive and negative charges have the same effect.
+
 ```@raw html
 <details>
 <summary>Click to expand / collapse code block.</summary>
@@ -142,3 +144,4 @@ display(fig)
 ![Kerr Line Profile](figures/QValsPlot.png)
 
 
+Although the Kerr–Newman solution is a valid exact solution of the Einstein–Maxwell equations, it is not generally considered astrophysically realistic. Any net charge on a black hole would be quickly neutralised by the surrounding electrons and ions in the accretion disc. 
