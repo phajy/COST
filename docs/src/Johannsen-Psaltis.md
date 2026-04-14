@@ -46,7 +46,7 @@ h = \epsilon_3 \dfrac{(r_s/2)^3 r}{\Sigma^2}$$
 - ($a$) : spin parameter $(0 \le a \le M)$
 - ($\epsilon_{3}$) : deviation parameter
 
-
+When $(\epsilon_3 = 0)$, this reduces to the Kerr metric.
 
 
 

@@ -1,6 +1,6 @@
 # Kerr - Newman Metric
 
-The Kerr-Newman metric describes the geometry of spacetime outside an electrically charged rotating black hole. It is fully parameterised by mass, spin and charge meaning it obeys the No-hair theorem.
+The Kerr-Newman metric describes the geometry of spacetime outside an electrically charged rotating black hole. It is fully parameterised by mass, spin and charge meaning it obeys the no-hair theorem.
 
 ## Metric Definition
 
@@ -46,7 +46,7 @@ When $ (Q = 0)$, this reduces to the Kerr metric.
 
 $$\begin{aligned}
 \Gamma^{r}{}_{tt} &= \frac{r_s\Delta (r^2 - a^2cos^2\theta)}{2 \Sigma^3}, & 
-\Gamma^{\theta}{}_{tt} &= - \frac{r_sa^2rsin{\theta}cos\theta}{\Sigma^3}, \\[2mm]
+\Gamma^{\theta}{}_{tt} &= - \frac{r_sa^2r\sin{\theta}cos\theta}{\Sigma^3}, \\[2mm]
 
 \Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\Delta}, & 
 \Gamma^{\phi}{}_{tr} &= \frac{ r_s a (r^2 - a^2 \cos^2\theta)}{2\Sigma^2 \Delta} , \\[2mm]

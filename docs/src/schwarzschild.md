@@ -5,7 +5,7 @@ The Schwarzschild metric describes the geometry of spacetime outside a static, s
 ## Metric Definition
 
 The metric is given by:
-$$ds^{2} = -\left(1-\dfrac{r_s}{r}\right) dt^{2} + \left(1-\dfrac{r_s}{r}\right)^{-1}dr^{2} + r^{2}d\theta^{2} + r^{2}sin^{2}(\theta)d\phi^{2}$$
+$$ds^{2} = -\left(1-\dfrac{r_s}{r}\right) dt^{2} + \left(1-\dfrac{r_s}{r}\right)^{-1}dr^{2} + r^{2}d\theta^{2} + r^{2}\sin^{2}(\theta)d\phi^{2}$$
 
 or in matrix form:
 
@@ -45,7 +45,7 @@ R_{t\theta t\theta} &= \frac{1}{2}  \frac{(r - r_s) r_s}{r^{2}}, &
 R_{t\phi t\phi} &= \frac{1}{2} \frac{(r - r_s) r_s}{r^{2}} \sin^{2}\theta, \\
 
 R_{r\theta r\theta} &= -\frac{1}{2} \frac{r_s}{r - r_s}, &
-R_{r\phi r\phi} &= -\frac{1}{2} \frac{r_ssin^{2}\theta}{r - r_s}, &
+R_{r\phi r\phi} &= -\frac{1}{2} \frac{r_s\sin^{2}\theta}{r - r_s}, &
 R_{\theta\phi\theta\phi} &= r r_s \sin^{2}\theta
 \end{aligned}$$
 
@@ -356,10 +356,10 @@ plot!(legend=:right)
 
 
 
-### Stable Orbit Pertubation
+### Stable Orbit Perturbation
 
 
-The plot below shows two orbits. One is at $7M$ and one is pertubated slightly so appears at $6.99M$. Both of these orbits have equal initial velocity. This shows that a slight pertubation to a stable orbit, (one that is outside the ISCO), will not cause it to spiral into the black hole.
+The plot below shows two orbits. One is at $7M$ and one is perturbated slightly so appears at $6.99M$. Both of these orbits have equal initial velocity. This shows that a slight perturbation to a stable orbit, (one that is outside the ISCO), will not cause it to spiral into the black hole.
 
 
 
@@ -425,11 +425,11 @@ plot!(p, legend=:outertopright)  # Adjust legend position to avoid overlap with 
 
 
 
-### Unstable Orbit Pertubation
+### Unstable Orbit Perturbation
 
 
 
-The figure below shows two orbits again, only this time one is on the ISCO and the other has a pertubation such that it is very slightly inside. Now, the one on the ISCO is only just stable and remains circular, but the pertubated one is in the plunging region so it spirals into the event horizon.
+The figure below shows two orbits again, only this time one is on the ISCO and the other has a perturbation such that it is very slightly inside. Now, the one on the ISCO is only just stable and remains circular, but the perturbated one is in the plunging region so it spirals into the event horizon.
 
 ```@raw html
 <details>

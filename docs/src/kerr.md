@@ -1,6 +1,6 @@
 # Kerr Metric
 
-The Kerr metric describes the geometry of spacetime outside a rotating black hole with no magnetic field. It is fully defined by mass and spin meaning it obeys the No-hair theorem and is an exact solution to Einstein's field equations.
+The Kerr metric describes the geometry of spacetime outside a rotating black hole with no magnetic field. It is fully defined by mass and spin meaning it obeys the no-hair theorem and is an exact solution to Einstein's field equations.
 
 ## Metric Definition
 
@@ -38,7 +38,7 @@ When $(a = 0)$, this reduces to the Schwarzschild metric.
 
 $$\begin{aligned}
 \Gamma^{r}{}_{tt} &= \frac{r_s\Delta (r^2 - a^2cos^2\theta)}{2 \Sigma^3}, & 
-\Gamma^{\theta}{}_{tt} &= - \frac{r_sa^2rsin{\theta}cos\theta}{\Sigma^3}, \\[2mm]
+\Gamma^{\theta}{}_{tt} &= - \frac{r_sa^2r\sin{\theta}cos\theta}{\Sigma^3}, \\[2mm]
 
 \Gamma^{t}{}_{tr} &= \frac{r_s(r^2+a^2)(r^2-a^2cos^2\theta)}{2\Sigma^2\Delta}, & 
 \Gamma^{\phi}{}_{tr} &= \frac{ r_s a (r^2 - a^2 \cos^2\theta)}{2\Sigma^2 \Delta} , \\[2mm]
@@ -152,7 +152,7 @@ fig
 
 A spinning black hole can have two possible photon orbits and ISCOs. One in the direction of the spinning black hole (prograde) and one against it (retrograde). 
 
-A clear visual representation of frame dragging is provided by the figure below. It depicts  two photons orbit a Kerr black hole. One orbits in the same direction as the black hole’s rotation (prograde)and one orbits in the opposite direction (retrograde).
+A clear visual representation of frame dragging is provided by the figure below. It depicts two photons orbiting a Kerr black hole, one prograde and one retrograde.
 
 Frame dragging effectively boosts prograde motion, allowing the prograde orbit to lie closer to the event horizon, while the retrograde orbit occurs at a larger radius as it opposes the
 frame dragging.
@@ -406,7 +406,7 @@ As this is a maximally spinning black hole, the ergosphere expands significantly
 
 ## Line Profiles 
 
-As the spin of the black hole becomes more prograde, the ISCO radius decreases and the matter at the inner-edge of the accretion disc moves faster. The blue peak is therefore subject to an increased doppler shift. It also becomes lower and broader due to increased gravitational redshift and smearing from emission originating closer to the black hole. The red wing shows the same trend but is less pronounced because it already primarily reflects gravitational redshift so increased amounts do not cause it to change as much. The increased gravitational redshift also causes the red tail to extend to lower observed energies with increasing prograde spin.
+As the spin of the black hole becomes more prograde, the ISCO radius decreases and the matter at the inner-edge of the accretion disc moves faster. The blue peak on a line profile is therefore subject to an increased Doppler shift. It also becomes lower and broader due to increased gravitational redshift and smearing from emission originating closer to the black hole. The red wing shows the same trend but is less pronounced because it already primarily reflects gravitational redshift so increased amounts do not cause it to change as much. The increased gravitational redshift also causes the red tail to extend to lower observed energies with increasing prograde spin.
 
 ```@raw html
 <details>
@@ -446,6 +446,8 @@ plt
 ## Inclination Angle 
 
 By varying the inclination angle, the component of the disc’s rotational motion that lies along the observer’s line of sight changes. If the disc were to be viewed at a $90^{\circ}$ inclination angle, the Doppler shift of the disc would be a maximum. As the angle moved away from this point, less matter would be moving directly towards and away from the observer's line of sight so the Doppler shift would decrease.
+
+This can be seen in the plot below. As the inclination angle increases from $50^\circ$ to $70^\circ$, the relative energy gap between the red and blue peaks increases.
 
 ```@raw html
 <details>

@@ -1,6 +1,6 @@
 # Catalogue of SpaceTimes (COST)
 
-This is the documentation for the Catalogue of SpaceTimes (COST) Julia package. It is a work in progress.
+This is the documentation for the Catalogue of SpaceTimes (COST) Julia package.
 
 ## About 
 
@@ -64,7 +64,7 @@ $$\Gamma^{\alpha}_{\ \mu\nu} = \left( \frac{\partial e_\mu}{\partial x^\nu} \rig
 ## Riemann Tensors
 A surface can have two types of curvature: intrinsic and extrinsic. Intrinsic curvature is curvature that can be measured entirely within the surface itself, without reference to a higher-dimensional space. One way to detect intrinsic curvature is by parallel transporting a vector around a closed loop: on an intrinsically curved surface, the vector will not return to its original orientation. A sphere is an example of a surface with intrinsic curvature.
 
-Extrinsic curvature, on the other hand, depends on how a surface is embedded in a higher-dimensional space. A surface can appear curved from the outside but still have zero intrinsic curvature. In this case, a vector parallel transported around a closed loop returns to its original orientation. A cylinder is a good example: although it appears curved in three dimensions, it can be unrolled into a flat plane, so an ant walking on it would not detect any intrinsic curvature.
+Extrinsic curvature, on the other hand, depends on how a surface is embedded in a higher-dimensional space. A surface can appear curved from the outside but still have zero intrinsic curvature. In this case, a vector parallel transported around a closed loop returns to its original orientation. A cylinder is a good example: although it appears curved in three dimensions, it can be unrolled into a flat plane, so a 2-dimensional being walking on its surface would not detect any curvature.
 
 After a vector completes a closed loop on an intrinsically curved surface, the amount that it has changed direction is proportional to the value of the vector itself, the size of the loop in the $x^\mu$ direction, and the size of the loop in the $x^\nu$ direction.
 
@@ -105,19 +105,19 @@ There exists a radius around a black hole at which a photon can move on a circul
 The radius of the photon orbit depends on the parameters of the black hole. For a non-rotating black hole there is a single photon sphere, whereas for a rotating black hole the photon orbit radius depends on the spin parameter (a) and on whether the photon is rotating with or against the black holes spin.
 
 ### ISCO
-The ISCO (Innermost Stable Circular Orbit) is the smallest radius at which stable circular motion is possible around a black hole. It defines the inner edge of the accretion disk.
+The ISCO (Inner-most Stable Circular Orbit) is the smallest radius at which stable circular motion is possible around a black hole. It defines the inner-edge of the accretion disc.
 
 The effective potential for a particle orbiting a black hole has a minimum at radii where stable circular orbits occur and a maximum where unstable circular orbits occur. The minimum and maximum approach each other as you look at particle orbits with a smaller radius. The radius at which they merge corresponds to an inflection point of the effective potential. This radius defines the ISCO.
 
 Inside the ISCO lies the plunging region, where matter can no longer maintain a stable circular orbit and rapidly spirals into the event horizon.
 
-The ISCO radius also depends on the parameters of the black hole. For a rotating black hole, it varies with the spin parameter a, decreasing for prograde orbits and increasing for retrograde orbits. It can also change in modified or non-Kerr spacetimes.
+The ISCO radius also depends on the parameters of the black hole. For a rotating black hole, it varies with the spin parameter $a$, decreasing for prograde orbits and increasing for retrograde orbits. It can also change in modified or non-Kerr spacetimes.
 
 ### Marginally Bound Orbit
 The marginally bound orbit is the radius at which a particle will perform an unstable circular orbit with just enough energy to escape to infinity if slightly perturbed outward, corresponding to $E=1$.
 
 ## Line Profiles
-A line profile is a graph which shows how flux varies with energy or wavelength. In the case of black holes, line profiles are produced from the reflected x-rays of the accretion disk of the black hole. The most prominent feature in the spectrum is the iron $K\alpha$ line at 6.4 keV. As this line is intrinsically narrow, any broadening observed can be attributed to GR effects.
+A line profile is a graph which shows how flux varies with energy or wavelength. In the case of black holes, line profiles are produced from the reflected X-rays of the accretion disc of the black hole. The most prominent feature in the spectrum is the iron $K\alpha$ line at 6.4 keV. As this line is intrinsically narrow, any broadening observed can be attributed to GR effects.
 
 These line profiles consist of a blue-shifted peak and a red-shifted peak from the orbital motion of the accretion disc. These peaks are both subject to relativistic beaming, time dilation and gravitational redshift.
 

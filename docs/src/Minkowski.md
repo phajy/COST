@@ -25,7 +25,7 @@ $$g_{\mu\nu} =
 
 And in Boyer–Lindquist coordinates:
 
-$$ds^2 = -dt^2 + dr^2 + r^2d\theta^2 + r^2sin^2{\theta}d\phi^2$$
+$$ds^2 = -dt^2 + dr^2 + r^2d\theta^2 + r^2\sin^2{\theta}d\phi^2$$
 
 
 $$g_{\mu\nu} =
@@ -36,7 +36,7 @@ $$g_{\mu\nu} =
 
 0 & 0 & r^2 & 0 \\
 
-0 & 0 & 0 & r^2sin^2{\theta} \\
+0 & 0 & 0 & r^2\sin^2{\theta} \\
 \end{pmatrix}$$
 
 
@@ -60,7 +60,7 @@ As the Riemann tensor quantifies curvature, all of its components are identicall
 ## World Lines
 
 Geodesics in flat space correspond to straight line motion, and no characteristic radii such as the event
-horizon, ISCO, or photon sphere exist. This behaviour is illustrated in the Figure below, where particle trajectories follow straight world lines and light rays propagate along $x=\pm t$.
+horizon, ISCO, or photon sphere exist. This behaviour is illustrated in the plot below, where particle trajectories follow straight world lines and light rays propagate along $x=\pm t$.
 
 The trajectories plotted are all time-like $(ds^2<0)$ and therefore lie within the light cone defined by the dashed lines corresponding to null (light-like) rays.
 
