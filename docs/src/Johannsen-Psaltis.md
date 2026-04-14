@@ -142,8 +142,7 @@ Varying the ISCO radius directly affects the orbital velocity of matter in the a
 The blue peak becomes sharper and increases in flux with increasing $\epsilon_3$. This is also due to the higher orbital velocities at smaller radii, which enhance relativistic beaming on the approaching side of the disc. As a result, emission is concentrated into a narrower and more intense high energy peak.
 
 Another notable feature is the shift in the high energy cut-off of the blue peak. As $\epsilon_3$ increases and the
-emitting region moves closer to the black hole, the competing effects of Doppler blueshift and gravita-
-tional redshift become more pronounced. Although higher orbital velocities act to increase the observed
+emitting region moves closer to the black hole, the competing effects of Doppler blueshift and gravitational redshift become more pronounced. Although higher orbital velocities act to increase the observed
 photon energy, the stronger gravitational redshift at smaller radii counteracts this effect. As a result, the
 maximum observed energy is reduced, leading to a shift of the high energy cut-off towards lower energies.
 
@@ -261,7 +260,7 @@ heatmap(
 
 ## Shawdow Map
 
-The Johannsen-Psaltis black hole shadow displays the characteristic D-shaped structure of the Kerr shadow but with a distorted flat edge. This occurs because introducing the parameter $\epsilon_{3}$ modifies photon trajectories, changing the structure of the shadow. 
+The Johannsen-Psaltis black hole shadow displays the characteristic "D-shaped" structure of the Kerr shadow but with a distorted flat edge. This occurs because introducing the parameter $\epsilon_{3}$ modifies photon trajectories, changing the structure of the shadow. 
 
 For a closed event horizon, negative values of $\epsilon_{3}$ make the Johannsen-Psaltis shadow larger than the Kerr shadow. In contrast, positive values of $\epsilon_{3}$ cause the flat edge to move inward. The jaggered edged is strongly associated with non-closed event horizons and are thought to be due to turbulent photon trajectories in the Johannsen-Psaltis spacetime.
 
@@ -308,7 +307,7 @@ p = Plots.heatmap(
 
 ## Degeneracy Testing 
 
-The following plots show line profiles from accretion discs in Kerr and Johannsen–Psaltis spacetimes for different values of spin $a$ and deviation parameter $\epsilon_3$. All cases exhibit a degree of degeneracy between the two models; however, this degeneracy is strongest at low spin $(a=0.3)$, where the profiles are nearly indistinguishable. As the spin increases to $a=0.6$, differences begin to emerge, particularly in the structure of the blue peak. At higher spin ($a=0.85$), the degeneracy is significantly reduced, with clear discrepancies between the profiles. Overall, the results indicate that the degeneracy between Kerr and non-Kerr line profiles decreases with increasing spin.
+The following plots show line profiles from accretion discs in Kerr and Johannsen–Psaltis spacetimes for different values of spin $a$ and deviation parameter $\epsilon_3$. All cases exhibit a degree of degeneracy between the two models; however, this degeneracy is strongest at low spin $(a=0.3)$, where the profiles are nearly indistinguishable. As the spin increases to $a=0.6$, differences begin to emerge, particularly in the structure of the blue peak. At higher spin $(a=0.85)$, the degeneracy is significantly reduced, with clear discrepancies between the profiles. Overall, the results indicate that the degeneracy between Kerr and non-Kerr line profiles decreases with increasing spin.
 
 ```@raw html
 <details>
