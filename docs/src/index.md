@@ -1,6 +1,6 @@
-# Catalogue of SpaceTimes (COST)
+# Catalogue of Spacetimes (COST)
 
-This is the documentation for the Catalogue of SpaceTimes (COST) Julia package.
+This is the documentation for the Catalogue of Spacetimes (COST) Julia package.
 
 ## About 
 
